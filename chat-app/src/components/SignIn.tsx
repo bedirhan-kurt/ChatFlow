@@ -6,7 +6,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import {Button} from "@/components/ui/button.tsx";
-import {auth} from "../lib/firebaseConfig.ts";
+import {auth} from "../api/firebaseConfig.ts";
 import {useAuthState, useSignInWithGoogle} from "react-firebase-hooks/auth";
 import {useNavigate} from "react-router";
 

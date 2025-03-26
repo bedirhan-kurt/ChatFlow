@@ -1,18 +1,36 @@
-import {Card, CardContent} from "@/components/ui/card.tsx";
-//import {Avatar} from "@/components/ui/avatar.tsx";
+import { Card, CardContent } from "@/components/ui/card.tsx";
+import { MessageOptionsDropdown } from "@/components/MessageOptionsDropdown.tsx";
+import { createContext } from "react";
+import MessageDeleteButton from "@/components/MessageDeleteButton.tsx";
+import MessageEditButton from "@/components/MessageEditButton.tsx";
 
-export default function Message({ message, owner, isOwned = false }: { message: string, owner: string, isOwned?: boolean }) {
+interface MessageContextType {
+    id: string;
+}
+
+export const MessageContext = createContext<MessageContextType>({ id: "" });
+
+export default function Message({ id, message, owner, isOwned = false }: { id: string, message: string, owner: string, isOwned?: boolean }) {
     return (
-        <div className={`w-full flex flex-col gap-2 ${isOwned ? "items-end" : "items-start"}`}>
-            <div className="flex gap-2 items-center">
-                {/*<Avatar className="bg-gray-300"></Avatar>*/}
-                <span className="font-medium">{isOwned ? "You" : owner}</span>
+        <MessageContext.Provider value={{ id }}>
+            <div className={`w-full flex flex-col gap-2 ${isOwned ? "items-end" : "items-start"}`}>
+                <div className={`flex flex-col gap-1 ${isOwned ? "items-end" : "items-start"}`}>
+                    <div className="flex gap-2 items-center">
+                        <span className="font-medium">{isOwned ? "You" : owner}</span>
+                    </div>
+                    <Card className={`w-fit p-3 flex gap-2 text-sm ${isOwned ? "bg-primary-500 text-black" : "bg-gray-100"}`}>
+                        <CardContent className="p-0 flex gap-2 items-center">
+                            {isOwned ? (
+                                <MessageOptionsDropdown>
+                                    <MessageDeleteButton />
+                                    <MessageEditButton />
+                                </MessageOptionsDropdown>
+                            ) : null}
+                            {message}
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
-            <Card className={`w-fit p-3 flex-col gap-2 text-sm ${isOwned ? "bg-primary-500 text-black" : "bg-gray-100"}`}>
-                <CardContent className="p-0">
-                    {message}
-                </CardContent>
-            </Card>
-        </div>
-    )
+        </MessageContext.Provider>
+    );
 }

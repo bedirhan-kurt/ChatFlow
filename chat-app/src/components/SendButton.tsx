@@ -1,12 +1,12 @@
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 import addNewMessage from "@/api/addNewMesssage.ts";
+import React from "react";
 
 export default function SendButton({ messageContentRef, author }: { messageContentRef: React.RefObject<string>, author: string }) {
     const handleClick = () => {
-        const messageContent = messageContentRef.current;  // messageContentRef'ten doğrudan değer alıyoruz
+        const messageContent = messageContentRef.current;
         addNewMessage(messageContent, author);
-        console.log("Sending message: ", messageContent);  // Mesaj içeriği konsola yazdırılıyor
     };
 
     return (

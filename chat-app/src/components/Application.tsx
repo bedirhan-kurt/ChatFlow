@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import {
     Card,
     CardContent,
@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button.tsx";
 import { Textarea } from "@/components/ui/textarea.tsx";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebaseConfig.ts";
+import { auth } from "@/api/firebaseConfig.ts";
 import { useNavigate } from "react-router";
 import { Separator } from "@/components/ui/separator";
 import SendButton from "@/components/SendButton.tsx";
