@@ -15,6 +15,7 @@ import { useNavigate } from "react-router";
 import { Separator } from "@/components/ui/separator";
 import SendButton from "@/components/SendButton.tsx";
 import MessageList from "@/components/MessageList.tsx";
+import {ModeToggle} from "@/components/mode-toggle.tsx";
 
 export default function Application() {
     const [user] = useAuthState(auth);
@@ -44,9 +45,12 @@ export default function Application() {
                         Here is a public chat room. You can chat with other users.
                     </CardDescription>
                 </div>
-                <Button variant="secondary" onClick={handleSignOut}>
-                    {loading ? "..." : "Sign Out"}
-                </Button>
+                <div className='flex gap-4'>
+                    <Button variant="secondary" onClick={handleSignOut}>
+                        {loading ? "..." : "Sign Out"}
+                    </Button>
+                    <ModeToggle></ModeToggle>
+                </div>
             </CardHeader>
             <Separator />
             <CardContent className="py-2 px-0 flex flex-col gap-6 overflow-y-auto flex-grow">
