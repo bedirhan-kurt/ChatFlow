@@ -11,6 +11,7 @@ interface MessageContextType {
 export const MessageContext = createContext<MessageContextType>({ id: "" });
 
 export default function Message({ id, message, author, isOwned = false }: { id: string, message: string, author: string, isOwned?: boolean }) {
+
     return (
         <MessageContext.Provider value={{ id }}>
             <div className={`w-full flex flex-col gap-2 ${isOwned ? "items-end" : "items-start"}`}>
@@ -21,7 +22,7 @@ export default function Message({ id, message, author, isOwned = false }: { id: 
                     <Card
                         className={`w-fit p-3 flex gap-2 text-sm 
                         ${isOwned ? "bg-primary-500 text-black" : "bg-gray-100"}
-                        ${author === "ADMIN"  ? "bg-red-300 text-black" : "bg-gray-100"}
+                        ${author === "ADMIN" ? "bg-blue-100 text-black" : "bg-gray-100"}
                         `}
                     >
                         <CardContent className="p-0 flex gap-2 items-center">

@@ -10,13 +10,13 @@ import React from "react";
 
 export function MessageOptionsDropdown({ children }: { children: React.ReactNode }) {
     const dropdownItems = React.Children.map(children, (child) => (
-        <DropdownMenuItem asChild>{child}</DropdownMenuItem>
+        <DropdownMenuItem>{child}</DropdownMenuItem>
     )); // Copilot
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center" asChild>
-                <Button variant="ghost" className="size-4"><EllipsisVertical className="size-4"></EllipsisVertical></Button>
+                <EllipsisVertical className="size-4"></EllipsisVertical>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuGroup title="Message Options">
