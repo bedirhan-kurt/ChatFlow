@@ -1,5 +1,5 @@
 import { db } from "../api/firebaseConfig.ts";
-import { collection, onSnapshot, QuerySnapshot, DocumentData } from "firebase/firestore";
+import { collection, onSnapshot, QuerySnapshot, DocumentData, orderBy, query, limit } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
 // All messages will be in the form this interface. It is flexible for different length of items.
@@ -16,10 +16,13 @@ export default function useAllMessages() {
     useEffect(() => {
         const messageRef = collection(db, "messages")
 
+        // Querying the messages collection by createdAt field in ascending order.
+        const q = query(messageRef, orderBy("createdAt", "asc"), limit(45));
+
         // This is cleanup function for unsubscribing the listener.
         // onSnapshot stops listening automatically when it is called with a cleanup function. Like a toggle.
         const unsubscribe = onSnapshot(
-            messageRef,
+            q,
             {includeMetadataChanges: true},
             (snapshot: QuerySnapshot<DocumentData>) => {
                 const messageData: Messages[] = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))

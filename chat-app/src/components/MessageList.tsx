@@ -5,11 +5,7 @@ import Message from "@/components/Message.tsx";
 export default function MessageList({ ownerId }: { ownerId: string }) {
     const { messages, isLoading, error } = useAllMessages();
 
-    const sortedMessages = messages.length > 0 ? messages.sort(
-        (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-    ) : [];
-
-    const messageElements = sortedMessages.map((message) => (
+    const messageElements = messages.map((message) => (
         <Message
             key={message.id}
             id={message.id}
