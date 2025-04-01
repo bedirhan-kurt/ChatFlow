@@ -2,41 +2,39 @@ import { db } from "../api/firebaseConfig.ts";
 import { collection, onSnapshot, QuerySnapshot, DocumentData } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
-interface Message {
+// All messages will be in the form this interface. It is flexible for different length of items.
+interface Messages {
     id: string;
-    [key: string]: any;
+    [key: string]: any
 }
 
 export default function useAllMessages() {
-    const [messages, setMessages] = useState<Message[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [messages, setMessages] = useState<Messages[]>([]); // List of message items that message id and message content
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const messagesRef = collection(db, "messages");
+        const messageRef = collection(db, "messages")
 
+        // This is cleanup function for unsubscribing the listener.
+        // onSnapshot stops listening automatically when it is called with a cleanup function. Like a toggle.
         const unsubscribe = onSnapshot(
-            messagesRef,
-            { includeMetadataChanges: true },
+            messageRef,
+            {includeMetadataChanges: true},
             (snapshot: QuerySnapshot<DocumentData>) => {
-                const messagesData: Message[] = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                setMessages(messagesData);
-                setLoading(false);
+                const messageData: Messages[] = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+
+                setMessages(messageData)
+                setIsLoading(false);
             },
-            (err: Error) => {
-                setError(err);
-                setLoading(false);
+            (error) => {
+                setError(error)
+                setIsLoading(false)
             }
-        );
+        )
 
-        // Cleanup function
-        return () => unsubscribe();
-    }, []);
+        return () => unsubscribe() // Running cleanup function when the component unmounts or when will be re-rendered.
+    }, [])
 
-    return { messages, loading, error };
+    return { messages, isLoading, error };
 }
-
-// Copilot
