@@ -1,13 +1,21 @@
 import addNewMessage from "@/api/addNewMesssage.ts";
 import {Textarea} from "@/components/ui/textarea.tsx";
-import SendButton from "@/components/SendButton.tsx";
 import React, {useState} from "react";
+import {Send} from "lucide-react";
+import {Button} from "@/components/ui/button.tsx";
 
-export default function MessageBar({ author }: { author: string }) {
+export default function MessageBar({ author, bottomRef }: { author: string, bottomRef: React.RefObject<HTMLDivElement | null> }) {
     const [messageContent, setMessageContent] = useState("");
 
     const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessageContent(e.target.value)
+    };
+
+    const handleClick = () => {
+        addNewMessage(messageContent, author)
+            .then(() => setMessageContent(""))
+            .catch((err) => console.error(err));
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
@@ -20,16 +28,11 @@ export default function MessageBar({ author }: { author: string }) {
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
                         e.preventDefault();
-                        addNewMessage(messageContent, author);
-                        setMessageContent("")
+                        handleClick();
                     }
                 }}
             />
-            <SendButton
-                messageContent={messageContent}
-                setMessageContent={setMessageContent}
-                author={author}
-            />
+            <Button variant="ghost" className="w-16 h-full" onClick={handleClick}><Send className="size-5" /></Button>
         </div>
     );
 }

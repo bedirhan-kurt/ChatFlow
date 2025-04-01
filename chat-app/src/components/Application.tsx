@@ -14,11 +14,13 @@ import {Separator} from "@/components/ui/separator";
 import MessageList from "@/components/MessageList.tsx";
 import {ModeToggle} from "@/components/mode-toggle.tsx";
 import MessageBar from "@/components/MessageBar.tsx";
+import {useRef} from "react";
 
 export default function Application() {
     const [user] = useAuthState(auth);
     const [signOut, loading] = useSignOut(auth);
     const navigate = useNavigate();
+    const bottomRef = useRef<HTMLDivElement>(null);
 
     if (!user) {
         navigate("/");
@@ -48,9 +50,10 @@ export default function Application() {
             <Separator/>
             <CardContent className="py-2 px-0 flex flex-col gap-6 overflow-y-auto flex-grow">
                 <MessageList ownerId={user.uid}/>
+                <div ref={bottomRef} className="h-0"></div>
             </CardContent>
             <CardFooter className="p-0 flex gap-4">
-                <MessageBar author={user.uid} ></MessageBar>
+                <MessageBar author={user.uid} bottomRef={bottomRef} ></MessageBar>
             </CardFooter>
         </Card>
     );
