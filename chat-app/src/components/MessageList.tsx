@@ -3,7 +3,7 @@ import useAllMessages from "../hooks/useAllMessages.ts";
 import Message from "@/components/Message.tsx";
 
 export default function MessageList({ ownerId }: { ownerId: string }) {
-    const { messages, isLoading, error } = useAllMessages();
+    const { messages, loading, error } = useAllMessages();
 
     const sortedMessages = messages.length > 0 ? messages.sort(
         (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
@@ -21,7 +21,7 @@ export default function MessageList({ ownerId }: { ownerId: string }) {
 
     return (
         <>
-            {isLoading ? (
+            {loading ? (
                 <div className="w-full h-full flex items-center justify-center text-xl font-semibold">
                     <p>Loading...</p>
                 </div>

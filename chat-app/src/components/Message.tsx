@@ -31,8 +31,8 @@ export default function Message({id, message, author, isOwned = false}: {
                         <CardContent className="p-0 flex gap-2 items-center">
                             {isOwned ? (
                                 <MessageOptionsDropdown>
-                                    <MessageDeleteButton />
-                                    <MessageEditButton />
+                                    <MessageDeleteButton/>
+                                    <MessageEditButton/>
                                 </MessageOptionsDropdown>
                             ) : null}
                             {message}

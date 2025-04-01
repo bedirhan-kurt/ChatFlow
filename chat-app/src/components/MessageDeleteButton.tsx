@@ -15,8 +15,8 @@ export default function MessageDeleteButton() {
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center">
-                <div className="flex items-center justify-center gap-2">
+            <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center" asChild>
+                <div>
                     <Trash2 className="size-3" />
                     <span>Delete</span>
                 </div>
