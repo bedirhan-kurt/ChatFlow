@@ -1,4 +1,3 @@
-import React, {useRef} from "react";
 import {
     Card,
     CardContent,
@@ -8,22 +7,18 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import {Button} from "@/components/ui/button.tsx";
-import {Textarea} from "@/components/ui/textarea.tsx";
 import {useAuthState, useSignOut} from "react-firebase-hooks/auth";
 import {auth} from "@/api/firebaseConfig.ts";
 import {useNavigate} from "react-router";
 import {Separator} from "@/components/ui/separator";
-import SendButton from "@/components/SendButton.tsx";
 import MessageList from "@/components/MessageList.tsx";
 import {ModeToggle} from "@/components/mode-toggle.tsx";
-import {Input} from "@/components/ui/input.tsx";
-import addNewMessage from "@/api/addNewMesssage.ts";
+import MessageBar from "@/components/MessageBar.tsx";
 
 export default function Application() {
     const [user] = useAuthState(auth);
     const [signOut, loading] = useSignOut(auth);
     const navigate = useNavigate();
-    const messageContentRef = useRef("");
 
     if (!user) {
         navigate("/");
@@ -33,10 +28,6 @@ export default function Application() {
     function handleSignOut(): void {
         signOut().catch(console.error);
     }
-
-    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        messageContentRef.current = e.target.value;
-    };
 
     return (
         <Card className="w-164 h-full flex flex-col p-8 justify-between">
@@ -59,19 +50,7 @@ export default function Application() {
                 <MessageList ownerId={user.uid}/>
             </CardContent>
             <CardFooter className="p-0 flex gap-4">
-                <Textarea
-                    placeholder="Type your message..."
-                    className="resize-none h-2"
-                    defaultValue={messageContentRef.current}
-                    onChange={handleMessageChange}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            addNewMessage(messageContentRef.current, user.uid);
-                        }
-                    }}
-                />
-                <SendButton messageContentRef={messageContentRef} author={user.uid}/>
+                <MessageBar author={user.uid} ></MessageBar>
             </CardFooter>
         </Card>
     );
