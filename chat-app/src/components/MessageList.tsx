@@ -1,9 +1,8 @@
-"use client";
-import useAllMessages from "../hooks/useAllMessages.ts";
+import {useMessages} from "../hooks/useMessages.ts";
 import Message from "@/components/Message.tsx";
 
 export default function MessageList({ ownerId }: { ownerId: string }) {
-    const { messages, isLoading, error } = useAllMessages();
+    const { messages, isLoading, error } = useMessages();
 
     const messageElements = messages.map((message) => (
         <Message
