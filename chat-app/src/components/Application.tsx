@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 import {
     Card,
     CardContent,
@@ -7,15 +7,17 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button.tsx";
-import { Textarea } from "@/components/ui/textarea.tsx";
-import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "@/api/firebaseConfig.ts";
-import { useNavigate } from "react-router";
-import { Separator } from "@/components/ui/separator";
+import {Button} from "@/components/ui/button.tsx";
+import {Textarea} from "@/components/ui/textarea.tsx";
+import {useAuthState, useSignOut} from "react-firebase-hooks/auth";
+import {auth} from "@/api/firebaseConfig.ts";
+import {useNavigate} from "react-router";
+import {Separator} from "@/components/ui/separator";
 import SendButton from "@/components/SendButton.tsx";
 import MessageList from "@/components/MessageList.tsx";
 import {ModeToggle} from "@/components/mode-toggle.tsx";
+import {Input} from "@/components/ui/input.tsx";
+import addNewMessage from "@/api/addNewMesssage.ts";
 
 export default function Application() {
     const [user] = useAuthState(auth);
@@ -52,18 +54,24 @@ export default function Application() {
                     <ModeToggle></ModeToggle>
                 </div>
             </CardHeader>
-            <Separator />
+            <Separator/>
             <CardContent className="py-2 px-0 flex flex-col gap-6 overflow-y-auto flex-grow">
-                <MessageList ownerId={user.uid} />
+                <MessageList ownerId={user.uid}/>
             </CardContent>
             <CardFooter className="p-0 flex gap-4">
                 <Textarea
                     placeholder="Type your message..."
-                    className="resize-none h-8"
+                    className="resize-none h-2"
                     defaultValue={messageContentRef.current}
                     onChange={handleMessageChange}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            addNewMessage(messageContentRef.current, user.uid);
+                        }
+                    }}
                 />
-                <SendButton messageContentRef={messageContentRef} author={user.uid} />
+                <SendButton messageContentRef={messageContentRef} author={user.uid}/>
             </CardFooter>
         </Card>
     );
