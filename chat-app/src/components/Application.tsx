@@ -14,10 +14,12 @@ import {Separator} from "@/components/ui/separator";
 import MessageList from "@/components/MessageList.tsx";
 import {ModeToggle} from "@/components/mode-toggle.tsx";
 import MessageBar from "@/components/MessageBar.tsx";
-import {useRef} from "react";
+import {useRef, useState} from "react";
+import UserSettingsModal from "@/components/UserSettingsModal.tsx";
 
 export default function Application() {
     const [user] = useAuthState(auth);
+    const [username, setUsername] = useState<string>("")
     const [signOut, loading] = useSignOut(auth);
     const navigate = useNavigate();
     const bottomRef = useRef<HTMLDivElement>(null);
@@ -44,6 +46,7 @@ export default function Application() {
                     <Button variant="secondary" onClick={handleSignOut}>
                         {loading ? "..." : "Sign Out"}
                     </Button>
+                    <UserSettingsModal email={user.email || ""} username={username} setUsername={setUsername} />
                     <ModeToggle></ModeToggle>
                 </div>
             </CardHeader>
@@ -53,7 +56,7 @@ export default function Application() {
                 <div ref={bottomRef} className="h-0"></div>
             </CardContent>
             <CardFooter className="p-0 flex gap-4">
-                <MessageBar author={user.uid} bottomRef={bottomRef} ></MessageBar>
+                <MessageBar uid={user.uid} authorUsername={username} bottomRef={bottomRef} ></MessageBar>
             </CardFooter>
         </Card>
     );

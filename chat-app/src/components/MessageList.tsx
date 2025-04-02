@@ -9,8 +9,8 @@ export default function MessageList({ ownerId }: { ownerId: string }) {
             key={message.id}
             id={message.id}
             message={message.messageContent}
-            author={message.author}
-            isOwned={message.author === ownerId}
+            author={message.authorUsername}
+            isOwned={message.uid === ownerId}
         />
     ));
 

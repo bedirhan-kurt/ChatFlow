@@ -6,8 +6,9 @@ import {Button} from "@/components/ui/button.tsx";
 import {Filter} from 'bad-words'
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 
-export default function MessageBar({author, bottomRef}: {
-    author: string,
+export default function MessageBar({uid, authorUsername, bottomRef}: {
+    uid: string,
+    authorUsername: string,
     bottomRef: React.RefObject<HTMLDivElement | null>
 }) {
     const [messageContent, setMessageContent] = useState("");
@@ -24,10 +25,12 @@ export default function MessageBar({author, bottomRef}: {
             setIsProfane(true)
         } else {
             setIsProfane(false)
-            addNewMessage(messageContent, author)
-                .then(() => setMessageContent(""))
+            addNewMessage(messageContent, uid, authorUsername)
+                .then(() => {
+                    bottomRef.current?.scrollIntoView({behavior: "smooth"});
+                    setMessageContent("")
+                })
                 .catch((err) => console.error(err));
-            bottomRef.current?.scrollIntoView({behavior: "smooth"});
         }
     };
 
