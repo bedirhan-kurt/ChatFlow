@@ -3,6 +3,7 @@ import {MessageOptionsDropdown} from "@/components/MessageOptionsDropdown.tsx";
 import {createContext} from "react";
 import MessageDeleteButton from "@/components/MessageDeleteButton.tsx";
 import MessageEditButton from "@/components/MessageEditButton.tsx";
+import {toReadableDate} from "@/lib/utils.ts";
 
 interface MessageContextType {
     id: string;
@@ -10,12 +11,16 @@ interface MessageContextType {
 
 export const MessageContext = createContext<MessageContextType>({id: ""});
 
-export default function Message({id, message, author, isOwned = false}: {
+export default function Message({id, message, author, isOwned = false, createdAt}: {
     id: string,
     message: string,
     author: string,
-    isOwned?: boolean
+    isOwned?: boolean,
+    createdAt: string
 }) {
+
+    const date = toReadableDate(createdAt)
+
     return (
         <MessageContext.Provider value={{id}}>
             <div className={`w-full flex flex-col gap-2 ${isOwned ? "items-end" : "items-start"}`}>
@@ -39,6 +44,7 @@ export default function Message({id, message, author, isOwned = false}: {
                         </CardContent>
                     </Card>
                 </div>
+                <span className="text-xs text-muted-foreground">{date}</span>
             </div>
         </MessageContext.Provider>
     );

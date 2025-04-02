@@ -16,6 +16,7 @@ import {ModeToggle} from "@/components/mode-toggle.tsx";
 import MessageBar from "@/components/MessageBar.tsx";
 import {useRef, useState} from "react";
 import UserSettingsModal from "@/components/UserSettingsModal.tsx";
+import useEndSession from "@/hooks/useEndSession.ts";
 
 export default function Application() {
     const [user] = useAuthState(auth);
@@ -23,6 +24,8 @@ export default function Application() {
     const [signOut, loading] = useSignOut(auth);
     const navigate = useNavigate();
     const bottomRef = useRef<HTMLDivElement>(null);
+
+    useEndSession()
 
     if (!user) {
         navigate("/");
