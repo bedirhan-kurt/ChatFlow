@@ -5,12 +5,10 @@ import {AlertCircle, Send} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {Filter} from 'bad-words'
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
+import {useUser} from "@/hooks/useUser.tsx";
 
-export default function MessageBar({uid, authorUsername, bottomRef}: {
-    uid: string,
-    authorUsername: string,
-    bottomRef: React.RefObject<HTMLDivElement | null>
-}) {
+export default function MessageBar() {
+    const {user, username} = useUser();
     const [messageContent, setMessageContent] = useState("");
     const [isProfane, setIsProfane] = useState(false)
 
@@ -25,9 +23,8 @@ export default function MessageBar({uid, authorUsername, bottomRef}: {
             setIsProfane(true)
         } else {
             setIsProfane(false)
-            addNewMessage(messageContent, uid, authorUsername)
+            addNewMessage(messageContent, user.uid, username)
                 .then(() => {
-                    bottomRef.current?.scrollIntoView({behavior: "smooth"});
                     setMessageContent("")
                 })
                 .catch((err) => console.error(err));
@@ -35,7 +32,7 @@ export default function MessageBar({uid, authorUsername, bottomRef}: {
     };
 
     return (
-        <div className='w-full h-full flex flex-col gap-2'>
+        <div className='flex flex-col gap-2'>
             {isProfane ?
                 <Alert variant='destructive' className='border-red-500'>
                     <AlertCircle className="h-4 w-4" />

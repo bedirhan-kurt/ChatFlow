@@ -1,4 +1,4 @@
-# Simple Chat ApplicationLayout
+# Simple Chat ChatPage
 
 A simple chat application built using **Node.js** and **Socket.io** for real-time messaging. This application allows users to join a chat room, send messages, and communicate in real-time.
 

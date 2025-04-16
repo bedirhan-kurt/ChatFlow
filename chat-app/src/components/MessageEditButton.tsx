@@ -7,7 +7,8 @@ import {
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog.tsx";
 
-export default function MessageEditButton() {
+export default function MessageEditButton({id}: { id: string }) {
+    console.log(id)
     return (
         <AlertDialog>
             <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center">

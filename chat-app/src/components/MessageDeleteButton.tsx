@@ -1,6 +1,4 @@
 import { Trash2 } from "lucide-react";
-import { useContext } from "react";
-import { MessageContext } from "@/components/Message.tsx";
 import {
     AlertDialog, AlertDialogAction, AlertDialogCancel,
     AlertDialogContent,
@@ -10,8 +8,7 @@ import {
 } from "@/components/ui/alert-dialog.tsx";
 import deleteMessage from "@/api/deleteMessage.ts";
 
-export default function MessageDeleteButton() {
-    const { id } = useContext(MessageContext);
+export default function MessageDeleteButton({id}: { id: string }) {
 
     return (
         <AlertDialog>

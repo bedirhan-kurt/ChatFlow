@@ -1,6 +1,7 @@
 import { db } from "../api/firebaseConfig.ts";
 import {collection, getDocs, limit, onSnapshot, orderBy, query} from "firebase/firestore";
 import {useEffect, useState} from "react";
+import {toReadableDate} from "../lib/utils.ts";
 
 type Messages = {
     id: string;
@@ -24,6 +25,7 @@ export function useMessages() {
                 const messageData: Messages[] = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
+                    createdAt: toReadableDate(doc.data().createdAt) // Firestore timestamp'ı JavaScript tarihine çevir
                 }));
                 setMessages(messageData.reverse()); // En eskiye doğru sıralar
             })
