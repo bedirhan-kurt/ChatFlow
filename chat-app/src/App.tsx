@@ -1,7 +1,8 @@
 import SignIn from './components/SignIn'
-import Application from './components/Application'
 import { BrowserRouter as Router,Routes, Route} from "react-router";
 import { ThemeProvider } from "@/components/theme-provider"
+import ChatPage from "@/components/pages/ChatPage.tsx";
+import AuthRequired from "@/components/AuthRequired.tsx";
 
 function App() {
     return (
@@ -10,7 +11,9 @@ function App() {
                 <Router>
                     <Routes>
                         <Route index element={<SignIn />}></Route>
-                        <Route path="/application" element={<Application />}></Route>
+                        <Route element={<AuthRequired />}>
+                            <Route path="/application" element={<ChatPage />}></Route>
+                        </Route>
                     </Routes>
                 </Router>
             </ThemeProvider>

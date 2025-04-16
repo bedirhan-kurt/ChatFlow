@@ -10,18 +10,24 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import {Input} from "@/components/ui/input.tsx";
 import {Label} from "@/components/ui/label.tsx";
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {User} from "lucide-react";
 import {generateFromEmail} from "unique-username-generator";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "@/api/firebaseConfig.ts";
 
-export default function UserSettingsModal({email, username, setUsername}: {email: string, username: string, setUsername: (username: string) => void}) {
+export default function UserSettingsModal() {
+    const [user] = useAuthState(auth);
+    const [username, setUsername] = useState<string>("");
     const usernameContentRef = useRef<string>("");
 
+    const userEmail = user?.email || "";
+
     useEffect(() => {
-        const randomUsername = generateFromEmail(email, 4);
+        const randomUsername = generateFromEmail(userEmail, 4);
 
         setUsername(randomUsername);
-    }, [email, setUsername]);
+    }, [userEmail, setUsername]);
 
     function handleChange(event: React.FormEvent<HTMLInputElement>) {
         usernameContentRef.current = event.currentTarget.value;
