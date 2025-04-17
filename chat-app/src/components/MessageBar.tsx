@@ -7,7 +7,7 @@ import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 // Responsible for component rendering
 
 export default function MessageBar() {
-    const {messageContent, handleMessageChange ,handleClick} = useSendMessage();
+    const {messageContent, handleMessageChange ,handleClick, handleKeyDown} = useSendMessage();
 
     return (
         <div className='flex flex-col gap-2'>
@@ -18,12 +18,7 @@ export default function MessageBar() {
                     className="resize-none h-2"
                     value={messageContent}
                     onChange={handleMessageChange}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            handleClick();
-                        }
-                    }}
+                    onKeyDown={handleKeyDown}
                 />
                 <Button variant="ghost" className="w-16 h-full" onClick={handleClick}><Send
                     className="size-5"/></Button>

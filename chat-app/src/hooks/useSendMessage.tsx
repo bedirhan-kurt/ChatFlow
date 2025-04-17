@@ -11,6 +11,7 @@ interface MessageContextType {
     isProfane: boolean;
     handleMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     handleClick: () => void;
+    handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 const MessageContext = createContext<MessageContextType | undefined>(undefined);
@@ -39,10 +40,17 @@ export const MessageContextProvider = ({children}: { children: ReactNode }) => {
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleClick();
+        }
+    }
+
     return (
         <MessageContext.Provider value={
             {
-                user, username, messageContent, setMessageContent, isProfane, handleMessageChange, handleClick
+                user, username, messageContent, setMessageContent, isProfane, handleMessageChange, handleClick, handleKeyDown
             }
         }>
             {
