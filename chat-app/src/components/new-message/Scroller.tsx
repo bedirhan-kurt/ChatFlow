@@ -1,6 +1,21 @@
 import {useRef} from "react";
 
-// Responsible for scrolling view to bottom when new messages are added
+/**
+ * Scroller Component
+ *
+ * This component is responsible for managing the scrolling behavior in a chat application.
+ * It ensures that the view scrolls to the bottom when new messages are added.
+ *
+ * Features:
+ * - Utilizes a `ref` to track the bottom of the message list.
+ * - Can be extended to implement smooth scrolling to the bottom.
+ *
+ * Hooks:
+ * - `useRef`: React hook used to create a reference to the bottom element.
+ *
+ * @component
+ * @returns {JSX.Element} A div element that acts as a reference point for scrolling.
+ */
 
 export default function Scroller() {
     const bottomRef = useRef<HTMLDivElement>(null);

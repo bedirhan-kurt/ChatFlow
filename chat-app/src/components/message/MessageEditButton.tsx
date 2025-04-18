@@ -7,7 +7,27 @@ import {
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog.tsx";
 
-// Responsible for component rendering
+/**
+ * MessageEditButton Component
+ *
+ * This component provides a button to edit a message. It uses an alert dialog
+ * to confirm the edit action, ensuring the user is aware of the operation.
+ *
+ * Features:
+ * - Displays an edit button with an icon and label.
+ * - Shows a confirmation dialog before proceeding with the edit action.
+ *
+ * Props:
+ * - `id` (string): The unique identifier of the message to be edited.
+ *
+ * Dependencies:
+ * - `AlertDialog` and its subcomponents for rendering the confirmation dialog.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {string} props.id - The unique identifier of the message to edit.
+ * @returns {TSX.Element} The rendered MessageEditButton component.
+ */
 
 export default function MessageEditButton({id}: { id: string }) {
     console.log(id)

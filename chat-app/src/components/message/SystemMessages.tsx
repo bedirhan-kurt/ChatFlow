@@ -1,6 +1,19 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
 
-// Responsible for rendering the system messages UI
+/**
+ * SystemMessages Component
+ *
+ * This component is responsible for rendering the system messages UI.
+ * It provides a container for displaying system-related messages or notifications
+ * in a structured and styled format.
+ *
+ * Features:
+ * - Uses a `Card` component as the main container for system messages.
+ * - Includes a `CardContent` section for displaying the message content.
+ *
+ * @component
+ * @returns {TSX.Element} The rendered SystemMessages component.
+ */
 
 export default function SystemMessages() {
     return (

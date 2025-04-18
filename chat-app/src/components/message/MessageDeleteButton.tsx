@@ -8,7 +8,30 @@ import {
 } from "@/components/ui/alert-dialog.tsx";
 import deleteMessage from "@/api/deleteMessage.ts";
 
-// Responsible for component rendering
+/**
+ * MessageDeleteButton Component
+ *
+ * This component provides a button to delete a message. It uses an alert dialog
+ * to confirm the deletion action, ensuring the user is aware that the action
+ * cannot be undone.
+ *
+ * Features:
+ * - Displays a delete button with an icon and label.
+ * - Shows a confirmation dialog before deleting a message.
+ * - Calls the `deleteMessage` API function to delete the message when confirmed.
+ *
+ * Props:
+ * - `id` (string): The unique identifier of the message to be deleted.
+ *
+ * Dependencies:
+ * - `AlertDialog` and its subcomponents for rendering the confirmation dialog.
+ * - `deleteMessage` API function for performing the delete operation.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {string} props.id - The unique identifier of the message to delete.
+ * @returns {TSX.Element} The rendered MessageDeleteButton component.
+ */
 
 export default function MessageDeleteButton({id}: { id: string }) {
     return (

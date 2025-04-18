@@ -2,7 +2,23 @@ import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {AlertCircle} from "lucide-react";
 import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 
-// Responsible for rendering the alert when the message is profane
+/**
+ * ProfaneAlert Component
+ *
+ * This component renders an alert message when the user types profane content
+ * in the chat input. It provides a warning to encourage polite language in the
+ * public chat room.
+ *
+ * Features:
+ * - Displays a destructive alert with a warning icon, title, and description.
+ * - Dynamically shows or hides the alert based on the `isProfane` state.
+ *
+ * Hooks:
+ * - `useSendMessage`: Custom hook to access the `isProfane` state.
+ *
+ * @component
+ * @returns {TSX.Element | null} The rendered ProfaneAlert component or null if no profanity is detected.
+ */
 
 export default function ProfaneAlert() {
     const {isProfane} = useSendMessage()
