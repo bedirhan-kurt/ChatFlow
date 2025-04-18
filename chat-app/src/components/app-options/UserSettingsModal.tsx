@@ -16,6 +16,9 @@ import {generateFromEmail} from "unique-username-generator";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "@/api/firebaseConfig.ts";
 
+// Responsible for auth state
+//
+
 export default function UserSettingsModal() {
     const [user] = useAuthState(auth);
     const [username, setUsername] = useState<string>("");

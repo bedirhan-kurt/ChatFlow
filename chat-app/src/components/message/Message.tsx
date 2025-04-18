@@ -1,5 +1,5 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
-import {MessageOptionsDropdown} from "@/components/MessageOptionsDropdown.tsx";
+import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdown.tsx";
 
 // Responsible for rendering a single message by user type; admin, other user, or self
 

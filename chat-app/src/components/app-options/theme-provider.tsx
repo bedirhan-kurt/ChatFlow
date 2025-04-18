@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react"
 
+// Responsible for providing the theme context to the application
+
 type Theme = "dark" | "light" | "system"
 
 type ThemeProviderProps = {

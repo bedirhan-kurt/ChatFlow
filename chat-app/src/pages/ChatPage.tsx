@@ -5,15 +5,15 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import {Separator} from "@/components/ui/separator";
-import {ModeToggle} from "@/components/mode-toggle.tsx";
-import Scroller from "../Scroller.tsx";
-import UserSettingsModal from "@/components/UserSettingsModal.tsx";
-import SignOutButton from "@/components/SignOutButton.tsx";
+} from "@/components/ui/card.tsx";
+import {Separator} from "@/components/ui/separator.tsx";
+import {ModeToggle} from "@/components/app-options/mode-toggle.tsx";
+import Scroller from "../components/new-message/Scroller.tsx";
+import UserSettingsModal from "@/components/app-options/UserSettingsModal.tsx";
+import SignOutButton from "@/components/auth/SignOutButton.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
-import MessageBoard from "@/components/MessageBoard.tsx";
-import MessageBar from "@/components/MessageBar.tsx";
+import MessageBoard from "@/components/chat-area/MessageBoard.tsx";
+import NewMessageForm from "@/components/new-message/NewMessageForm.tsx";
 import {MessageContextProvider} from "@/hooks/useSendMessage.tsx";
 
 // Responsible for component rendering
@@ -41,7 +41,7 @@ export default function ChatPage() {
                     <CardContent className="h-full p-2 flex flex-col gap-6 overflow-y-auto flex-grow">
                         <MessageBoard/>
                         <Scroller></Scroller>
-                        <MessageBar/>
+                        <NewMessageForm/>
                     </CardContent>
                 </Card>
             </MessageContextProvider>

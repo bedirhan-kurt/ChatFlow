@@ -1,7 +1,7 @@
-import {useMessages} from "../hooks/useMessages.ts";
-import Message from "@/components/Message.tsx";
+import {useMessages} from "../../hooks/useMessages.ts";
+import Message from "@/components/message/Message.tsx";
 import {useUser} from "@/hooks/useUser.tsx";
-import MessageBoardStatus from "@/components/MessageBoardStatus.tsx";
+import MessageBoardStatus from "@/components/chat-area/MessageBoardStatus.tsx";
 
 // Responsible for rendering the list of messages or status messages
 

@@ -3,10 +3,10 @@ import {
     DropdownMenuContent, DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu.tsx"
 import {EllipsisVertical} from "lucide-react";
-import MessageDeleteButton from "@/components/MessageDeleteButton.tsx";
-import MessageEditButton from "@/components/MessageEditButton.tsx";
+import MessageDeleteButton from "@/components/message/MessageDeleteButton.tsx";
+import MessageEditButton from "@/components/message/MessageEditButton.tsx";
 
 // Responsible for rendering the dropdown menu for message options
 

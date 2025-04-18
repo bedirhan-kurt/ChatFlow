@@ -1,12 +1,12 @@
 import {Textarea} from "@/components/ui/textarea.tsx";
 import {Send} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
-import ProfaneAlert from "@/components/ProfaneAlert.tsx";
+import ProfaneAlert from "@/components/new-message/ProfaneAlert.tsx";
 import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 
 // Responsible for component rendering
 
-export default function MessageBar() {
+export default function NewMessageForm() {
     const {messageContent, handleMessageChange ,handleClick, handleKeyDown} = useSendMessage();
 
     return (

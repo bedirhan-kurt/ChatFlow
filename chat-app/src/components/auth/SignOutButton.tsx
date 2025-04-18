@@ -2,6 +2,8 @@ import {useSignOut} from "react-firebase-hooks/auth";
 import {auth} from "@/api/firebaseConfig.ts";
 import {Button} from "@/components/ui/button.tsx";
 
+// Responsible for signing out the user
+
 export default function SignOutButton() {
     const [signOut, loading] = useSignOut(auth);
 
