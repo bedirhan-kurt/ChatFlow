@@ -7,6 +7,7 @@ import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 /**
  * NewMessageForm Component
  *
+ * Responsibility:
  * This component provides a form for users to compose and send new messages.
  * It includes a textarea for message input, a button to send the message, and
  * an alert for detecting profane content.

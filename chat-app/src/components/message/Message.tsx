@@ -4,6 +4,7 @@ import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdow
 /**
  * Message Component
  *
+ * Responsibility:
  * Responsible for rendering a single message based on the user type (admin, other user, or self).
  * This component dynamically adjusts its appearance and structure depending on whether the message
  * is owned by the current user, sent by an admin, or sent by another user.

@@ -1,6 +1,7 @@
 /**
  * MessageBoardStatus Component
  *
+ * Responsibility:
  * Responsible for checking the chat data and rendering the appropriate message.
  * This component displays different states based on the provided props:
  * - A loading message when data is being fetched.

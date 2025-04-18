@@ -6,6 +6,7 @@ import {useNavigate} from "react-router";
 /**
  * SignInButton Component
  *
+ * Responsibility:
  * Responsible for signing in the user with Google.
  * This component provides a button that triggers the Google sign-in process
  * and navigates the user to the application page upon successful authentication.

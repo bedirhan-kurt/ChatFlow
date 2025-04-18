@@ -7,6 +7,7 @@ import {useEffect} from "react";
 /**
  * AuthRequired Component
  *
+ * Responsibility:
  * Responsible for ensuring that only authenticated users can access certain routes.
  * It checks the user's authentication state and redirects unauthenticated users to the login page.
  * Additionally, it handles session cleanup using the `useEndSession` hook.

@@ -3,6 +3,7 @@ import {useRef} from "react";
 /**
  * Scroller Component
  *
+ * Responsibility:
  * This component is responsible for managing the scrolling behavior in a chat application.
  * It ensures that the view scrolls to the bottom when new messages are added.
  *

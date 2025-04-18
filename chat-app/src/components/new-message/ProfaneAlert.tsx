@@ -5,6 +5,7 @@ import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 /**
  * ProfaneAlert Component
  *
+ * Responsibility:
  * This component renders an alert message when the user types profane content
  * in the chat input. It provides a warning to encourage polite language in the
  * public chat room.

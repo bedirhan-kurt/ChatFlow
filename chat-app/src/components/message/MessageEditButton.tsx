@@ -10,6 +10,7 @@ import {
 /**
  * MessageEditButton Component
  *
+ * Responsibility:
  * This component provides a button to edit a message. It uses an alert dialog
  * to confirm the edit action, ensuring the user is aware of the operation.
  *

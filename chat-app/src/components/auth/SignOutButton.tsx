@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button.tsx";
 /**
  * SignOutButton Component
  *
+ * Responsibility:
  * Responsible for signing out the user.
  * This component provides a button that triggers the sign-out process
  * and displays a loading state while the operation is in progress.

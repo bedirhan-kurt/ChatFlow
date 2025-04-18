@@ -3,6 +3,7 @@ import {Card, CardContent} from "@/components/ui/card.tsx";
 /**
  * SystemMessages Component
  *
+ * Responsibility:
  * This component is responsible for rendering the system messages UI.
  * It provides a container for displaying system-related messages or notifications
  * in a structured and styled format.

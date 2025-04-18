@@ -11,6 +11,7 @@ import deleteMessage from "@/api/deleteMessage.ts";
 /**
  * MessageDeleteButton Component
  *
+ * Responsibility:
  * This component provides a button to delete a message. It uses an alert dialog
  * to confirm the deletion action, ensuring the user is aware that the action
  * cannot be undone.

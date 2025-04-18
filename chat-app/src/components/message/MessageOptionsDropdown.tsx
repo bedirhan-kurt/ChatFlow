@@ -11,6 +11,7 @@ import MessageEditButton from "@/components/message/MessageEditButton.tsx";
 /**
  * MessageOptionsDropdown Component
  *
+ * Responsibility:
  * This component renders a dropdown menu for message options, allowing users to
  * perform actions such as editing or deleting a message.
  *

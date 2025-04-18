@@ -6,6 +6,7 @@ import MessageBoardStatus from "@/components/chat-area/MessageBoardStatus.tsx";
 /**
  * MessageBoard Component
  *
+ * Responsibility:
  * Responsible for rendering the list of messages or status messages.
  * This component fetches user messages and displays each message using the `Message` component.
  * It also uses the `MessageBoardStatus` component to show loading or error states.
