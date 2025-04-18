@@ -9,7 +9,7 @@ import {
 import {Separator} from "@/components/ui/separator.tsx";
 import {ModeToggle} from "@/components/app-options/mode-toggle.tsx";
 import Scroller from "../components/new-message/Scroller.tsx";
-import UserSettingsModal from "@/components/app-options/UserSettingsModal.tsx";
+import UserSettingsModal from "@/components/app-options/user-settings-modal/UserSettingsModal.tsx";
 import SignOutButton from "@/components/auth/SignOutButton.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
 import MessageBoard from "@/components/chat-area/MessageBoard.tsx";
