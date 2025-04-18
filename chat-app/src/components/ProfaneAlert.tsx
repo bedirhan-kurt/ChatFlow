@@ -2,6 +2,8 @@ import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {AlertCircle} from "lucide-react";
 import {useSendMessage} from "@/hooks/useSendMessage.tsx";
 
+// Responsible for rendering the alert when the message is profane
+
 export default function ProfaneAlert() {
     const {isProfane} = useSendMessage()
 

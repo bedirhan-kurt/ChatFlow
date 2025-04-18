@@ -5,13 +5,12 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {EllipsisVertical} from "lucide-react";
-import React from "react";
+import MessageDeleteButton from "@/components/MessageDeleteButton.tsx";
+import MessageEditButton from "@/components/MessageEditButton.tsx";
 
-export function MessageOptionsDropdown({ children }: { children: React.ReactNode }) {
-    const dropdownItems = React.Children.map(children, (child) => (
-        <DropdownMenuItem>{child}</DropdownMenuItem>
-    )); // Copilot
+// Responsible for rendering the dropdown menu for message options
 
+export function MessageOptionsDropdown({ id }: { id: string }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center" asChild>
@@ -19,7 +18,12 @@ export function MessageOptionsDropdown({ children }: { children: React.ReactNode
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuGroup title="Message Options">
-                    {dropdownItems}
+                    <DropdownMenuItem>
+                        <MessageDeleteButton id={id}/>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <MessageEditButton id={id}/>
+                    </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>

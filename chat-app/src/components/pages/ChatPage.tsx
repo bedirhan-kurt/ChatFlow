@@ -12,7 +12,7 @@ import Scroller from "../Scroller.tsx";
 import UserSettingsModal from "@/components/UserSettingsModal.tsx";
 import SignOutButton from "@/components/SignOutButton.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
-import MessageList from "@/components/MessageList.tsx";
+import MessageBoard from "@/components/MessageBoard.tsx";
 import MessageBar from "@/components/MessageBar.tsx";
 import {MessageContextProvider} from "@/hooks/useSendMessage.tsx";
 
@@ -39,7 +39,7 @@ export default function ChatPage() {
                     </CardHeader>
                     <Separator/>
                     <CardContent className="h-full p-2 flex flex-col gap-6 overflow-y-auto flex-grow">
-                        <MessageList/>
+                        <MessageBoard/>
                         <Scroller></Scroller>
                         <MessageBar/>
                     </CardContent>

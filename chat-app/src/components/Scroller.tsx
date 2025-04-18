@@ -1,8 +1,8 @@
 import {useRef} from "react";
 
-export default function Scroller() {
-    // Responsible for scrolling view to bottom when new messages are added
+// Responsible for scrolling view to bottom when new messages are added
 
+export default function Scroller() {
     const bottomRef = useRef<HTMLDivElement>(null);
 
     // const scrollToBottom = () => {

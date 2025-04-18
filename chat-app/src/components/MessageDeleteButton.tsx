@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/alert-dialog.tsx";
 import deleteMessage from "@/api/deleteMessage.ts";
 
-export default function MessageDeleteButton({id}: { id: string }) {
+// Responsible for component rendering
 
+export default function MessageDeleteButton({id}: { id: string }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center" asChild>
