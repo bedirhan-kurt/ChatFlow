@@ -49,7 +49,9 @@ export function useMessages() {
                     }
                 });
 
-                return updatedMessages.slice(-10); // Sadece son 10 mesajı tut
+                const uniqueMessages = Array.from(new Map(updatedMessages.map((msg) => [msg.id, msg])).values());
+                return uniqueMessages.slice(-10);
+
             });
         });
 
@@ -58,4 +60,3 @@ export function useMessages() {
 
     return { messages, isLoading, error };
 }
-

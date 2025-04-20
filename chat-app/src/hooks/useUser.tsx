@@ -5,6 +5,8 @@ import { generateFromEmail } from "unique-username-generator";
 
 interface UserContextType {
     user: any; // Replace `any` with the appropriate user type if available
+    loading: boolean;
+    error: Error | undefined;
     username: string;
     setUsername: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -12,7 +14,7 @@ interface UserContextType {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user] = useAuthState(auth);
+    const [user, loading, error]  = useAuthState(auth);
     const [username, setUsername] = useState<string>("");
 
     useEffect(() => {
@@ -23,7 +25,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, [user]);
 
     return (
-        <UserContext.Provider value={{ user, username, setUsername }}>
+        <UserContext.Provider value={{ user, loading, error, username, setUsername }}>
             {children}
         </UserContext.Provider>
     );

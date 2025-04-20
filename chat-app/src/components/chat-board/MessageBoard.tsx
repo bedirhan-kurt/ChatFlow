@@ -28,7 +28,15 @@ import MessageBoardStatus from "@/components/chat-board/MessageBoardStatus.tsx";
 
 export default function MessageBoard() {
     const { messages, isLoading, error } = useMessages();
-    const { user } = useUser();
+    const { user, loading } = useUser();
+
+    if (loading) {
+        return (
+            <div className="h-full flex flex-col gap-4 overflow-y-auto">
+                <MessageBoardStatus messages={messages} isLoading={isLoading} error={error}/>
+            </div>
+        )
+    }
 
     /**
      * Renders the list of messages.
@@ -47,7 +55,6 @@ export default function MessageBoard() {
 
     return (
         <div className="h-full flex flex-col gap-4 overflow-y-auto">
-            <MessageBoardStatus messages={messages} isLoading={isLoading} error={error} />
             {messageElements}
         </div>
     );

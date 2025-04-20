@@ -39,8 +39,11 @@ export default function SignInButton() {
      * @returns {Promise<void>} A promise that resolves when the sign-in process is complete.
      */
     async function handleGoogleSignIn(): Promise<void> {
-        await signInWithGoogle().then(r => console.log(r));
-        navigate("/application");
+        const result = await signInWithGoogle();
+        if (result?.user) {
+            console.log(result);
+            navigate("/application");
+        }
     }
 
     return (
