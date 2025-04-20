@@ -8,36 +8,53 @@ type Messages = {
     [key: string]: any;
 };
 
+/**
+ * Custom React hook to fetch the initial set of messages from a Firestore collection.
+ *
+ * This hook retrieves the latest 10 messages from the "messages" collection in Firestore,
+ * orders them by their creation date in descending order, and converts the timestamps
+ * to a readable date format. The fetched messages are then passed to the provided
+ * `setMessages` state updater function.
+ *
+ * @param {React.Dispatch<React.SetStateAction<Messages[]>>} setMessages - A state updater function to set the fetched messages.
+ * @returns {Object} An object containing:
+ * - `isLoading` (boolean): Indicates whether the data is still being fetched.
+ * - `error` (Error | null): Any error encountered during the fetch operation.
+ */
 export function useInitialMessages(
     setMessages: React.Dispatch<React.SetStateAction<Messages[]>>
 ) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [isLoading, setIsLoading] = useState(true); // Tracks the loading state
+    const [error, setError] = useState<Error | null>(null); // Tracks any errors
 
     useEffect(() => {
+        /**
+         * Fetches the latest messages from the Firestore collection.
+         * Orders the messages by creation date and limits the results to 10.
+         */
         const fetchMessages = async () => {
             try {
-                const messageRef = collection(db, "messages");
-                const q = query(messageRef, orderBy("createdAt", "desc"), limit(10));
-                const snapshot = await getDocs(q);
+                const messageRef = collection(db, "messages"); // Reference to the "messages" collection
+                const q = query(messageRef, orderBy("createdAt", "desc"), limit(10)); // Query to fetch messages
+                const snapshot = await getDocs(q); // Execute the query and get the snapshot
 
+                // Map the snapshot data to an array of messages
                 const messageData: Messages[] = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
-                    createdAt: toReadableDate(doc.data().createdAt),
+                    createdAt: toReadableDate(doc.data().createdAt), // Convert timestamp to readable date
                 }));
 
-                // en eski en üstte gözüksün
-                setMessages(messageData.reverse());
+                setMessages(messageData.reverse()); // Reverse the order to display oldest messages first
             } catch (err) {
-                setError(err as Error);
+                setError(err as Error); // Handle any errors
             } finally {
-                setIsLoading(false);
+                setIsLoading(false); // Set loading to false after fetching
             }
         };
 
-        fetchMessages();
-    }, [setMessages]);
+        fetchMessages(); // Call the fetch function
+    }, [setMessages]); // Dependency array includes setMessages to avoid unnecessary re-renders
 
-    return { isLoading, error };
+    return { isLoading, error }; // Return loading and error states
 }
