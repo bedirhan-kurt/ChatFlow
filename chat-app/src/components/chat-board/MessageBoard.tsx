@@ -1,7 +1,7 @@
 import {useMessages} from "../../hooks/useMessages.ts";
 import Message from "@/components/message/Message.tsx";
 import {useUser} from "@/hooks/useUser.tsx";
-import MessageBoardStatus from "@/components/chat-area/MessageBoardStatus.tsx";
+import MessageBoardStatus from "@/components/chat-board/MessageBoardStatus.tsx";
 
 /**
  * MessageBoard Component

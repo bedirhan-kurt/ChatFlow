@@ -12,7 +12,7 @@ import Scroller from "../components/new-message/Scroller.tsx";
 import UserSettingsModal from "@/components/app-options/user-settings-modal/UserSettingsModal.tsx";
 import SignOutButton from "@/components/auth/SignOutButton.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
-import MessageBoard from "@/components/chat-area/MessageBoard.tsx";
+import MessageBoard from "@/components/chat-board/MessageBoard.tsx";
 import NewMessageForm from "@/components/new-message/NewMessageForm.tsx";
 import {MessageContextProvider} from "@/hooks/useSendMessage.tsx";
 
