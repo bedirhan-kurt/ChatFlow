@@ -34,13 +34,12 @@ import React from "react";
  */
 
 export function MessageOptionsDropdown({ children }: { children: React.ReactNode }) {
-
-    const dropdownMenuItems = React.Children.toArray(children).map((child) => {
+    const dropdownMenuItems = React.Children.toArray(children).map((child, index) => {
         return (
-            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+            <DropdownMenuItem key={index} onSelect={(e) => e.preventDefault()}>
                 {child}
             </DropdownMenuItem>
-        )
+        );
     });
 
     return (

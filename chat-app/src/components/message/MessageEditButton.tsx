@@ -11,9 +11,12 @@ import { Label } from "@/components/ui/label.tsx";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import EditModeMessage from "@/components/message/EditModeMessage.tsx";
+import {updateMessage} from "@/api/editMessage.ts";
+import {Separator} from "@/components/ui/separator.tsx";
 
 export default function MessageEditButton({ id, message, createdAt }: { id: string, message: string, createdAt: string }) {
-    const [newMessage, setNewMessage] = useState(message);
+    const [newMessage, setNewMessage] = useState<string>(message || "");
+
 
     return (
         <AlertDialog>
@@ -33,10 +36,12 @@ export default function MessageEditButton({ id, message, createdAt }: { id: stri
                     </AlertDialogDescription>
                 </AlertDialogHeader>
 
+                <Separator />
+
                 <div className='flex flex-col gap-8 mt-4'>
 
                     <div className='flex flex-col'>
-                        <span className="text-black text-sm font-semibold mb-2">
+                        <span className="text-black text-sm font-semibold mb-2 dark:text-white">
                             Current Message
                         </span>
                         <Card className='w-full flex items-center justify-center p-0'>
@@ -50,20 +55,25 @@ export default function MessageEditButton({ id, message, createdAt }: { id: stri
                     </div>
 
                     <div>
-                        <Label htmlFor='new-message' className="text-black font-semibold mb-2">
+                        <Label htmlFor='new-message' className="text-black font-semibold mb-2 dark:text-white">
                             New Message
                         </Label>
                         <Input
                             id='new-message'
                             value={newMessage}
                             onChange={(e) => setNewMessage(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault(); // Sadece Enter tuşunu engelle
+                                }
+                            }}
                         />
                     </div>
                 </div>
 
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => console.log(id, newMessage)}>
+                    <AlertDialogAction onClick={() => updateMessage(id, newMessage)}>
                         Save
                     </AlertDialogAction>
                 </AlertDialogFooter>

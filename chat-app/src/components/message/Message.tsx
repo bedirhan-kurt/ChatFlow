@@ -49,7 +49,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
                 "bg-primary-500 dark:bg-secondary dark:text-white";
     const messageStructure = isOwned ? (
         <>
-            <MessageOptionsDropdown>
+            <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>
                 <MessageDeleteButton id={id}></MessageDeleteButton>
                 <MessageEditButton id={id} message={message} createdAt={createdAt}></MessageEditButton>
             </MessageOptionsDropdown>
