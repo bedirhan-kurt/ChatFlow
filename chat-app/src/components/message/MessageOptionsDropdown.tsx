@@ -42,10 +42,10 @@ export function MessageOptionsDropdown({ id }: { id: string }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuGroup title="Message Options">
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                         <MessageDeleteButton id={id}/>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                         <MessageEditButton id={id}/>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>

@@ -47,6 +47,11 @@ export default function SignInButton() {
     }
 
     return (
-        <Button onClick={handleGoogleSignIn}>Sign in with Goggle</Button>
+        <Button
+            className='w-full'
+            onClick={handleGoogleSignIn}
+        >
+            Sign in with Goggle
+        </Button>
     );
 }
