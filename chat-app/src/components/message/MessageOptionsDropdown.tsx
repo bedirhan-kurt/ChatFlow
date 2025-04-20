@@ -34,7 +34,7 @@ import MessageEditButton from "@/components/message/MessageEditButton.tsx";
  * @returns {TSX.Element} The rendered MessageOptionsDropdown component.
  */
 
-export function MessageOptionsDropdown({ id }: { id: string }) {
+export function MessageOptionsDropdown({ id, message }: { id: string, message: string }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center" asChild>
@@ -46,7 +46,7 @@ export function MessageOptionsDropdown({ id }: { id: string }) {
                         <MessageDeleteButton id={id}/>
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                        <MessageEditButton id={id}/>
+                        <MessageEditButton id={id} message={message}/>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

@@ -31,41 +31,17 @@ import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdow
  * @returns {TSX.Element} The rendered Message component.
  */
 
-export default function Message({id, message, author, isOwned = false, createdAt}: {
-    id: string,
+export default function Message({message, createdAt}: {
     message: string,
-    author: string,
-    isOwned?: boolean,
     createdAt: string
 }) {
 
-    const authorName = isOwned ? "You" : author;
-    const isAdmin = author === "ADMIN";
-    const flexDirection = isOwned ? "items-end" : "items-start";
-    const cardClass =
-        isOwned ? "bg-gray-100 text-black dark:bg-input dark:text-primary" :
-            isAdmin ? "bg-primary text-white dark:bg-red-500 dark:text-white" :
-                "bg-primary-500 dark:bg-secondary dark:text-white";
-    const messageStructure = isOwned ? (
-        <>
-            <MessageOptionsDropdown id={id} message={message} />
-            <span>{message}</span>
-        </>
-    ) : <span>{message}</span>;
-
     return (
-        <div className={`w-full flex flex-col gap-2 ${flexDirection}`}>
-            <div className={`flex flex-col gap-1 ${flexDirection}`}>
-                <div className="flex gap-2 items-center">
-                    <span className="font-medium">{authorName}</span>
-                </div>
-                <Card
-                    className={`w-fit p-3 flex gap-2 text-sm
-                           ${cardClass}
-                       `}
-                >
+        <div className="w-full flex flex-col gap-2 items-end">
+            <div className="flex flex-col gap-1 items-end">
+                <Card className="w-fit p-3 flex gap-2 text-sm bg-primary-500 dark:bg-secondary dark:text-white">
                     <CardContent className="p-0 flex gap-2 items-center">
-                        {messageStructure}
+                        <span>{message}</span>
                     </CardContent>
                 </Card>
             </div>
