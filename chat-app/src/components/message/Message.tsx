@@ -1,5 +1,7 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
 import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdown.tsx";
+import MessageEditButton from "@/components/message/MessageEditButton.tsx";
+import MessageDeleteButton from "@/components/message/MessageDeleteButton.tsx";
 
 /**
  * Message Component
@@ -38,7 +40,6 @@ export default function Message({id, message, author, isOwned = false, createdAt
     isOwned?: boolean,
     createdAt: string
 }) {
-
     const authorName = isOwned ? "You" : author;
     const isAdmin = author === "ADMIN";
     const flexDirection = isOwned ? "items-end" : "items-start";
@@ -48,7 +49,10 @@ export default function Message({id, message, author, isOwned = false, createdAt
                 "bg-primary-500 dark:bg-secondary dark:text-white";
     const messageStructure = isOwned ? (
         <>
-            <MessageOptionsDropdown id={id} message={message} />
+            <MessageOptionsDropdown>
+                <MessageDeleteButton id={id}></MessageDeleteButton>
+                <MessageEditButton id={id} message={message} createdAt={createdAt}></MessageEditButton>
+            </MessageOptionsDropdown>
             <span>{message}</span>
         </>
     ) : <span>{message}</span>;
@@ -57,7 +61,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
         <div className={`w-full flex flex-col gap-2 ${flexDirection}`}>
             <div className={`flex flex-col gap-1 ${flexDirection}`}>
                 <div className="flex gap-2 items-center">
-                    <span className="font-medium">{authorName}</span>
+                    <span className="font-semibold">{authorName}</span>
                 </div>
                 <Card
                     className={`w-fit p-3 flex gap-2 text-sm

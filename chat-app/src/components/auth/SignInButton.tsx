@@ -51,7 +51,7 @@ export default function SignInButton() {
             className='w-full'
             onClick={handleGoogleSignIn}
         >
-            Sign in with Goggle
+            Sign in with Google
         </Button>
     );
 }

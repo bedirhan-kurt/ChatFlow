@@ -1,43 +1,19 @@
-import {Pencil} from "lucide-react";
+import { Pencil } from "lucide-react";
 import {
     AlertDialog, AlertDialogAction, AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogDescription, AlertDialogFooter,
+    AlertDialogDescription, AlertDialogFooter, AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog.tsx";
-// import deleteMessage from "@/api/deleteMessage.ts";
-import {Input} from "@/components/ui/input.tsx";
-import {Label} from "@/components/ui/label.tsx";
-import {useRef} from "react";
-import {Card} from "@/components/ui/card.tsx";
-import Message from "@/components/message/Message.tsx";
+import { Input } from "@/components/ui/input.tsx";
+import { Label } from "@/components/ui/label.tsx";
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card.tsx";
+import EditModeMessage from "@/components/message/EditModeMessage.tsx";
 
-/**
- * MessageEditButton Component
- *
- * Responsibility:
- * This component provides a button to edit a message. It uses an alert dialog
- * to confirm the edit action, ensuring the user is aware of the operation.
- *
- * Features:
- * - Displays an edit button with an icon and label.
- * - Shows a confirmation dialog before proceeding with the edit action.
- *
- * Props:
- * - `id` (string): The unique identifier of the message to be edited.
- *
- * Dependencies:
- * - `AlertDialog` and its subcomponents for rendering the confirmation dialog.
- *
- * @component
- * @param {Object} props - The props for the component.
- * @param {string} props.id - The unique identifier of the message to edit.
- * @returns {TSX.Element} The rendered MessageEditButton component.
- */
-
-export default function MessageEditButton({id, message}: { id: string, message: string }) {
-    const newMessageRef = useRef<HTMLInputElement>(null);
+export default function MessageEditButton({ id, message, createdAt }: { id: string, message: string, createdAt: string }) {
+    const [newMessage, setNewMessage] = useState(message);
 
     return (
         <AlertDialog>
@@ -45,38 +21,53 @@ export default function MessageEditButton({id, message}: { id: string, message: 
                 <Pencil className="size-3" />
                 <span>Edit</span>
             </AlertDialogTrigger>
+
             <AlertDialogContent>
-                <AlertDialogTitle className='mb-2'>
-                    Edit Message
-                </AlertDialogTitle>
-                <AlertDialogDescription className='flex flex-col gap-6'>
-                    <div>
-                        <Card className='flex items-center justify-center'>
-                            <Message></Message>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>
+                        Edit Message
+                    </AlertDialogTitle>
+
+                    <AlertDialogDescription>
+                        You can preview the current message and write a new one below.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+
+                <div className='flex flex-col gap-8 mt-4'>
+
+                    <div className='flex flex-col'>
+                        <span className="text-black text-sm font-semibold mb-2">
+                            Current Message
+                        </span>
+                        <Card className='w-full flex items-center justify-center p-0'>
+                            <CardContent className='p-6'>
+                                <EditModeMessage
+                                    message={message}
+                                    createdAt={createdAt}
+                                />
+                            </CardContent>
                         </Card>
                     </div>
 
                     <div>
-                        <Label htmlFor='old-message' className="text-black mb-2">
+                        <Label htmlFor='new-message' className="text-black font-semibold mb-2">
                             New Message
                         </Label>
                         <Input
                             id='new-message'
-                            value={message}
-                            ref={newMessageRef}
-                            onChange={(e) => {
-                                if (newMessageRef.current) {
-                                    newMessageRef.current.value = e.target.value;
-                                }
-                            }}
+                            value={newMessage}
+                            onChange={(e) => setNewMessage(e.target.value)}
                         />
                     </div>
-                </AlertDialogDescription>
+                </div>
+
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => console.log(id, newMessageRef.current?.value)}>Save</AlertDialogAction>
+                    <AlertDialogAction onClick={() => console.log(id, newMessage)}>
+                        Save
+                    </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
-    )
+    );
 }

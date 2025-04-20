@@ -5,8 +5,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu.tsx"
 import {EllipsisVertical} from "lucide-react";
-import MessageDeleteButton from "@/components/message/MessageDeleteButton.tsx";
-import MessageEditButton from "@/components/message/MessageEditButton.tsx";
+import React from "react";
 
 /**
  * MessageOptionsDropdown Component
@@ -34,7 +33,16 @@ import MessageEditButton from "@/components/message/MessageEditButton.tsx";
  * @returns {TSX.Element} The rendered MessageOptionsDropdown component.
  */
 
-export function MessageOptionsDropdown({ id, message }: { id: string, message: string }) {
+export function MessageOptionsDropdown({ children }: { children: React.ReactNode }) {
+
+    const dropdownMenuItems = React.Children.toArray(children).map((child) => {
+        return (
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                {child}
+            </DropdownMenuItem>
+        )
+    });
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center" asChild>
@@ -42,12 +50,7 @@ export function MessageOptionsDropdown({ id, message }: { id: string, message: s
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuGroup title="Message Options">
-                    <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                        <MessageDeleteButton id={id}/>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                        <MessageEditButton id={id} message={message}/>
-                    </DropdownMenuItem>
+                    {dropdownMenuItems}
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>

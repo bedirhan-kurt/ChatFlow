@@ -1,5 +1,4 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
-import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdown.tsx";
 
 /**
  * Message Component
@@ -31,7 +30,7 @@ import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdow
  * @returns {TSX.Element} The rendered Message component.
  */
 
-export default function Message({message, createdAt}: {
+export default function EditModeMessage({message, createdAt}: {
     message: string,
     createdAt: string
 }) {
@@ -41,7 +40,7 @@ export default function Message({message, createdAt}: {
             <div className="flex flex-col gap-1 items-end">
                 <Card className="w-fit p-3 flex gap-2 text-sm bg-primary-500 dark:bg-secondary dark:text-white">
                     <CardContent className="p-0 flex gap-2 items-center">
-                        <span>{message}</span>
+                        {message}
                     </CardContent>
                 </Card>
             </div>
