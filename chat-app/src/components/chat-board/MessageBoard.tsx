@@ -54,7 +54,14 @@ export default function MessageBoard() {
     ));
 
     return (
-        <div className="h-full flex flex-col gap-4 overflow-y-auto">
+        <div
+            className="h-full flex flex-col gap-4 overflow-y-auto"
+            style={{
+                backgroundImage: "url('/src/assets/Grid%2004.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+            }}
+        >
             {messageElements}
         </div>
     );

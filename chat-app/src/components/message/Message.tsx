@@ -46,7 +46,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
     const cardClass =
         isOwned ? "bg-gray-100 text-black dark:bg-input dark:text-primary" :
             isAdmin ? "bg-primary text-white dark:bg-red-500 dark:text-white" :
-                "bg-primary-500 dark:bg-secondary dark:text-white";
+                "bg-gray-50 dark:bg-secondary dark:text-white";
     const messageStructure = isOwned ? (
         <>
             <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>
