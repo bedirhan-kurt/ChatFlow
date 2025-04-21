@@ -18,7 +18,7 @@ export default function SignIn() {
                     This is a chat application. You can sign in with your Google account and chat with other users.
                 </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex flex-col gap-4">
                 <SignInButton />
             </CardContent>
         </Card>
