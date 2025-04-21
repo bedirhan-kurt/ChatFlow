@@ -1,7 +1,7 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
-import {MessageOptionsDropdown} from "@/components/message/MessageOptionsDropdown.tsx";
-import MessageEditButton from "@/components/message/MessageEditButton.tsx";
-import MessageDeleteButton from "@/components/message/MessageDeleteButton.tsx";
+import {MessageOptionsDropdown} from "@/components/message/message-options/MessageOptionsDropdown.tsx";
+import MessageEditButton from "@/components/message/message-options/MessageEditButton.tsx";
+import MessageDeleteButton from "@/components/message/message-options/MessageDeleteButton.tsx";
 
 /**
  * Message Component

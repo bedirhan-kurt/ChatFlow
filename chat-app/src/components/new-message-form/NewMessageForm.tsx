@@ -1,8 +1,9 @@
 import {Textarea} from "@/components/ui/textarea.tsx";
 import {Send} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
-import ProfaneAlert from "@/components/new-message/ProfaneAlert.tsx";
+import ProfaneAlert from "@/components/new-message-form/ProfaneAlert.tsx";
 import {useSendMessage} from "@/hooks/useSendMessage.tsx";
+import MessageFeaturesMenu from "@/components/new-message-form/message-features/MessageFeaturesMenu.tsx";
 
 /**
  * NewMessageForm Component
@@ -30,7 +31,8 @@ export default function NewMessageForm() {
 
     return (
         <div className='flex flex-col gap-2'>
-            <ProfaneAlert />
+            <ProfaneAlert></ProfaneAlert>
+            <MessageFeaturesMenu />
             <div className="flex gap-4">
                 <Textarea
                     placeholder="Type your message..."

@@ -9,7 +9,7 @@ interface MessageContextType {
     messageContent: string;
     setMessageContent: (message: string) => void;
     isProfane: boolean;
-    handleMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    handleMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement> | string) => void;
     handleClick: () => void;
     handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
@@ -21,8 +21,12 @@ export const MessageContextProvider = ({children}: { children: ReactNode }) => {
     const [messageContent, setMessageContent] = useState("");
     const [isProfane, setIsProfane] = useState(false);
 
-    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setMessageContent(e.target.value)
+    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement> | string) => {
+        if (typeof e === "string") {
+            setMessageContent((prev) => prev + e);
+        } else {
+            setMessageContent(e.target.value);
+        }
     };
 
     const handleClick = () => {

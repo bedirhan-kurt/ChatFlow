@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/card.tsx";
 import {Separator} from "@/components/ui/separator.tsx";
 import {ModeToggle} from "@/components/app-options/mode-toggle.tsx";
-import Scroller from "../components/new-message/Scroller.tsx";
+import Scroller from "@/components/new-message-form/Scroller.tsx";
 import UserSettingsModal from "@/components/app-options/user-settings-modal/UserSettingsModal.tsx";
 import SignOutButton from "@/components/auth/SignOutButton.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
 import MessageBoard from "@/components/chat-board/MessageBoard.tsx";
-import NewMessageForm from "@/components/new-message/NewMessageForm.tsx";
+import NewMessageForm from "@/components/new-message-form/NewMessageForm.tsx";
 import {MessageContextProvider} from "@/hooks/useSendMessage.tsx";
 
 // Responsible for component rendering
