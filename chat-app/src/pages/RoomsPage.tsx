@@ -38,9 +38,9 @@ export default function RoomsPage() {
                 </CardContent>
             </Card>
             <div className="w-full flex items-center gap-2">
-                <hr className="w-full border-t border-gray-300"/>
-                <span className="">or</span>
-                <hr className="w-full border-t border-gray-300"/>
+                <hr className="w-full border-t border-primary"/>
+                <span className="text-primary">or</span>
+                <hr className="w-full border-t border-primary"/>
             </div>
             <Card className='w-full p-0 gap-4'>
                 <CardHeader className='bg-border rounded-t-lg p-4'>
