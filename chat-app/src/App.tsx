@@ -4,7 +4,8 @@ import { ThemeProvider } from "@/components/app-options/theme-provider.tsx"
 import ChatPage from "@/pages/ChatPage.tsx";
 import AuthRequired from "@/components/auth/AuthRequired.tsx";
 import {UserProvider} from "@/hooks/useUser.tsx";
-import RememberUser from "@/components/auth/RememberUser.tsx";
+import RememberUser from "@/components/auth/NavigateSignIn.tsx";
+import RoomsPage from "@/pages/RoomsPage.tsx";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                             </Route>
                             <Route element={<AuthRequired />}>
                                 <Route path="/application" element={<ChatPage />}></Route>
+                                <Route path="/rooms" element={<RoomsPage />}></Route>
                             </Route>
                         </Routes>
                     </Router>

@@ -5,7 +5,7 @@ import {auth} from "@/api/firebaseConfig.ts";
 import {useEffect} from "react";
 
 
-export default function RememberUser() {
+export default function NavigateSignIn() {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ export default function RememberUser() {
 
     useEffect(() => {
         if (user) {
-            navigate("/application");
+            navigate("/rooms");
         }
     }, [user, navigate]);
 
