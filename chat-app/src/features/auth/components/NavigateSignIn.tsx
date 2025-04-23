@@ -1,0 +1,25 @@
+import {Outlet, useNavigate} from "react-router";
+import useEndSession from "@/features/auth/hooks/useEndSession.ts";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "@/shared/api/firebaseConfig.ts";
+import {useEffect} from "react";
+
+
+export default function NavigateSignIn() {
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEndSession();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/rooms");
+        }
+    }, [user, navigate]);
+
+    if (user) {
+        return null;
+    }
+
+    return <Outlet />
+};

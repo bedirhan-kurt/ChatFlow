@@ -1,11 +1,11 @@
-import SignIn from './pages/SignIn.tsx'
+import SignIn from './app/SignIn.tsx'
 import { BrowserRouter as Router,Routes, Route} from "react-router";
-import { ThemeProvider } from "@/components/app-options/theme-provider.tsx"
-import ChatPage from "@/pages/ChatPage.tsx";
-import AuthRequired from "@/components/auth/AuthRequired.tsx";
-import {UserProvider} from "@/hooks/useUser.tsx";
-import RememberUser from "@/components/auth/NavigateSignIn.tsx";
-import RoomsPage from "@/pages/RoomsPage.tsx";
+import { ThemeProvider } from "@/features/users/components/theme-provider.tsx"
+import ChatPage from "@/app/ChatPage.tsx";
+import AuthRequired from "@/features/auth/components/AuthRequired.tsx";
+import {UserProvider} from "@/features/users/hooks/useUser.tsx";
+import RememberUser from "@/features/auth/components/NavigateSignIn.tsx";
+import RoomsPage from "@/app/RoomsPage.tsx";
 
 function App() {
     return (
