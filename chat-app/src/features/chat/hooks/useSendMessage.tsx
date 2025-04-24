@@ -36,7 +36,7 @@ export const MessageContextProvider = ({children}: { children: ReactNode }) => {
             setIsProfane(true)
         } else {
             setIsProfane(false)
-            addNewMessage(messageContent, user.uid, username)
+            addNewMessage({messageContent, user, username})
                 .then(() => {
                     setMessageContent("")
                 })

@@ -1,7 +1,7 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
-import JoinRoomButton from "@/features/rooms/components/JoinRoomButton.tsx";
+import JoinRoomButton from "@/features/rooms/components/JoinRoom/JoinRoomButton.tsx";
 
 export default function JoinRoomCard() {
     return (

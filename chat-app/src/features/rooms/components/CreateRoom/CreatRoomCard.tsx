@@ -1,5 +1,5 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
-import CreateRoomButton from "@/features/rooms/components/CreateRoomButton.tsx";
+import RoomActionsMenu from "@/features/rooms/components/CreateRoom/RoomActionsMenu.tsx";
 
 export default function CreateRoomCard() {
     return (
@@ -10,7 +10,7 @@ export default function CreateRoomCard() {
             </CardHeader>
             <CardContent className={'p-4'}>
                 <div className={'flex flex-col gap-4'}>
-                    <CreateRoomButton/>
+                    <RoomActionsMenu></RoomActionsMenu>
                 </div>
             </CardContent>
         </Card>
