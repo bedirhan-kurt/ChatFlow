@@ -46,9 +46,9 @@ export default function MessageBoard() {
         <Message
             key={message.id}
             id={message.id}
-            message={message.messageContent}
+            message={message.content}
             author={message.authorUsername}
-            isOwned={message.uid === user.uid}
+            isOwned={message.authorId === user.uid}
             createdAt={message.createdAt}
         />
     ));

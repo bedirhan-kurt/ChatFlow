@@ -12,7 +12,7 @@ export default function RoomActionsMenu() {
                     <span className='font-semibold text-sm'>Your room has been created. Here's your room code:</span>
                     <span className='text-xl font-bold'>{roomCode}</span>
                     <span className='text-sm'>Share this code with your friends to invite them to join your room.</span>
-                    <NavigateRoomButton roomCode={roomCode} />
+                    <NavigateRoomButton />
                 </div> :
                 <CreateRoomButton />
             }

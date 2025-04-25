@@ -26,8 +26,8 @@ export function useMessageSubscription(
         if (!roomCode) {
             throw new Error("roomCode is required to fetch messages.");
         }
-
-        const messageRef = collection(db, "room", roomCode, "messages");
+        console.log(roomCode)
+        const messageRef = collection(db, "rooms", roomCode, "messages");
 
         // Subscribe to real-time updates from the Firestore collection
         const unsubscribe = onSnapshot(messageRef, (snapshot) => {
@@ -40,6 +40,8 @@ export function useMessageSubscription(
                         id: change.doc.id,
                         ...change.doc.data(),
                     };
+
+                    console.log(msgData)
 
                     if (change.type === "added") {
                         updatedMessages = [...updatedMessages, msgData];

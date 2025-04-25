@@ -2,6 +2,7 @@ import React, {createContext, useContext, useState, ReactNode} from 'react';
 import {useUser} from "@/features/users/hooks/useUser.tsx";
 import addNewMessage from "@/features/chat/api/addNewMesssage.ts";
 import {Filter} from "bad-words";
+import {useParams} from "react-router";
 
 interface MessageContextType {
     user: string;
@@ -20,6 +21,7 @@ export const MessageContextProvider = ({children}: { children: ReactNode }) => {
     const {user, username} = useUser();
     const [messageContent, setMessageContent] = useState("");
     const [isProfane, setIsProfane] = useState(false);
+    const {roomCode} = useParams()
 
     const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement> | string) => {
         if (typeof e === "string") {
@@ -36,7 +38,13 @@ export const MessageContextProvider = ({children}: { children: ReactNode }) => {
             setIsProfane(true)
         } else {
             setIsProfane(false)
-            addNewMessage({messageContent, user, username})
+            addNewMessage({
+                roomCode: roomCode as string,
+                authorId: user.uid,
+                authorUsername: username,
+                content: messageContent,
+                createdAt: new Date().toISOString(),
+            })
                 .then(() => {
                     setMessageContent("")
                 })

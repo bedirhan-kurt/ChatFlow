@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useInitialMessages } from "./useInitialMessages.ts";
 import { useMessageSubscription } from "./useMessageSubscription.ts";
 import {useParams} from "react-router";
@@ -27,5 +27,9 @@ export function useMessages() {
 
     useMessageSubscription(roomCode, setMessages); // Subscribe to real-time updates
 
+    useEffect(() => {
+        console.log("Messages:", messages); // Log the messages for debugging
+
+    }, [messages]); // Log messages whenever they change
     return { messages, isLoading, error }; // Return the messages, loading state, and error
 }
