@@ -1,4 +1,32 @@
-// ChatPage.tsx
+/**
+ * ChatPage Component
+ *
+ * Responsibility:
+ * Responsible for rendering the main chat page of the application.
+ * This component provides a chat interface with a message board, a form for sending new messages,
+ * and user settings options. It is structured using a `Card` layout and leverages various child components.
+ *
+ * Features:
+ * - Displays a public chat room where users can communicate.
+ * - Includes user action buttons for signing out, accessing settings, and toggling the theme.
+ * - Provides a message board to display chat messages.
+ * - Includes a form for sending new messages.
+ *
+ * Dependencies:
+ * - `Card`, `CardContent`, `CardDescription`, `CardHeader`, `CardTitle` from the UI components for layout.
+ * - `Separator` for visual separation between sections.
+ * - `ModeToggle` for theme toggling functionality.
+ * - `Scroller` for managing scroll behavior.
+ * - `UserSettingsModal` for user settings management.
+ * - `SignOutButton` for signing out functionality.
+ * - `MessageBoard` for displaying chat messages.
+ * - `NewMessageForm` for sending new messages.
+ * - `MessageContextProvider` for providing message-related context to child components.
+ *
+ * @component
+ * @returns {TSX.Element} The rendered ChatPage component.
+ */
+
 import {
     Card,
     CardContent,
@@ -14,8 +42,6 @@ import SignOutButton from "@/features/auth/components/SignOutButton.tsx";
 import MessageBoard from "@/features/chat/components/chat-board/MessageBoard.tsx";
 import NewMessageForm from "@/features/chat/components/new-message-form/NewMessageForm.tsx";
 import {MessageContextProvider} from "@/features/chat/hooks/useSendMessage.tsx";
-
-// Responsible for component rendering
 
 export default function ChatPage() {
     return (
