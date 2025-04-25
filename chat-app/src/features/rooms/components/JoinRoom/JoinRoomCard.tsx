@@ -13,7 +13,7 @@ export default function JoinRoomCard() {
             <CardContent className={'p-4'}>
                 <div className={'flex flex-col gap-4'}>
                     <Label htmlFor={'room-code'} className=''>Room Code</Label>
-                    <InputOTP id={'room-code'} maxLength={9}>
+                    <InputOTP id={'room-code'} maxLength={9} inputMode={"text"}>
                         <InputOTPGroup>
                             <InputOTPSlot index={0} />
                             <InputOTPSlot index={1} />

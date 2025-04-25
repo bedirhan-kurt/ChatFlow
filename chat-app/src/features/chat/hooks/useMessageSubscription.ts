@@ -14,14 +14,20 @@ type Messages = {
  * the state with the latest messages. It handles added, modified, and removed messages
  * and ensures the state contains only unique messages, limited to the latest 10.
  *
+ * @param {string | undefined} roomCode - The unique code identifying the chat room.
  * @param {React.Dispatch<React.SetStateAction<Messages[]>>} setMessages - A state updater function to update the messages state.
  */
 export function useMessageSubscription(
+    roomCode: string | undefined,
     setMessages: React.Dispatch<React.SetStateAction<Messages[]>>
 ) {
     useEffect(() => {
         // Reference to the "messages" collection in Firestore
-        const messageRef = collection(db, "messages");
+        if (!roomCode) {
+            throw new Error("roomCode is required to fetch messages.");
+        }
+
+        const messageRef = collection(db, "room", roomCode, "messages");
 
         // Subscribe to real-time updates from the Firestore collection
         const unsubscribe = onSnapshot(messageRef, (snapshot) => {

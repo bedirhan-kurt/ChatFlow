@@ -18,7 +18,7 @@ function App() {
                                 <Route index element={<SignIn />}></Route>
                             </Route>
                             <Route element={<AuthRequired />}>
-                                <Route path="/application" element={<ChatPage />}></Route>
+                                <Route path="/room/:roomCode" element={<ChatPage />}></Route>
                                 <Route path="/rooms" element={<RoomsPage />}></Route>
                             </Route>
                         </Routes>

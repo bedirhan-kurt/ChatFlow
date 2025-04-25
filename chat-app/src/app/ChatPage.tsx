@@ -18,7 +18,6 @@ import {MessageContextProvider} from "@/features/chat/hooks/useSendMessage.tsx";
 // Responsible for component rendering
 
 export default function ChatPage() {
-
     return (
         <MessageContextProvider>
             <Card className="w-164 h-full flex flex-col p-8 justify-between">

@@ -16,12 +16,15 @@ type Messages = {
  * to a readable date format. The fetched messages are then passed to the provided
  * `setMessages` state updater function.
  *
- * @param {React.Dispatch<React.SetStateAction<Messages[]>>} setMessages - A state updater function to set the fetched messages.
- * @returns {Object} An object containing:
- * - `isLoading` (boolean): Indicates whether the data is still being fetched.
- * - `error` (Error | null): Any error encountered during the fetch operation.
+ * /**
+ *  * @param {string} roomCode - The unique code identifying the chat room.
+ *  * @param {React.Dispatch<React.SetStateAction<Messages[]>>} setMessages - A state updater function to set the fetched messages.
+ *  * @returns {Object} An object containing:
+ *  * - `isLoading` (boolean): Indicates whether the data is still being fetched.
+ *  * - `error` (Error | null): Any error encountered during the fetch operation.
  */
 export function useInitialMessages(
+    roomCode: string | undefined,
     setMessages: React.Dispatch<React.SetStateAction<Messages[]>>
 ) {
     const [isLoading, setIsLoading] = useState(true); // Tracks the loading state
@@ -34,8 +37,16 @@ export function useInitialMessages(
          */
         const fetchMessages = async () => {
             try {
-                const messageRef = collection(db, "messages"); // Reference to the "messages" collection
-                const q = query(messageRef, orderBy("createdAt", "desc"), limit(10)); // Query to fetch messages
+                if (!roomCode) {
+                    throw new Error("roomCode is required to fetch messages.");
+                }
+
+                const messageRef = collection(db, "room", roomCode, "messages"); // Reference to the "messages" collection
+                const q = query(
+                    messageRef,
+                    orderBy("createdAt", "desc"),
+                    limit(10)
+                ); // Query to fetch messages
                 const snapshot = await getDocs(q); // Execute the query and get the snapshot
 
                 // Map the snapshot data to an array of messages

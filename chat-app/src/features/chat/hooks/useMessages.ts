@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useInitialMessages } from "./useInitialMessages.ts";
 import { useMessageSubscription } from "./useMessageSubscription.ts";
+import {useParams} from "react-router";
 
 type Messages = {
     id: string;
@@ -20,10 +21,11 @@ type Messages = {
  * - `error` (Error | null): Any error encountered during the initial fetch.
  */
 export function useMessages() {
+    const { roomCode }  = useParams()
     const [messages, setMessages] = useState<Messages[]>([]); // State to store the list of messages
-    const { isLoading, error } = useInitialMessages(setMessages); // Fetch initial messages
+    const { isLoading, error } = useInitialMessages(roomCode, setMessages); // Fetch initial messages
 
-    useMessageSubscription(setMessages); // Subscribe to real-time updates
+    useMessageSubscription(roomCode, setMessages); // Subscribe to real-time updates
 
     return { messages, isLoading, error }; // Return the messages, loading state, and error
 }
