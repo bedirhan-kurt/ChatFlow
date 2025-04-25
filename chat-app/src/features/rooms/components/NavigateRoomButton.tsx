@@ -1,9 +1,8 @@
 import {Button} from "@/shared/components/ui/button.tsx";
 import {useNavigate} from "react-router";
-import {useCreateRoom} from "@/features/rooms/hooks/useCreateRoom.tsx";
+import React from "react";
 
-export default function NavigateRoomButton() {
-    const {roomCode} = useCreateRoom();
+export default function NavigateRoomButton({roomCode, children}: {roomCode: string, children: React.ReactNode}) {
     const navigate = useNavigate();
 
     function handleClick() {
@@ -15,6 +14,6 @@ export default function NavigateRoomButton() {
     }
 
     return (
-        <Button onClick={handleClick}>Go to the room</Button>
+        <Button onClick={handleClick}>{children}</Button>
     );
 }

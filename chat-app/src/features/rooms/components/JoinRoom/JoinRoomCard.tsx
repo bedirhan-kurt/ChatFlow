@@ -1,9 +1,12 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
-import JoinRoomButton from "@/features/rooms/components/JoinRoom/JoinRoomButton.tsx";
+import NavigateRoomButton from "@/features/rooms/components/NavigateRoomButton.tsx";
+import {useJoinRoom} from "@/features/rooms/hooks/useJoinRoom.tsx";
 
 export default function JoinRoomCard() {
+    const {roomCode, handleCodeChange} = useJoinRoom();
+
     return (
         <Card className='w-full p-0 gap-4'>
             <CardHeader className='bg-border rounded-t-lg p-4'>
@@ -13,7 +16,7 @@ export default function JoinRoomCard() {
             <CardContent className={'p-4'}>
                 <div className={'flex flex-col gap-4'}>
                     <Label htmlFor={'room-code'} className=''>Room Code</Label>
-                    <InputOTP id={'room-code'} maxLength={9} inputMode={"text"}>
+                    <InputOTP id={'room-code'} maxLength={9} inputMode={"text"} onChange={handleCodeChange}>
                         <InputOTPGroup>
                             <InputOTPSlot index={0} />
                             <InputOTPSlot index={1} />
@@ -32,7 +35,7 @@ export default function JoinRoomCard() {
                             <InputOTPSlot index={8} />
                         </InputOTPGroup>
                     </InputOTP>
-                    <JoinRoomButton />
+                    <NavigateRoomButton roomCode={roomCode}>Join room</NavigateRoomButton>
                 </div>
             </CardContent>
         </Card>
