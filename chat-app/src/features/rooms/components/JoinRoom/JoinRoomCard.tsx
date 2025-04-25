@@ -2,10 +2,15 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/share
 import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
 import NavigateRoomButton from "@/features/rooms/components/NavigateRoomButton.tsx";
-import {useJoinRoom} from "@/features/rooms/hooks/useJoinRoom.tsx";
+import {useState} from "react";
 
 export default function JoinRoomCard() {
-    const {roomCode, handleCodeChange} = useJoinRoom();
+    const [roomCode, setRoomCode] = useState<string>("");
+
+    function handleCodeChange(newCode: string) {
+        console.log(newCode);
+        setRoomCode(newCode);
+    }
 
     return (
         <Card className='w-full p-0 gap-4'>
