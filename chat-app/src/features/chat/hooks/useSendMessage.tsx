@@ -1,82 +1,30 @@
-import React, {createContext, useContext, useState, ReactNode} from 'react';
-import {useUser} from "@/features/users/hooks/useUser.tsx";
+// useSendMessage.ts
+import { useState } from 'react';
 import addNewMessage from "@/features/chat/api/addNewMesssage.ts";
-import {Filter} from "bad-words";
-import {useParams} from "react-router";
 
-interface MessageContextType {
-    user: string;
-    username: string;
-    messageContent: string;
-    setMessageContent: (message: string) => void;
-    isProfane: boolean;
-    handleMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement> | string) => void;
-    handleClick: () => void;
-    handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
-}
+export const useSendMessage = (roomCode: string, messageContent: string, user: any, username: string) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-const MessageContext = createContext<MessageContextType | undefined>(undefined);
-
-export const MessageContextProvider = ({children}: { children: ReactNode }) => {
-    const {user, username} = useUser();
-    const [messageContent, setMessageContent] = useState("");
-    const [isProfane, setIsProfane] = useState(false);
-    const {roomCode} = useParams()
-
-    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement> | string) => {
-        if (typeof e === "string") {
-            setMessageContent((prev) => prev + e);
-        } else {
-            setMessageContent(e.target.value);
+    const handleSendMessage = async () => {
+        if (!roomCode) {
+            console.error('roomCode is required');
+            return;
         }
-    };
-
-    const handleClick = () => {
-        const filter = new Filter()
-
-        if (filter.isProfane(messageContent)) {
-            setIsProfane(true)
-        } else {
-            setIsProfane(false)
-            addNewMessage({
-                roomCode: roomCode as string,
+        try {
+            setIsLoading(true);
+            await addNewMessage({
+                roomCode,
                 authorId: user.uid,
                 authorUsername: username,
                 content: messageContent,
                 createdAt: new Date().toISOString(),
-            })
-                .then(() => {
-                    setMessageContent("")
-                })
-                .catch((err) => console.error(err));
+            });
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            handleClick();
-        }
-    }
-
-    return (
-        <MessageContext.Provider value={
-            {
-                user, username, messageContent, setMessageContent, isProfane, handleMessageChange, handleClick, handleKeyDown
-            }
-        }>
-            {
-                children
-            }
-        </MessageContext.Provider>
-    )
-        ;
-};
-
-export const useSendMessage = (): MessageContextType => {
-    const context = useContext(MessageContext);
-    if (!context) {
-        throw new Error('useMyContext must be used within a MyProvider');
-    }
-    return context;
+    return { isLoading, handleSendMessage };
 };
