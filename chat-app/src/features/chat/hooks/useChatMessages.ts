@@ -29,14 +29,16 @@ export function useChatMessages(roomCode: string | undefined) {
 
                 const initial = snapshot.docs.map(doc => {
                     const data = doc.data() as DocumentData;
-                    return {
+                    const msgData: Message = {
                         id: doc.id,
                         authorId: data.authorId,
                         authorUsername: data.authorUsername,
                         content: data.content,
                         createdAt: toReadableDate(data.createdAt),
                         roomCode: data.roomCode,
-                    }
+                    };
+
+                    return msgData;
                 });
                 setMessages(initial.reverse());
             } catch (err) {
