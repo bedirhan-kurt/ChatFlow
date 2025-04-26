@@ -3,12 +3,10 @@ import { Button } from "@/shared/components/ui/button.tsx";
 import { Toggle } from "@/shared/components/ui/toggle.tsx";
 import { Smile } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/shared/components/ui/popover.tsx";
-import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
 
-export default function CustomEmojiPicker() {
+export default function CustomEmojiPicker({appendToMessage}: { appendToMessage: (text: string) => void }) {
     const [showPicker, setShowPicker] = useState(false);
     const emojies = ['😊', '😀', '❤️', '🔥', '😂', '🎉', '👍', '💀', '🌹', '😎'];
-    const { handleMessageChange } = useSendMessage();
 
     return (
         <div className="flex flex-col gap-4">
@@ -29,7 +27,7 @@ export default function CustomEmojiPicker() {
                         {emojies.map((emoji) => (
                             <Button
                                 key={emoji}
-                                onClick={() => handleMessageChange(emoji)}
+                                onClick={() => appendToMessage(emoji)}
                                 variant="ghost"
                                 className="hover:scale-125 transition-transform cursor-pointer text-lg p-2"
                             >

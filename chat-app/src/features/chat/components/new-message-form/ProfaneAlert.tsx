@@ -1,6 +1,7 @@
 import {Alert, AlertDescription, AlertTitle} from "@/shared/components/ui/alert.tsx";
 import {AlertCircle} from "lucide-react";
-import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
+import {useProfanityCheck} from "@/features/chat/hooks/useProfanityCheck.ts";
+import {useEffect} from "react";
 
 /**
  * ProfaneAlert Component
@@ -21,8 +22,12 @@ import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
  * @returns {TSX.Element | null} The rendered ProfaneAlert component or null if no profanity is detected.
  */
 
-export default function ProfaneAlert() {
-    const {isProfane} = useSendMessage()
+export default function ProfaneAlert({messageContent}: { messageContent: string }) {
+    const {checkProfanity, isProfane} = useProfanityCheck()
+
+    useEffect(() => {
+        checkProfanity(messageContent)
+    }, [messageContent, checkProfanity])
 
     return (
         <div>

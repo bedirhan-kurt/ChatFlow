@@ -2,8 +2,9 @@ import {Textarea} from "@/shared/components/ui/textarea.tsx";
 import {Send} from "lucide-react";
 import {Button} from "@/shared/components/ui/button.tsx";
 import ProfaneAlert from "@/features/chat/components/new-message-form/ProfaneAlert.tsx";
-import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
 import MessageFeaturesMenu from "@/features/chat/components/new-message-form/message-features/MessageFeaturesMenu.tsx";
+import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
+import {useMessageContent} from "@/features/chat/hooks/useMessageContent.ts";
 
 /**
  * NewMessageForm Component
@@ -27,21 +28,27 @@ import MessageFeaturesMenu from "@/features/chat/components/new-message-form/mes
  */
 
 export default function NewMessageForm() {
-    const {messageContent, handleMessageChange, handleClick, handleKeyDown} = useSendMessage();
+    const {messageContent, handleInputChange, appendToMessage} = useMessageContent();
+    const {handleSendMessage} = useSendMessage(messageContent);
 
     return (
         <div className='flex flex-col gap-2'>
-            <ProfaneAlert></ProfaneAlert>
-            <MessageFeaturesMenu />
+            <ProfaneAlert messageContent={messageContent}></ProfaneAlert>
+            <MessageFeaturesMenu appendToMessage={appendToMessage} />
             <div className="flex gap-4">
                 <Textarea
                     placeholder="Type your message..."
                     className="resize-none h-2"
                     value={messageContent}
-                    onChange={handleMessageChange}
-                    onKeyDown={handleKeyDown}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                            e.preventDefault();
+                            handleSendMessage();
+                        }
+                    }}
                 />
-                <Button variant="ghost" className="w-16 h-full" onClick={handleClick}>
+                <Button variant="ghost" className="w-16 h-full" onClick={handleSendMessage}>
                     <Send className="size-5" />
                 </Button>
             </div>
