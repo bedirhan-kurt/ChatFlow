@@ -3,17 +3,17 @@ import addNewRoom from "@/features/rooms/api/addNewRoom.ts";
 import {useUser} from "@/features/users/hooks/useUser.tsx";
 
 interface RoomContextType {
-    roomCode: string | null;
-    handleClick: () => void;
+    roomCode: string | "";
+    handleCreateRoom: () => void;
 }
 
 const RoomContext = createContext<RoomContextType | undefined>(undefined);
 
 export const RoomContextProvider = ({children}: { children: ReactNode }) => {
-    const [roomCode, setRoomCode] = useState<string | null>(null);
+    const [roomCode, setRoomCode] = useState<string | "">("");
     const {user, username} = useUser();
 
-    const handleClick = async () => {
+    const handleCreateRoom = async () => {
         try {
             const newRoomCode = await addNewRoom({user, username});
             setRoomCode(newRoomCode); // Save the document ID
@@ -25,7 +25,7 @@ export const RoomContextProvider = ({children}: { children: ReactNode }) => {
     return (
         <RoomContext.Provider value={
             {
-                handleClick, roomCode
+                handleCreateRoom, roomCode
             }
         }>
             {

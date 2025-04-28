@@ -1,16 +1,18 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
-import NavigateRoomButton from "@/features/rooms/components/NavigateRoomButton.tsx";
 import {useState} from "react";
+import {Button} from "@/shared/components/ui/button.tsx";
+import useNavigateToRoom from "@/features/rooms/hooks/useNavigateToRoom.ts";
 
 export default function JoinRoomCard() {
     const [roomCode, setRoomCode] = useState<string>("");
 
     function handleCodeChange(newCode: string) {
-        console.log(newCode);
         setRoomCode(newCode);
     }
+
+    const {handleNavigate} = useNavigateToRoom(roomCode);
 
     return (
         <Card className='w-full p-0 gap-4'>
@@ -40,7 +42,7 @@ export default function JoinRoomCard() {
                             <InputOTPSlot index={8} />
                         </InputOTPGroup>
                     </InputOTP>
-                    <NavigateRoomButton roomCode={roomCode}>Join room</NavigateRoomButton>
+                    <Button onClick={handleNavigate}>Join room</Button>
                 </div>
             </CardContent>
         </Card>
