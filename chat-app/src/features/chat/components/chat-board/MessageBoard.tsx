@@ -1,7 +1,7 @@
-import {useMessages} from "../../hooks/useMessages.ts";
 import Message from "@/features/chat/components/message/Message.tsx";
 import {useUser} from "@/features/users/hooks/useUser.tsx";
 import MessageBoardStatus from "@/features/chat/components/chat-board/MessageBoardStatus.tsx";
+import {useFetchMessages} from "@/features/chat/hooks/useFetchMessages.ts";
 
 /**
  * MessageBoard Component
@@ -27,10 +27,10 @@ import MessageBoardStatus from "@/features/chat/components/chat-board/MessageBoa
  */
 
 export default function MessageBoard() {
-    const { messages, isLoading, error } = useMessages();
-    const { user, loading } = useUser();
+    const { user } = useUser();
+    const { messages, isLoading, error } = useFetchMessages();
 
-    if (loading) {
+    if (isLoading || error) {
         return (
             <div className="h-full flex flex-col gap-4 overflow-y-auto">
                 <MessageBoardStatus messages={messages} isLoading={isLoading} error={error}/>

@@ -1,9 +1,13 @@
 // useSendMessage.ts
 import { useState } from 'react';
 import addNewMessage from "@/features/chat/api/addNewMesssage.ts";
+import {useUser} from "@/features/users/hooks/useUser.tsx";
+import {useParams} from "react-router";
 
-export const useSendMessage = (roomCode: string, messageContent: string, user: any, username: string) => {
+export const useSendMessage = (messageContent: string) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const { roomCode } = useParams()
+    const { user, username } = useUser();
 
     const handleSendMessage = async () => {
         if (!roomCode) {

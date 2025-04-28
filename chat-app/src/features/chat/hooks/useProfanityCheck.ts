@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import {useState, useCallback, useMemo} from "react";
 import { Filter } from "bad-words";
 
 /**
@@ -7,7 +7,7 @@ import { Filter } from "bad-words";
  */
 export function useProfanityCheck() {
     const [isProfane, setIsProfane] = useState(false);
-    const filter = new Filter();
+    const filter = useMemo(() => new Filter(), []);
 
     const checkProfanity = useCallback((text: string) => {
         const result = filter.isProfane(text);

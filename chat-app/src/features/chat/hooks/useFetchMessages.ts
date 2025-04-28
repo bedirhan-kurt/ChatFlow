@@ -2,6 +2,7 @@ import {toReadableDate} from "@/features/chat/lib/utils.ts";
 import {useEffect, useState} from "react";
 import {collection, getDocs, limit, orderBy, query, onSnapshot, DocumentData} from "firebase/firestore";
 import {db} from "@/shared/api/firebaseConfig.ts";
+import {useParams} from "react-router";
 
 type Message = {
     id: string;                // Mesajın benzersiz ID'si
@@ -12,7 +13,8 @@ type Message = {
     roomCode: string;          // Sohbet odasının kodu
 };
 
-export function useChatMessages(roomCode: string | undefined) {
+export function useFetchMessages() {
+    const { roomCode } = useParams();
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
