@@ -1,10 +1,10 @@
 import {useCreateRoom} from "@/features/rooms/hooks/useCreateRoom.tsx";
 import { Button } from "@/shared/components/ui/button";
-import useNavigateToRoom from "@/features/rooms/hooks/useNavigateToRoom.ts";
+import useRoomNavigation from "@/features/rooms/hooks/useRoomNavigation.ts";
 
 export default function RoomActionsMenu() {
     const {roomCode} = useCreateRoom();
-    const {handleNavigate} = useNavigateToRoom(roomCode);
+    const {handleNavigateToRoom} = useRoomNavigation();
     const {handleCreateRoom} = useCreateRoom();
 
     return (
@@ -14,7 +14,7 @@ export default function RoomActionsMenu() {
                     <span className='font-semibold text-sm'>Your room has been created. Here's your room code:</span>
                     <span className='text-xl font-bold'>{roomCode}</span>
                     <span className='text-sm'>Share this code with your friends to invite them to join your room.</span>
-                    <Button onClick={handleNavigate}>Continue to room</Button>
+                    <Button onClick={() => handleNavigateToRoom(roomCode)}>Continue to room</Button>
                 </div> :
                 <Button variant={'secondary'} onClick={handleCreateRoom}>Create room</Button>
             }

@@ -3,16 +3,16 @@ import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
 import {useState} from "react";
 import {Button} from "@/shared/components/ui/button.tsx";
-import useNavigateToRoom from "@/features/rooms/hooks/useNavigateToRoom.ts";
+import useRoomNavigation from "@/features/rooms/hooks/useRoomNavigation.ts";
+import InvalidRoomCodeAlert from "@/features/rooms/components/JoinRoom/InvalidRoomCodeAlert.tsx";
 
 export default function JoinRoomCard() {
+    const {isRoomExisting, handleCheckAndNavigate} = useRoomNavigation();
     const [roomCode, setRoomCode] = useState<string>("");
 
     function handleCodeChange(newCode: string) {
         setRoomCode(newCode);
     }
-
-    const {handleNavigate} = useNavigateToRoom(roomCode);
 
     return (
         <Card className='w-full p-0 gap-4'>
@@ -42,7 +42,8 @@ export default function JoinRoomCard() {
                             <InputOTPSlot index={8} />
                         </InputOTPGroup>
                     </InputOTP>
-                    <Button onClick={handleNavigate}>Join room</Button>
+                    {(isRoomExisting === false) && (roomCode.length === 9) ? <InvalidRoomCodeAlert /> : null}
+                    <Button onClick={() => handleCheckAndNavigate(roomCode)}>Join room</Button>
                 </div>
             </CardContent>
         </Card>

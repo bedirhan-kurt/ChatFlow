@@ -12,7 +12,6 @@ export function useProfanityCheck() {
     const checkProfanity = useCallback((text: string) => {
         const result = filter.isProfane(text);
         setIsProfane(result);
-        return result;
     }, []);
 
     return { isProfane, checkProfanity };

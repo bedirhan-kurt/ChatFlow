@@ -1,11 +1,11 @@
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "@/shared/api/firebaseConfig.ts";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/shared/api/firebaseConfig.ts";
 
 export default async function checkRoomExistence(roomCode: string) {
-    const roomRef = collection(db, "rooms", roomCode);
-    const querySnapshot = await getDocs(roomRef);
+    const roomRef = doc(db, "rooms", roomCode); // Belge referansı olmalı
+    const docSnap = await getDoc(roomRef);
 
-    if (!querySnapshot.empty) {
+    if (docSnap.exists()) {
         console.log("Doküman var.");
         return true;
     } else {
