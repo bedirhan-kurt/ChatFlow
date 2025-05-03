@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/shared/api/firebaseConfig.ts";
-import { generateFromEmail } from "unique-username-generator";
+import {getUsername} from "@/features/users/api/getUsername.ts";
 
 interface UserContextType {
     user: any; // Replace `any` with the appropriate user type if available
@@ -19,8 +19,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     useEffect(() => {
         if (user?.email) {
-            const randomUsername = generateFromEmail(user.email, 4);
-            setUsername(randomUsername);
+            getUsername(user.uid).then((resolvedUsername) => {
+                setUsername(resolvedUsername);
+            });
         }
     }, [user]);
 

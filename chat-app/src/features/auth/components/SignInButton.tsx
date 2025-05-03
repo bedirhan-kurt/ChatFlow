@@ -1,6 +1,5 @@
 import {Button} from "@/shared/components/ui/button.tsx";
-import {useSignInWithGoogle} from "react-firebase-hooks/auth";
-import {auth} from "@/shared/api/firebaseConfig.ts";
+import {signInWithGoogle} from "../api/signInWithGoogle.ts";
 import {useNavigate} from "react-router";
 
 /**
@@ -27,7 +26,6 @@ import {useNavigate} from "react-router";
  */
 
 export default function SignInButton() {
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
 
     /**
@@ -39,10 +37,9 @@ export default function SignInButton() {
      * @returns {Promise<void>} A promise that resolves when the sign-in process is complete.
      */
     async function handleGoogleSignIn(): Promise<void> {
-        const result = await signInWithGoogle();
-        if (result?.user) {
-            console.log(result);
-            navigate("/application");
+        const user = await signInWithGoogle();
+        if (user) {
+            navigate("/rooms");
         }
     }
 
