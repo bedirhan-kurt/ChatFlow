@@ -2,6 +2,7 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
 import {MessageOptionsDropdown} from "@/features/chat/components/message/message-options/MessageOptionsDropdown.tsx";
 import MessageEditButton from "@/features/chat/components/message/message-options/MessageEditButton.tsx";
 import MessageDeleteButton from "@/features/chat/components/message/message-options/MessageDeleteButton.tsx";
+import {useParams} from "react-router";
 
 /**
  * Message Component
@@ -40,6 +41,11 @@ export default function Message({id, message, author, isOwned = false, createdAt
     isOwned?: boolean,
     createdAt: string
 }) {
+    const {roomCode} = useParams()
+    if (!roomCode) {
+        throw new Error("Room code is not defined");
+    }
+
     const authorName = isOwned ? "You" : author;
     const isAdmin = author === "ADMIN";
     const flexDirection = isOwned ? "items-end" : "items-start";
@@ -50,8 +56,8 @@ export default function Message({id, message, author, isOwned = false, createdAt
     const messageStructure = isOwned ? (
         <>
             <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>
-                <MessageDeleteButton id={id}></MessageDeleteButton>
-                <MessageEditButton id={id} message={message} createdAt={createdAt}></MessageEditButton>
+                <MessageDeleteButton roomCode={roomCode} id={id}></MessageDeleteButton>
+                <MessageEditButton roomCode={roomCode} id={id} message={message} createdAt={createdAt}></MessageEditButton>
             </MessageOptionsDropdown>
             <span>{message}</span>
         </>

@@ -34,7 +34,7 @@ import deleteMessage from "@/features/chat/api/deleteMessage.ts";
  * @returns {TSX.Element} The rendered MessageDeleteButton component.
  */
 
-export default function MessageDeleteButton({id}: { id: string }) {
+export default function MessageDeleteButton({roomCode, id}: { roomCode: string, id: string }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center" asChild>
@@ -54,7 +54,7 @@ export default function MessageDeleteButton({id}: { id: string }) {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteMessage(id)}>Delete</AlertDialogAction>
+                    <AlertDialogAction onClick={() => deleteMessage(roomCode, id)}>Delete</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

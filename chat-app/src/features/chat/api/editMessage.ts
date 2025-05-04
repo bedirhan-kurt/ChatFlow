@@ -1,9 +1,9 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../shared/api/firebaseConfig.ts";
 
-export async function updateMessage(messageId: string, newContent: string) {
+export async function editMessage(roomCode: string, messageId: string, newContent: string) {
     try {
-        const messageRef = doc(db, "messages", messageId);
+        const messageRef = doc(db, "rooms", roomCode, messageId);
 
         await updateDoc(messageRef, {
             messageContent: newContent,

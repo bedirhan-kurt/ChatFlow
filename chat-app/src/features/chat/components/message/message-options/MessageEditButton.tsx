@@ -7,11 +7,11 @@ import {
     AlertDialogTrigger
 } from "@/shared/components/ui/alert-dialog.tsx";
 import { useState } from "react";
-import {updateMessage} from "@/features/chat/api/editMessage.ts";
+import {editMessage} from "@/features/chat/api/editMessage.ts";
 import {Separator} from "@/shared/components/ui/separator.tsx";
 import EditMessageForm from "@/features/chat/components/message/message-options/EditMessageForm.tsx";
 
-export default function MessageEditButton({ id, message, createdAt }: { id: string, message: string, createdAt: string }) {
+export default function MessageEditButton({ roomCode, id, message, createdAt }: { roomCode: string, id: string, message: string, createdAt: string }) {
     const [newMessage, setNewMessage] = useState<string>(message || "");
 
 
@@ -44,7 +44,7 @@ export default function MessageEditButton({ id, message, createdAt }: { id: stri
 
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => updateMessage(id, newMessage)}>
+                    <AlertDialogAction onClick={() => editMessage(roomCode, id, newMessage)}>
                         Save
                     </AlertDialogAction>
                 </AlertDialogFooter>
