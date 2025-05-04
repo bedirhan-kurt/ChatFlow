@@ -1,5 +1,4 @@
-import {useSignOut} from "react-firebase-hooks/auth";
-import {auth} from "@/shared/api/firebaseConfig.ts";
+import {useSignOut} from "@/features/auth/hooks/useSignOut.ts";
 import {Button} from "@/shared/components/ui/button.tsx";
 
 /**
@@ -25,8 +24,6 @@ import {Button} from "@/shared/components/ui/button.tsx";
  */
 
 export default function SignOutButton() {
-    const [signOut, loading] = useSignOut(auth);
-
     /**
      * Handles the sign-out process.
      * Logs any errors that occur during the operation.
@@ -34,13 +31,11 @@ export default function SignOutButton() {
      * @function handleSignOut
      * @returns {void}
      */
-    function handleSignOut(): void {
-        signOut().catch(console.error);
-    }
+    const {handleSignOut, isLoading} = useSignOut();
 
     return (
         <Button variant="secondary" onClick={handleSignOut}>
-            {loading ? "..." : "Sign Out"}
+            {isLoading ? "..." : "Sign Out"}
         </Button>
     );
 };
