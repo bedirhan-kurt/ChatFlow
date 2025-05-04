@@ -21,7 +21,7 @@ export async function signInWithGoogle() {
                 isOnline: true,
                 joinedRooms: [""],
                 userId: user.uid,
-                userName: generateFromEmail(user.email || "", 4) || "",
+                username: generateFromEmail(user.email || "", 4) || "",
             });
         } else {
               // Update the user's online status if they already exist

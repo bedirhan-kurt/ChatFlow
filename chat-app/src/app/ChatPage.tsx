@@ -41,10 +41,11 @@ import UserSettingsModal from "@/features/users/components/user-settings-modal/U
 import SignOutButton from "@/features/auth/components/SignOutButton.tsx";
 import MessageBoard from "@/features/chat/components/chat-board/MessageBoard.tsx";
 import NewMessageForm from "@/features/chat/components/new-message-form/NewMessageForm.tsx";
+import SideMenu from "@/features/room-members/components/SideMenu.tsx";
 
-export default function ChatPage() {
+export default function TestNewChatPageUi() {
     return (
-        <Card className="w-164 h-full flex flex-col p-8 justify-between">
+        <Card className="w-256 h-full flex flex-col p-8 justify-between">
             <CardHeader className="p-0 flex items-center justify-between">
                 <div className="flex flex-col gap-2">
                     <CardTitle className="text-xl">Chat App</CardTitle>
@@ -59,11 +60,15 @@ export default function ChatPage() {
                 </div>
             </CardHeader>
             <Separator/>
-            <CardContent className="h-full p-2 flex flex-col gap-6 overflow-y-auto flex-grow">
-                <MessageBoard/>
-                <Scroller></Scroller>
-                <NewMessageForm/>
-            </CardContent>
+            <div className="h-full w-full flex gap-4">
+                <SideMenu></SideMenu>
+                <Separator orientation="vertical"></Separator>
+                <CardContent className="w-full h-full p-2 flex flex-col gap-6 overflow-y-auto flex-grow">
+                    <MessageBoard/>
+                    <Scroller></Scroller>
+                    <NewMessageForm/>
+                </CardContent>
+            </div>
         </Card>
     );
 }

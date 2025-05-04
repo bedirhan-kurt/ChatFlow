@@ -14,7 +14,7 @@ export default async function addNewRoom({ user, username }: AddNewRoomParams) {
 
     const creatorId = user?.uid;
     const creatorUsername = username;
-    const participants = [creatorId];
+    const members = [creatorId];
 
     try {
         const roomRef = doc(db, "rooms", roomCode);
@@ -22,7 +22,7 @@ export default async function addNewRoom({ user, username }: AddNewRoomParams) {
             roomCode,
             creatorId,
             creatorUsername,
-            participants,
+            members,
             createdAt: new Date().toISOString(),
         });
         return roomCode;

@@ -7,8 +7,7 @@ export async function getUsername(userId: string) {
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
-            console.log("userName:", userSnap.data().userName);
-            return userSnap.data().userName;
+            return userSnap.data().username;
         } else {
             console.log("No such user!");
             return null;

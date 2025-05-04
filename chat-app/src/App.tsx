@@ -6,7 +6,6 @@ import AuthRequired from "@/features/auth/components/AuthRequired.tsx";
 import {UserProvider} from "@/features/users/hooks/useUser.tsx";
 import RememberUser from "@/features/auth/components/NavigateSignIn.tsx";
 import RoomsPage from "@/app/RoomsPage.tsx";
-import TestNewChatPageUi from "@/app/TestNewChatPageUi.tsx";
 
 function App() {
     return (
@@ -15,7 +14,6 @@ function App() {
                 <UserProvider>
                     <Router>
                         <Routes>
-                            <Route path="/newui" element={<TestNewChatPageUi />}></Route>
                             <Route element={<RememberUser />}>
                                 <Route index element={<SignIn />}></Route>
                             </Route>
