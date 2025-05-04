@@ -3,6 +3,7 @@ import { doc, getDoc, onSnapshot, DocumentData } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { useParams } from "react-router";
 import {getMembersData} from "@/features/room-members/api/getMembersData.ts";
+import {useUser} from "@/features/users/hooks/useUser.tsx";
 
 type Member = {
     uid: string;
@@ -13,6 +14,8 @@ type Member = {
 
 export function useFetchMembers() {
     const { roomCode } = useParams();
+    const { username } = useUser();
+
     const [members, setMembers] = useState<Member[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
@@ -60,7 +63,7 @@ export function useFetchMembers() {
         });
 
         return () => unsubscribe();
-    }, [roomCode]);
+    }, [roomCode, username]);
 
     return { members, isLoading, error };
 }

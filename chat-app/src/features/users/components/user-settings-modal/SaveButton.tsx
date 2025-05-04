@@ -1,11 +1,28 @@
-import {Button} from "@/shared/components/ui/button.tsx";
+import updateUsername from "@/features/users/api/updateUsername.ts";
+import {auth} from "@/shared/api/firebaseConfig.ts";
+import {DialogClose} from "@/shared/components/ui/dialog.tsx";
+import React from "react";
+import {useUser} from "@/features/users/hooks/useUser.tsx";
 
-export default function SaveButton({setUsername, usernameContentRef}: {setUsername: React.Dispatch<React.SetStateAction<string>>, usernameContentRef: React.MutableRefObject<string>}) {
+export default function  SaveButton({usernameContentRef}: {usernameContentRef: React.MutableRefObject<string>}) {
+    const {setUsername} = useUser();
+
     function handleSave() {
-        setUsername(usernameContentRef.current);
+        if (auth.currentUser) {
+            setUsername(usernameContentRef.current);
+            updateUsername(auth.currentUser.uid as string, usernameContentRef.current);
+        } else {
+            console.error("No authenticated user found.");
+        }
     }
 
     return (
-        <Button type="button" onClick={handleSave}>Save changes</Button>
+        <DialogClose
+            type="button"
+            onClick={handleSave}
+            className="p-2 px-4 text-sm font-semibold rounded-lg bg-primary text-white dark:text-black dark:bg-white"
+        >
+            Save changes
+        </DialogClose>
     );
 }

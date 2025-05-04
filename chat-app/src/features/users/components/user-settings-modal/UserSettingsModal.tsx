@@ -1,25 +1,21 @@
 import {
-    Dialog, DialogClose,
+    Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger
 } from "@/shared/components/ui/dialog.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
-import {useRef} from "react";
 import {User} from "lucide-react";
-import UsernameInput from "@/features/users/components/user-settings-modal/UsernameInput.tsx";
-import SaveButton from "@/features/users/components/user-settings-modal/SaveButton.tsx";
 import {useUser} from "@/features/users/hooks/useUser.tsx";
+import UserSettingsForm from "@/features/users/components/user-settings-modal/UserSettingsForm.tsx";
 
 // Responsible for manage states - will be transformed to shadcn/ui form
 // Responsible for rendering UI
 
 export default function UserSettingsModal() {
     const {username, setUsername} = useUser();
-    const usernameContentRef = useRef<string>("");
 
     return (
         <Dialog>
@@ -34,13 +30,8 @@ export default function UserSettingsModal() {
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
-                    <UsernameInput username={username} usernameContentRef={usernameContentRef} />
+                    <UserSettingsForm currentUsername={username} setUsername={setUsername}></UserSettingsForm>
                 </div>
-                <DialogFooter>
-                    <DialogClose asChild>
-                        <SaveButton usernameContentRef={usernameContentRef} setUsername={setUsername} />
-                    </DialogClose>
-                </DialogFooter>
             </DialogContent>
         </Dialog>
     )

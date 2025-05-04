@@ -1,4 +1,4 @@
-import {Avatar, AvatarImage} from "@/shared/components/avatar.tsx";
+import {Avatar, AvatarImage} from "@/shared/components/ui/avatar.tsx";
 import {Card} from "@/shared/components/ui/card.tsx";
 
 type Member = {
