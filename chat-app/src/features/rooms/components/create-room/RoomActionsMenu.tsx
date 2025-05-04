@@ -1,11 +1,10 @@
-import {useCreateRoom} from "@/features/rooms/hooks/useCreateRoom.tsx";
 import { Button } from "@/shared/components/ui/button";
 import useRoomNavigation from "@/features/rooms/hooks/useRoomNavigation.ts";
+import useCreateRoom from "@/features/rooms/hooks/useCreateRoom.ts";
 
 export default function RoomActionsMenu() {
-    const {roomCode} = useCreateRoom();
+    const {roomCode, handleCreateRoom} = useCreateRoom();
     const {handleNavigateToRoom} = useRoomNavigation();
-    const {handleCreateRoom} = useCreateRoom();
 
     return (
         <>

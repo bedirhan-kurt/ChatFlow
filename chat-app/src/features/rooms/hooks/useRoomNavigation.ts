@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { useNavigate } from "react-router";
 import checkRoomExistence from "@/features/rooms/api/checkRoomExistence.ts";
 import { formatRoomCode } from "@/features/rooms/lib/utils.ts";
+import updateUsersJoinedRooms from "@/features/rooms/api/updateUsersJoinedRooms.ts";
 
 export default function useRoomNavigation() {
     const [isRoomExisting, setIsRoomExisting] = useState<boolean | null>(null);
@@ -31,6 +32,10 @@ export default function useRoomNavigation() {
 
         if (exists) {
             navigate(`/room/${formattedCode}`);
+            updateUsersJoinedRooms(formattedCode)
+                .catch(error =>
+                    console.error("Error updating users joined rooms:", error)
+                )
         }
 
         return exists;
@@ -40,6 +45,10 @@ export default function useRoomNavigation() {
         const formattedCode = validateRoomCode(roomCode);
         if (formattedCode) {
             navigate(`/room/${formattedCode}`);
+            updateUsersJoinedRooms(formattedCode)
+                .catch(error =>
+                    console.error("Error updating users joined rooms:", error)
+                )
         } else {
             console.warn("Invalid room code. Navigation aborted.");
         }

@@ -1,5 +1,5 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
-import RoomActionsMenu from "@/features/rooms/components/CreateRoom/RoomActionsMenu.tsx";
+import RoomActionsMenu from "@/features/rooms/components/create-room/RoomActionsMenu.tsx";
 
 export default function CreateRoomCard() {
     return (

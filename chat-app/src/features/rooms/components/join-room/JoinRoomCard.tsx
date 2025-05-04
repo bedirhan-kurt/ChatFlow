@@ -4,7 +4,7 @@ import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared
 import {useState} from "react";
 import {Button} from "@/shared/components/ui/button.tsx";
 import useRoomNavigation from "@/features/rooms/hooks/useRoomNavigation.ts";
-import InvalidRoomCodeAlert from "@/features/rooms/components/JoinRoom/InvalidRoomCodeAlert.tsx";
+import InvalidRoomCodeAlert from "@/features/rooms/components/join-room/InvalidRoomCodeAlert.tsx";
 
 export default function JoinRoomCard() {
     const {isRoomExisting, handleCheckAndNavigate} = useRoomNavigation();
