@@ -6,7 +6,7 @@ export async function editMessage(roomCode: string, messageId: string, newConten
         const messageRef = doc(db, "rooms", roomCode, "messages", messageId);
 
         await updateDoc(messageRef, {
-            messageContent: newContent,
+            content: newContent,
             updatedAt: new Date(),
         });
     } catch (error) {
