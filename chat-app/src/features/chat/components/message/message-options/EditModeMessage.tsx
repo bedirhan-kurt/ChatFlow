@@ -38,7 +38,7 @@ export default function EditModeMessage({message, createdAt}: {
     return (
         <div className="w-full flex flex-col gap-2 items-end">
             <div className="flex flex-col gap-1 items-end">
-                <Card className="w-fit p-3 flex gap-2 text-sm bg-primary-500 dark:bg-secondary dark:text-white">
+                <Card className="w-fit p-3 flex gap-2 text-sm bg-white dark:bg-primary dark:text-white">
                     <CardContent className="p-0 flex gap-2 items-center">
                         {message}
                     </CardContent>

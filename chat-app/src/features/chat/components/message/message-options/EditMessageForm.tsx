@@ -3,6 +3,13 @@ import EditModeMessage from "@/features/chat/components/message/message-options/
 import {Label} from "@/shared/components/ui/label.tsx";
 import {Input} from "@/shared/components/ui/input.tsx";
 
+const dottedBackgroundStyle = {
+    backgroundImage: 'radial-gradient(circle, rgba(237, 237, 237, 0.6) 3px, transparent 1px)', // opaklık %60
+    backgroundSize: '40px 40px',
+    backgroundPosition: '0 0',
+    weight: '%',
+};
+
 export default function EditMessageForm({message, newMessage, setNewMessage, createdAt}: {message: string, newMessage: string, setNewMessage: (message: string) => void, createdAt: string}) {
     return (
         <div className='flex flex-col gap-8 mt-4'>
@@ -10,8 +17,8 @@ export default function EditMessageForm({message, newMessage, setNewMessage, cre
                         <span className="text-black text-sm font-semibold mb-2 dark:text-white">
                             Current Message
                         </span>
-                <Card className='w-full flex items-center justify-center p-0'>
-                    <CardContent className='p-6'>
+                <Card className='w-full flex items-center justify-center p-1' style={dottedBackgroundStyle}>
+                    <CardContent className='p-6' >
                         <EditModeMessage
                             message={message}
                             createdAt={createdAt}
