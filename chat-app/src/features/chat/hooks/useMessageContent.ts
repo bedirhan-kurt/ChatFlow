@@ -6,7 +6,7 @@ export const useMessageContent = () => {
     const [messageContent, setMessageContent] = useState<string>('');
     const { isProfane, checkProfanity } = useProfanityCheck();
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMessageContent(e.target.value);
     };
 

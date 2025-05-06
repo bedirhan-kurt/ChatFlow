@@ -1,10 +1,10 @@
-import {Textarea} from "@/shared/components/ui/textarea.tsx";
 import {Send} from "lucide-react";
 import {Button} from "@/shared/components/ui/button.tsx";
 import ProfaneAlert from "@/features/chat/components/new-message-form/ProfaneAlert.tsx";
 import MessageFeaturesMenu from "@/features/chat/components/new-message-form/message-features/MessageFeaturesMenu.tsx";
 import {useSendMessage} from "@/features/chat/hooks/useSendMessage.tsx";
 import {useMessageContent} from "@/features/chat/hooks/useMessageContent.ts";
+import {Input} from "@/shared/components/ui/input.tsx";
 
 /**
  * NewMessageForm Component
@@ -36,9 +36,9 @@ export default function NewMessageForm() {
             <ProfaneAlert messageContent={messageContent}></ProfaneAlert>
             <MessageFeaturesMenu appendToMessage={appendToMessage} />
             <div className="flex gap-4">
-                <Textarea
+                <Input
                     placeholder="Type your message..."
-                    className="resize-none h-2"
+                    className="h-12 resize-none flex-1"
                     value={messageContent}
                     onChange={handleInputChange}
                     onKeyDown={(e) => {
@@ -48,7 +48,7 @@ export default function NewMessageForm() {
                         }
                     }}
                 />
-                <Button variant="ghost" className="w-16 h-full" onClick={handleSendMessage}>
+                <Button variant="default" className="w-16 h-full" onClick={handleSendMessage}>
                     <Send className="size-5" />
                 </Button>
             </div>
