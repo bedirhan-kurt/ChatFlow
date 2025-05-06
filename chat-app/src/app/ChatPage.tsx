@@ -65,7 +65,7 @@ export default function ChatPage() {
                 <div className="h-full w-full flex gap-4 overflow-y-auto">
                     <SideMenu></SideMenu>
                     <Separator orientation="vertical"></Separator>
-                    <CardContent className="w-full h-full p-2 flex flex-col gap-6">
+                    <CardContent className="w-full h-full p-2 flex flex-col gap-1">
                         <MessageBoard/>
                         <Scroller></Scroller>
                         <NewMessageForm/>

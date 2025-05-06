@@ -54,13 +54,13 @@ export default function Message({id, message, author, isOwned = false, createdAt
             isAdmin ? "bg-primary text-white dark:bg-red-500 dark:text-white" :
                 "bg-gray-50 dark:bg-secondary dark:text-white";
     const messageStructure = isOwned ? (
-        <>
+        <div className="flex gap-2 items-center">
             <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>
                 <MessageDeleteButton roomCode={roomCode} id={id}></MessageDeleteButton>
                 <MessageEditButton roomCode={roomCode} id={id} message={message} createdAt={createdAt}></MessageEditButton>
             </MessageOptionsDropdown>
             <span>{message}</span>
-        </>
+        </div>
     ) : <span>{message}</span>;
 
     return (
@@ -74,7 +74,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
                            ${cardClass}
                        `}
                 >
-                    <CardContent className="p-0 flex gap-2 items-center">
+                    <CardContent className="p-0 max-w-86">
                         {messageStructure}
                     </CardContent>
                 </Card>

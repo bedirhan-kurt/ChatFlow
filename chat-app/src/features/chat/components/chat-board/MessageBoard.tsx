@@ -26,9 +26,16 @@ import {useFetchMessages} from "@/features/chat/hooks/useFetchMessages.ts";
  * @returns {TSX.Element} The rendered MessageBoard component.
  */
 
+const dottedBackgroundStyle = {
+    backgroundImage: 'radial-gradient(circle, rgba(237, 237, 237, 0.6) 3px, transparent 1px)', // opaklık %60
+    backgroundSize: '40px 40px',
+    backgroundPosition: '0 0',
+    height: '100vh',
+};
+
 export default function MessageBoard() {
-    const { user } = useUser();
-    const { messages, isLoading, error } = useFetchMessages();
+    const {user} = useUser();
+    const {messages, isLoading, error} = useFetchMessages();
 
     if (isLoading || error) {
         return (
@@ -54,9 +61,7 @@ export default function MessageBoard() {
     ));
 
     return (
-        <div
-            className="flex flex-col gap-4 overflow-y-auto flex-grow"
-        >
+        <div className="flex flex-col gap-4 overflow-y-auto flex-grow rounded-xl" style={dottedBackgroundStyle}>
             {messageElements}
         </div>
     );

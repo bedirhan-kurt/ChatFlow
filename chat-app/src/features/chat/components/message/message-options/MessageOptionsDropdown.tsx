@@ -44,7 +44,7 @@ export function MessageOptionsDropdown({ children }: { children: React.ReactNode
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center" asChild>
+            <DropdownMenuTrigger className=" " asChild>
                 <EllipsisVertical className="size-4"></EllipsisVertical>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
