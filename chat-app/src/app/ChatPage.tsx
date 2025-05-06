@@ -41,7 +41,7 @@ import UserSettingsModal from "@/features/users/components/user-settings-modal/U
 import SignOutButton from "@/features/auth/components/SignOutButton.tsx";
 import MessageBoard from "@/features/chat/components/chat-board/MessageBoard.tsx";
 import NewMessageForm from "@/features/chat/components/new-message-form/NewMessageForm.tsx";
-import SideMenu from "@/features/room-members/components/SideMenu.tsx";
+import SideMenu from "@/features/chat-side-menu/components/SideMenu.tsx";
 import {UserProvider} from "@/features/users/hooks/useUser.tsx";
 
 export default function ChatPage() {

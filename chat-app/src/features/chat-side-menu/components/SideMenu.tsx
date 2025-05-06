@@ -1,5 +1,5 @@
-import UserProfileCard from "@/features/room-members/components/side-menu/UserProfileCard.tsx";
-import {useFetchMembers} from "@/features/room-members/hooks/useFetchMembers.ts";
+import UserProfileCard from "@/features/chat-side-menu/components/side-menu/UserProfileCard.tsx";
+import {useFetchMembers} from "@/features/chat-side-menu/hooks/useFetchMembers.ts";
 
 export default function SideMenu() {
     const {members} = useFetchMembers();

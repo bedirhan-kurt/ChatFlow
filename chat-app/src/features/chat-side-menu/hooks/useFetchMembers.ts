@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc, onSnapshot, DocumentData } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { useParams } from "react-router";
-import {getMembersData} from "@/features/room-members/api/getMembersData.ts";
+import {getMembersData} from "@/features/chat-side-menu/api/getMembersData.ts";
 import {useUser} from "@/features/users/hooks/useUser.tsx";
 
 type Member = {

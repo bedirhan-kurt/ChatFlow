@@ -3,7 +3,7 @@ import { db } from "../../../shared/api/firebaseConfig.ts";
 
 export async function editMessage(roomCode: string, messageId: string, newContent: string) {
     try {
-        const messageRef = doc(db, "rooms", roomCode, messageId);
+        const messageRef = doc(db, "rooms", roomCode, "messages", messageId);
 
         await updateDoc(messageRef, {
             messageContent: newContent,
