@@ -43,6 +43,7 @@ import MessageBoard from "@/features/chat/components/chat-board/MessageBoard.tsx
 import NewMessageForm from "@/features/chat/components/new-message-form/NewMessageForm.tsx";
 import SideMenu from "@/features/chat-side-menu/components/SideMenu.tsx";
 import {UserProvider} from "@/features/users/hooks/useUser.tsx";
+import BetaTag from "@/shared/components/BetaTag.tsx";
 
 export default function ChatPage() {
     return (
@@ -50,7 +51,12 @@ export default function ChatPage() {
             <Card className="w-256 h-full flex flex-col p-8 justify-between">
                 <CardHeader className="p-0 flex items-center justify-between">
                     <div className="flex flex-col gap-2">
-                        <CardTitle className="text-xl">Chat App</CardTitle>
+                        <div className="flex gap-2">
+                            <CardTitle className="text-xl">
+                                Chat App
+                            </CardTitle>
+                            <BetaTag></BetaTag>
+                        </div>
                         <CardDescription>
                             Here is a public chat room. You can chat with other users.
                         </CardDescription>
