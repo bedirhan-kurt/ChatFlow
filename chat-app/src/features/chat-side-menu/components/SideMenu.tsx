@@ -2,6 +2,7 @@ import UserProfileCard from "@/features/chat-side-menu/components/side-menu/User
 import {useFetchMembers} from "@/features/chat-side-menu/hooks/useFetchMembers.ts";
 import InviteModal from "@/features/chat-side-menu/components/side-menu/invite/InviteModal.tsx";
 import DeleteRoomModal from "./side-menu/delete-room/DeleteRoomModal";
+import LeaveRoomButton from "@/features/chat-side-menu/components/side-menu/leave-room/LeaveRoomButton.tsx";
 
 export default function SideMenu({className}: { className?: string }) {
     const {members} = useFetchMembers();
@@ -17,6 +18,7 @@ export default function SideMenu({className}: { className?: string }) {
                 {userProfileCards}
             </div>
             <div className="w-full flex gap-2 items-center justify-between">
+                <LeaveRoomButton></LeaveRoomButton>
                 <InviteModal></InviteModal>
                 <DeleteRoomModal></DeleteRoomModal>
             </div>
