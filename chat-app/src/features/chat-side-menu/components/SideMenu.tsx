@@ -1,7 +1,9 @@
 import UserProfileCard from "@/features/chat-side-menu/components/side-menu/UserProfileCard.tsx";
 import {useFetchMembers} from "@/features/chat-side-menu/hooks/useFetchMembers.ts";
+import InviteModal from "@/features/chat-side-menu/components/side-menu/invite/InviteModal.tsx";
+import DeleteRoomModal from "./side-menu/delete-room/DeleteRoomModal";
 
-export default function SideMenu() {
+export default function SideMenu({className}: { className?: string }) {
     const {members} = useFetchMembers();
 
     const userProfileCards = members.map((member) => (
@@ -9,9 +11,15 @@ export default function SideMenu() {
     ));
 
     return (
-        <div className="w-1/3 h-full flex flex-col gap-2 items-start">
-            <span className="font-semibold">Room Members</span>
-            {userProfileCards}
+        <div className={className}>
+            <div className="flex flex-col gap-2 items-start">
+                <span className="font-semibold">Room Members</span>
+                {userProfileCards}
+            </div>
+            <div className="w-full flex gap-2 items-center justify-between">
+                <InviteModal></InviteModal>
+                <DeleteRoomModal></DeleteRoomModal>
+            </div>
         </div>
     );
 };
