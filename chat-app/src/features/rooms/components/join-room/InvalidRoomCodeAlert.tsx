@@ -1,18 +1,17 @@
 import Alert from "@/shared/components/Alert";
-import useRoomNavigation from "@/features/rooms/hooks/useRoomNavigation.ts";
-import {useParams} from "react-router";
+import {useRoomValidation} from "@/features/rooms/hooks/useRoomValidation.tsx";
 
-export default function InvalidRoomCodeAlert() {
-    const {isRoomExisting} = useRoomNavigation();
-    const {roomCode} = useParams()
+export default function InvalidRoomCodeAlert({joinRoomCode}: {joinRoomCode: string}) {
+    const {isRoomExisting} = useRoomValidation();
 
-    if (!roomCode) {
+    console.log(isRoomExisting)
+    if (!joinRoomCode) {
         return null;
     }
 
     return (
         <>
-            {(isRoomExisting === false) && (roomCode.length === 9) ?
+            {(isRoomExisting === false) && (joinRoomCode.length === 9) ?
                 <Alert
                     title="Invalid room code"
                     description="The room code you entered is invalid. Please check the code and try again."

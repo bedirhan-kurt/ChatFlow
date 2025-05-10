@@ -1,9 +1,15 @@
 import {Label} from "@/shared/components/ui/label.tsx";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared/components/ui/input-otp.tsx";
+import {useRoomValidation} from "@/features/rooms/hooks/useRoomValidation.tsx";
 
-export default function RoomCodeInput({setRoomCode}: { setRoomCode: (code: string) => void }) {
+export default function RoomCodeInput({setJoinRoomCode}: { setJoinRoomCode: (code: string) => void}) {
+    const {isRoomExisting, setIsRoomExisting} = useRoomValidation();
+
     function handleCodeChange(newCode: string) {
-        setRoomCode(newCode);
+        setJoinRoomCode(newCode);
+        if (isRoomExisting === false) {
+            setIsRoomExisting(true)
+        }
     }
 
     return (
