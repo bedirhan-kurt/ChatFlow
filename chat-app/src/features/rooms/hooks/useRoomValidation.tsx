@@ -41,7 +41,7 @@ export const RoomValidationProvider = ({ children }: { children: React.ReactNode
     return (
         <RoomValidationContext.Provider
             value={{
-        isRoomExisting,
+            isRoomExisting,
             setIsRoomExisting,
             validateRoomCode,
             checkRoom

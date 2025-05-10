@@ -31,14 +31,16 @@ function JoinRoomCardContent({joinRoomCode, setJoinRoomCode}: {joinRoomCode: str
             <CardContent className={'p-4 flex flex-col gap-4'}>
                 <RoomCodeInput setJoinRoomCode={setJoinRoomCode}></RoomCodeInput>
                 <InvalidRoomCodeAlert joinRoomCode={joinRoomCode}/>
-                <Button onClick={() => {
-                    checkRoom(joinRoomCode)
-                        .then((exists) => {
-                            if (exists) {
-                                navigateToRoom(joinRoomCode);
-                            }
-                        })
-                }}>Join room</Button>
+                <Button
+                    onClick={async () => {
+                        const formattedCode = await checkRoom(joinRoomCode);
+                        if (formattedCode) {
+                            navigateToRoom(formattedCode);
+                        }
+                    }}
+                >
+                    Join room
+                </Button>
             </CardContent>
         </Card>
     );
