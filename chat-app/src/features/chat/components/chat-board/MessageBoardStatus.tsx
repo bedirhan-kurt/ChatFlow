@@ -24,12 +24,14 @@
  * @param {any[]} props.messages - Array of messages.
  * @returns {TSX.Element} The rendered MessageBoardStatus component.
  */
+import {Hourglass, PackageOpen} from "lucide-react";
 
 export default function MessageBoardStatus({isLoading, error, messages}: { isLoading: boolean; error: Error | null; messages: any[] }) {
     return (
         <>
             {isLoading ? (
-                <div className="w-full h-full flex items-center justify-center text-xl font-semibold">
+                <div className="w-full h-full flex flex-col gap-2 items-center justify-center text-xl font-semibold">
+                    <Hourglass className="size-12" />
                     <p>Loading...</p>
                 </div>
             ) : error ? (
@@ -37,7 +39,8 @@ export default function MessageBoardStatus({isLoading, error, messages}: { isLoa
                     <p>Error: {error.message}</p>
                 </div>
             ) : messages.length === 0 ? (
-                <div className="w-full h-full flex items-center justify-center text-xl font-semibold">
+                <div className="w-full h-full flex flex-col gap-2 items-center justify-center text-xl font-semibold">
+                    <PackageOpen className="size-12" />
                     <p>No messages yet.</p>
                 </div>
             ) : null}

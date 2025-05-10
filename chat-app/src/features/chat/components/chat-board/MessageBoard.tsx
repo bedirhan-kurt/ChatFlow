@@ -37,9 +37,9 @@ export default function MessageBoard() {
     const {user} = useUser();
     const {messages, isLoading, error} = useFetchMessages();
 
-    if (isLoading || error) {
+    if (isLoading || error || messages.length === 0) {
         return (
-            <div className="flex flex-col gap-4 overflow-y-auto flex-grow">
+            <div className="flex flex-col gap-4 overflow-y-auto flex-grow" style={dottedBackgroundStyle}>
                 <MessageBoardStatus messages={messages} isLoading={isLoading} error={error}/>
             </div>
         )
