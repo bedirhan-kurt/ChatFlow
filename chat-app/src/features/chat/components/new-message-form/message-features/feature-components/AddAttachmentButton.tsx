@@ -3,7 +3,7 @@ import { Toggle } from "@/shared/components/ui/toggle.tsx";
 import {Paperclip} from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@/shared/components/ui/popover.tsx";
 
-export default function AddAttachmentToggle() {
+export default function AddAttachmentButton() {
     const [showPicker, setShowPicker] = useState(false); // Picker'ın görünme durumu
 
     return (

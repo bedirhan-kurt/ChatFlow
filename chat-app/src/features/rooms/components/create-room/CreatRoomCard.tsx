@@ -3,7 +3,7 @@ import RoomActionsMenu from "@/features/rooms/components/create-room/RoomActions
 
 export default function CreateRoomCard() {
     return (
-        <Card className='w-full p-0 gap-4'>
+        <Card className='w-110 p-0 gap-4'>
             <CardHeader className='bg-border rounded-t-lg p-4'>
                 <CardTitle>Create a room</CardTitle>
                 <CardDescription>You can create a new room and invite others.</CardDescription>

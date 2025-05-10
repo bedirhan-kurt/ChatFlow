@@ -1,12 +1,6 @@
 import { Trash2 } from "lucide-react";
-import {
-    AlertDialog, AlertDialogAction, AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription, AlertDialogFooter, AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger
-} from "@/shared/components/ui/alert-dialog.tsx";
 import deleteMessage from "@/features/chat/api/deleteMessage.ts";
+import AlertDialog from "@/shared/components/AlertDialog.tsx";
 
 /**
  * MessageDeleteButton Component
@@ -36,27 +30,19 @@ import deleteMessage from "@/features/chat/api/deleteMessage.ts";
 
 export default function MessageDeleteButton({roomCode, id}: { roomCode: string, id: string }) {
     return (
-        <AlertDialog>
-            <AlertDialogTrigger className="w-full size-4 flex gap-2 items-center" asChild>
-                <div>
+        <AlertDialog
+            trigger={
+                <div className="w-full size-4 flex gap-2 items-center">
                     <Trash2 className="size-3" />
                     <span>Delete</span>
                 </div>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle>
-                        Are you sure you want to delete this message?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                        This action cannot be undone.
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteMessage(roomCode, id)}>Delete</AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
+            }
+            title="Are you sure you want to delete this message?"
+            description="This action cannot be undone."
+            content={null}
+            cancelText="Cancel"
+            actionText="Delete"
+            action={() => deleteMessage(roomCode, id)}
+        />
     )
 }

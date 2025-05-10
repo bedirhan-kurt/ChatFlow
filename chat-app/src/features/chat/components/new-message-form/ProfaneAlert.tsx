@@ -1,5 +1,4 @@
-import {Alert, AlertDescription, AlertTitle} from "@/shared/components/ui/alert.tsx";
-import {AlertCircle} from "lucide-react";
+import Alert from "@/shared/components/Alert.tsx";
 import {useProfanityCheck} from "@/features/chat/hooks/useProfanityCheck.ts";
 import {useEffect} from "react";
 
@@ -32,13 +31,11 @@ export default function ProfaneAlert({messageContent}: { messageContent: string 
     return (
         <div>
             {isProfane ?
-                <Alert variant='destructive' className='border-red-500'>
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertTitle>Be polite!</AlertTitle>
-                    <AlertDescription>
-                        Here is a public chat room. Use a polite language and avoid bad words.
-                    </AlertDescription>
-                </Alert>
+                <Alert
+                    title="Don't use profane content"
+                    description="Please avoid using profane language in the public chat room."
+                    className="break-words"
+                />
                 : null
             }
         </div>

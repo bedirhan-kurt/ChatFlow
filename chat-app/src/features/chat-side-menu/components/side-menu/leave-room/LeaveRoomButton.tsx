@@ -11,7 +11,6 @@ export default function LeaveRoomButton() {
     const {user} = useUser()
 
     function handleLeaveRoom() {
-
         if (!roomCode || !user.uid) {
             console.error("Room ID or user is not defined");
             return;
@@ -25,7 +24,7 @@ export default function LeaveRoomButton() {
     return (
         <TooltipProvider>
             <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                     <Button variant="outline" className="shadow-sm" onClick={handleLeaveRoom}>
                         <SquareArrowLeft></SquareArrowLeft>
                     </Button>
