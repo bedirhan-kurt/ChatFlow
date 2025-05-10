@@ -4,7 +4,6 @@ import {useRoomValidation} from "@/features/rooms/hooks/useRoomValidation.tsx";
 export default function InvalidRoomCodeAlert({joinRoomCode}: {joinRoomCode: string}) {
     const {isRoomExisting} = useRoomValidation();
 
-    console.log(isRoomExisting)
     if (!joinRoomCode) {
         return null;
     }
