@@ -4,7 +4,7 @@ import useCreateRoom from "@/features/rooms/hooks/useCreateRoom.ts";
 
 export default function RoomActionsMenu() {
     const {roomCode, handleCreateRoom} = useCreateRoom();
-    const {handleNavigateToRoom} = useRoomNavigation();
+    const {navigateToRoom} = useRoomNavigation();
 
     return (
         <>
@@ -13,7 +13,7 @@ export default function RoomActionsMenu() {
                     <span className='font-semibold text-sm'>Your room has been created. Here's your room code:</span>
                     <span className='text-xl font-bold'>{roomCode}</span>
                     <span className='text-sm'>Share this code with your friends to invite them to join your room.</span>
-                    <Button onClick={() => handleNavigateToRoom(roomCode)}>Continue to room</Button>
+                    <Button onClick={() => navigateToRoom(roomCode)}>Continue to room</Button>
                 </div> :
                 <Button variant={'secondary'} onClick={handleCreateRoom}>Create room</Button>
             }
