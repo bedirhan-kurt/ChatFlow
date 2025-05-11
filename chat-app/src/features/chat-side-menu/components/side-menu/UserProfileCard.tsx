@@ -5,9 +5,10 @@ type Member = {
     username: string;
     isOnline: boolean;
     lastMessage: string;
+    lastMessageDate: string;
 };
 
-export default function UserProfileCard({username, isOnline, lastMessage}: Member) {
+export default function UserProfileCard({username, isOnline, lastMessage, lastMessageDate}: Member) {
     const statusColor = isOnline ? "bg-green-500" : "bg-red-500";
 
     return (
@@ -19,9 +20,12 @@ export default function UserProfileCard({username, isOnline, lastMessage}: Membe
                 {/* Online status dot */}
                 <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 ${statusColor} rounded-full ring-2 ring-white`} />
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="w-full flex flex-col justify-center">
                 <span className="font-medium text-sm">{username}</span>
-                <span className="text-xs text-muted-foreground">{lastMessage}</span>
+                <div className='w-full flex flex-row justify-between'>
+                    <span className="text-xs text-muted-foreground">{lastMessage}</span>
+                    <span className="text-xs text-muted-foreground">{lastMessageDate}</span>
+                </div>
             </div>
         </Card>
     );

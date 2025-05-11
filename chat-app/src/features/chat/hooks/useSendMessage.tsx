@@ -3,6 +3,7 @@ import { useState } from 'react';
 import addNewMessage from "@/features/chat/api/addNewMesssage.ts";
 import {useUser} from "@/features/users/hooks/useUser.tsx";
 import {useParams} from "react-router";
+import saveLastMessage from "@/features/chat/api/saveLastMessage.ts";
 
 export const useSendMessage = (messageContent: string) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -23,6 +24,11 @@ export const useSendMessage = (messageContent: string) => {
                 content: messageContent,
                 createdAt: new Date().toISOString(),
             });
+
+            await saveLastMessage(roomCode, {
+                authorId: user.uid,
+                content: messageContent,
+            })
         } catch (err) {
             console.error(err);
         } finally {
