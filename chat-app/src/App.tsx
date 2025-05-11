@@ -6,6 +6,7 @@ import AuthRequired from "@/features/auth/components/AuthRequired.tsx";
 import {UserProvider} from "@/features/users/hooks/useUser.tsx";
 import RememberUser from "@/features/auth/components/NavigateSignIn.tsx";
 import RoomsPage from "@/app/RoomsPage.tsx";
+import LadingPage from "@/app/LadingPage.tsx";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <UserProvider>
                     <Router>
                         <Routes>
+                            <Route path="/lading" element={<LadingPage />}></Route>
                             <Route element={<RememberUser />}>
                                 <Route index element={<SignIn />}></Route>
                             </Route>
