@@ -23,7 +23,7 @@ export function useFetchMessages() {
         if (!roomCode) return;
 
         const messageRef = collection(db, "rooms", roomCode, "messages");
-        const q = query(messageRef, orderBy("createdAt", "desc"), limit(10));
+        const q = query(messageRef, orderBy("createdAt", "asc"), limit(15));
 
         const unsubscribe = onSnapshot(q, snapshot => {
             const newMessages = snapshot.docs.map(doc => {

@@ -18,13 +18,13 @@ export default function InviteDialog() {
             }
             title="Invite others to this room"
             description="Copy the room code below and seqwend it to your friends."
-            content={<InviteDialogContent/>}
+            content={<InviteDialogContent roomCode={roomCode}/>}
             closeButton={false}
         />
     );
 };
 
-function InviteDialogContent() {
+function InviteDialogContent({roomCode}: { roomCode: string }) {
     return (
         <div className="w-full flex gap-2">
             <div className="w-full flex gap-2">
@@ -33,12 +33,12 @@ function InviteDialogContent() {
                 </Label>
                 <Input
                     id="link"
-                    defaultValue={""}
+                    defaultValue={roomCode}
                     readOnly
                 />
             </div>
             <Button onClick={() => {
-                navigator.clipboard.writeText(`You are invited to a ChatFlow room with room code ${""}.`)
+                navigator.clipboard.writeText(`You are invited to a ChatFlow room with room code ${roomCode}.`)
             }}>
                 Copy
             </Button>
