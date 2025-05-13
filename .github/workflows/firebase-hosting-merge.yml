@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up working directory
-        run: cd chat-app
       - name: Install dependencies
         working-directory: ./chat-app
         run: npm install
@@ -24,3 +22,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHATFLOW_817CF }}
           channelId: live
           projectId: chatflow-817cf
+          entryPoint: chat-app
