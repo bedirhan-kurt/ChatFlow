@@ -29,7 +29,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Set the debug token for App Check
-window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+window.FIREBASE_APPCHECK_DEBUG_TOKEN = false;
 
 // Initialize App Check
 const appCheck = initializeAppCheck(app, {
