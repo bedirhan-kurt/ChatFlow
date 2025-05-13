@@ -2,9 +2,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Extend the Window interface
+declare global {
+    interface Window {
+        FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean;
+    }
+}
+
+// DEBUG_TOKEN: 0247e716-0e60-4d82-9c04-d0d7d1bb810c
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,4 +28,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { auth, db };
+// Set the debug token for App Check
+window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+
+// Initialize App Check
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6Ld1JDgrAAAAAC0KgM5jNsgVedPKrroZrHNYHMhL'),
+    isTokenAutoRefreshEnabled: true
+});
+
+export { appCheck, auth, db };

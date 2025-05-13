@@ -28,25 +28,25 @@ import {auth} from "@/shared/api/firebaseConfig.ts";
 import {useEffect} from "react";
 
 export default function AuthRequired() {
-  // Retrieves the current user's authentication state
-  const [user] = useAuthState(auth);
-  const navigate = useNavigate();
+    // Retrieves the current user's authentication state
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
-  // Executes session cleanup logic
-  useEndSession();
+    // Executes session cleanup logic
+    useEndSession();
 
-  useEffect(() => {
-    // Redirects to the root route if the user is not authenticated
+    useEffect(() => {
+        // Redirects to the root route if the user is not authenticated
+        if (!user) {
+            navigate("/");
+        }
+    }, [user, navigate]);
+
+    // Returns null if the user is not authenticated
     if (!user) {
-      navigate("/");
+        return null;
     }
-  }, [user, navigate]);
 
-  // Returns null if the user is not authenticated
-  if (!user) {
-    return null;
-  }
-
-  // Renders child components for authenticated users
-  return <Outlet />
+    // Renders child components for authenticated users
+    return <Outlet/>
 };
