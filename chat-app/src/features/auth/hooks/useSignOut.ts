@@ -2,6 +2,7 @@ import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { useUser } from "@/features/users/hooks/useUser.tsx";
 import { auth, db } from "@/shared/api/firebaseConfig.ts";
+import setOfflineStatus from "@/features/auth/api/setOfflineStatus.ts";
 
 export function useSignOut() {
     const { user } = useUser();
@@ -16,6 +17,7 @@ export function useSignOut() {
                 isOnline: false,
             });
 
+            await setOfflineStatus(user.uid)
             await auth.signOut();
         } catch (error) {
             console.error("Error signing out:", error);

@@ -6,47 +6,46 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/shared/components/ui/form.tsx";
+} from "@/shared/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Input } from "@/shared/components/ui/input.tsx";
-import {auth} from "@/shared/api/firebaseConfig.ts";
-import updateUsername from "@/features/users/api/updateUsername.ts";
-import {DialogClose} from "@/shared/components/ui/dialog.tsx";
-import React from "react";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 
-export default function UserSettingsForm({currentUsername, setUsername}: {currentUsername: string, setUsername: React.Dispatch<React.SetStateAction<string>>}) {
+export default function GeneratedForm() {
     const formSchema = z.object({
         username: z
             .string()
             .min(1, { message: "This field is required" })
             .min(4, { message: "Must be at least 4 characters" }),
-        saveBtn: z.string(),
+        profilePic: z.string().optional(),
+        saveBtn: z.string().optional(),
     });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: currentUsername,
-            saveBtn: "",
+            username: undefined,
+            profilePic: undefined,
+            saveBtn: undefined,
         },
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        if (auth.currentUser) {
-            updateUsername(auth.currentUser.uid as string, values.username);
-            setUsername(values.username);
+        console.log(values);
+    }
 
-        } else {
-            console.error("No authenticated user found.");
-        }
+    function onReset() {
+        form.reset();
+        form.clearErrors();
     }
 
     return (
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
+                onReset={onReset}
                 className="space-y-8 @container"
             >
                 <div className="grid grid-cols-12 gap-4">
@@ -54,7 +53,7 @@ export default function UserSettingsForm({currentUsername, setUsername}: {curren
                         control={form.control}
                         name="username"
                         render={({ field }) => (
-                            <FormItem className="col-span-12 col-start-auto flex flex-col gap-2 space-y-0 items-start">
+                            <FormItem className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start">
                                 <FormLabel className="flex shrink-0">Username</FormLabel>
 
                                 <div className="w-full">
@@ -76,19 +75,47 @@ export default function UserSettingsForm({currentUsername, setUsername}: {curren
                     />
                     <FormField
                         control={form.control}
+                        name="profilePic"
+                        render={({ field }) => (
+                            <FormItem className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start">
+                                <FormLabel className="flex shrink-0">Profile Pic.</FormLabel>
+
+                                <div className="w-full">
+                                    <FormControl>
+                                        <Input
+                                            key="file-input-0"
+                                            placeholder=""
+                                            type="file"
+                                            id="profilePic"
+                                            className=""
+                                            {...field}
+                                        />
+                                    </FormControl>
+
+                                    <FormMessage />
+                                </div>
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
                         name="saveBtn"
                         render={() => (
-                            <FormItem className="col-span-12 col-start-auto flex flex-col gap-2 space-y-0 items-start">
+                            <FormItem className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start">
                                 <FormLabel className="hidden shrink-0">Submit</FormLabel>
 
                                 <div className="w-full">
                                     <FormControl>
-                                        <DialogClose
+                                        <Button
+                                            key="button-0"
+                                            id="saveBtn"
+                                            name=""
+                                            className="w-full"
                                             type="submit"
-                                            className="p-2 px-4 text-sm font-semibold rounded-lg bg-primary text-white dark:text-black dark:bg-white"
+                                            variant="default"
                                         >
-                                            Save changes
-                                        </DialogClose>
+                                            Save
+                                        </Button>
                                     </FormControl>
 
                                     <FormMessage />

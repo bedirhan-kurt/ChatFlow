@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../shared/api/firebaseConfig.ts";
+import setOfflineStatus from "@/features/auth/api/setOfflineStatus.ts";
+import {useUser} from "@/features/users/hooks/useUser.tsx";
 
-const AUTO_LOGOUT_TIME = 5 * 60 * 1000; // 5 min (milliseconds)
+const AUTO_LOGOUT_TIME = 4 * 60 * 1000; // 4 min (milliseconds)
 
 /**
  * Custom React hook that tracks user activity and automatically logs out the user
@@ -15,6 +17,7 @@ const AUTO_LOGOUT_TIME = 5 * 60 * 1000; // 5 min (milliseconds)
  * @returns {null} This hook does not return any value or JSX.
  */
 export default function useEndSession() {
+    const { user } = useUser(); // Assuming you have a custom hook to get the current user
     // Reference to the inactivity timer, used to clear and reset the timer.
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -28,7 +31,8 @@ export default function useEndSession() {
         }
 
         // Start a new timer to log out the user after inactivity
-        timerRef.current = setTimeout(() => {
+        timerRef.current = setTimeout(async () => {
+            await setOfflineStatus(user.uid)
             signOut(auth); // Sign out the user using Firebase authentication
         }, AUTO_LOGOUT_TIME);
     };
