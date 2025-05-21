@@ -23,8 +23,8 @@ Follow these steps to set up and run the application locally:
 1. **Clone the repository**:
 
     ```bash
-    git clone [https://github.com/your-username/simple-chat-app.git](https://github.com/DeepCodeRz/ChatFlow/new/main?filename=README.md)
-    cd chat-app
+    git clone [https://github.com/your-username/simple-chat-area-app.git](https://github.com/DeepCodeRz/ChatFlow/new/main?filename=README.md)
+    cd chat-area-app
     ```
 
 2. **Install dependencies**:

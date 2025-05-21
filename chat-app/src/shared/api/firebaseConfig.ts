@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+//import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Extend the Window interface
 declare global {
@@ -29,12 +29,14 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Set the debug token for App Check
-window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+//window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 
 // Initialize App Check
-const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6Ld1JDgrAAAAAC0KgM5jNsgVedPKrroZrHNYHMhL'),
-    isTokenAutoRefreshEnabled: true
-});
+{/*
+    const appCheck = initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider('6Ld1JDgrAAAAAC0KgM5jNsgVedPKrroZrHNYHMhL'),
+        isTokenAutoRefreshEnabled: true
+    });
+*/}
 
-export { appCheck, auth, db };
+export { auth, db };
