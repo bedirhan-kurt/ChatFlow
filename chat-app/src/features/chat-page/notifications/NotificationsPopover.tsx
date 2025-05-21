@@ -1,5 +1,5 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
-import {Bell, BellRing, Check} from "lucide-react"
+import {Bell, Check} from "lucide-react"
 import {cn} from "@/shared/lib/utils.ts";
 import {Button} from "@/shared/components/ui/button.tsx";
 import React from "react";
