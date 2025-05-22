@@ -4,7 +4,7 @@ import UsersAndActionsMenu from "@/features/chat-page/users-and-actions-menu/com
 import ChatArea from "@/features/chat-page/chat-area/components/ChatArea.tsx";
 import RoomsMenu from "@/features/chat-page/rooms-menu/components/RoomsMenu.tsx";
 
-export default function NewChatPage() {
+export default function AppPage() {
     return (
         <UserProvider>
             <div className="w-full h-screen flex flex-col">

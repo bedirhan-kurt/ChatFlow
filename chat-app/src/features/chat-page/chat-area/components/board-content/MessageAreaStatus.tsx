@@ -1,5 +1,5 @@
 /**
- * MessageBoardStatus Component
+ * MessageAreaStatus Component
  *
  * Responsibility:
  * Responsible for checking the chat-area data and rendering the appropriate message.
@@ -22,11 +22,11 @@
  * @param {boolean} props.isLoading - Indicates loading state.
  * @param {Error | null} props.error - Error object or null.
  * @param {any[]} props.chat-area - Array of chat-area.
- * @returns {TSX.Element} The rendered MessageBoardStatus component.
+ * @returns {TSX.Element} The rendered MessageAreaStatus component.
  */
 import {Hourglass, PackageOpen} from "lucide-react";
 
-export default function MessageBoardStatus({isLoading, error, messages}: { isLoading: boolean; error: Error | null; messages: any[] }) {
+export default function MessageAreaStatus({isLoading, error, messages}: { isLoading: boolean; error: Error | null; messages: any[] }) {
     return (
         <>
             {isLoading ? (

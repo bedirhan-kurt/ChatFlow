@@ -1,5 +1,5 @@
 /**
- * NavigateSignIn Component
+ * AuthRedirect Component
  *
  * Responsibility:
  * Ensures that authenticated dark-mode are redirected to the "/rooms" route,
@@ -28,7 +28,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "@/shared/api/firebaseConfig.ts";
 import {useEffect} from "react";
 
-export default function NavigateSignIn() {
+export default function AuthRedirect() {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export default function NavigateSignIn() {
 
     useEffect(() => {
         if (user) {
-            navigate("/rooms");
+            navigate(`/app/${user.uid}`);
         }
     }, [user, navigate]);
 
