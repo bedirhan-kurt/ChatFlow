@@ -17,7 +17,7 @@ type ModalProps = {
     description: string;
     content: React.ReactNode | string;
     actionButton?: React.ReactNode;
-    closeButton?: React.ReactNode | false;
+    closeButton?: React.ReactNode | boolean;
 };
 
 export default function Dialog({
@@ -41,15 +41,15 @@ export default function Dialog({
                 <div>{content}</div>
 
                 <DialogFooter>
-                    {closeButton === false ? null : (
-                        <DialogClose asChild={!!closeButton}>
-                            {closeButton || (
-                                <Button type="button" variant="secondary">
-                                    Close
-                                </Button>
-                            )}
-                        </DialogClose>
-                    )}
+                    <DialogClose asChild>
+                        {closeButton === true || closeButton === undefined ? (
+                            <Button type="button" variant="secondary">
+                                Close
+                            </Button>
+                        ) : (
+                            closeButton
+                        )}
+                    </DialogClose>
                     {actionButton}
                 </DialogFooter>
             </DialogContent>

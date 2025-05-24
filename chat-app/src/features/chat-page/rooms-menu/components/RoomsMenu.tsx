@@ -1,7 +1,8 @@
-import RoleBasedActions from "@/features/chat-page/users-and-actions-menu/components/actions/RoleBasedActions.tsx";
 import {Separator} from "@/shared/components/ui/separator.tsx";
 import RoomsMenuStatus from "@/features/chat-page/rooms-menu/components/RoomsMenuStatus.tsx";
 import JoinRoomDialog from "@/features/chat-page/rooms-menu/components/JoinRoomDialog.tsx";
+import {useFetchJoinedRooms} from "@/features/chat-page/rooms-menu/hooks/useFetchJoinedRooms.ts";
+import {useParams} from "react-router";
 
 export default function RoomsMenu({className}: { className?: string }) {
     {/*
@@ -22,7 +23,8 @@ export default function RoomsMenu({className}: { className?: string }) {
             );
         });
     */}
-
+    const {userId} = useParams();
+    const {isLoading, error, rooms} = useFetchJoinedRooms(userId || "");
 
     return (
         <div className={className}>
@@ -31,14 +33,10 @@ export default function RoomsMenu({className}: { className?: string }) {
                 {/*userProfileCards*/}
                 <Separator orientation="horizontal" className="w-full"></Separator>
             </div>
-            <div className="w-full flex flex-col gap-2">
-                <RoomsMenuStatus isLoading={false} rooms={[]} error={null} />
-                <Separator orientation="horizontal" className="w-4/5"></Separator>
+            <div className="w-64 h-full flex flex-col items-center justify-center gap-2">
+                <RoomsMenuStatus isLoading={isLoading} error={error}  rooms={rooms} />
+                <Separator orientation="horizontal"></Separator>
                 <JoinRoomDialog />
-            </div>
-            <div className="w-full flex flex-col gap-2">
-                <span className="text-sm text-gray-500">Actions</span>
-                <RoleBasedActions/>
             </div>
         </div>
     );

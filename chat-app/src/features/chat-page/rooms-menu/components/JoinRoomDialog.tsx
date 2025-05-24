@@ -4,11 +4,14 @@ import {Input} from "@/shared/components/ui/input.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {Plus} from "lucide-react";
+import {DialogClose} from "@/shared/components/ui/dialog.tsx";
+import {useJoinRoom} from "@/features/chat-page/rooms-menu/hooks/useJoinRoom.ts";
 
 export default function JoinRoomDialog() {
-    const {roomCode} = useParams();
+    const {userId} = useParams();
+    const {roomCode, setRoomCode, handleInputChange, handleJoinRoom} = useJoinRoom();
 
-    if (!roomCode) {
+    if (!userId) {
         return;
     }
 
@@ -16,36 +19,34 @@ export default function JoinRoomDialog() {
         <Dialog
             trigger={
                 <Button variant="ghost" className="flex items-center justify-center gap-2">
-                    <span>Join Room</span>
+                    <span>Send Request</span>
                     <Plus></Plus>
                 </Button>
             }
-            title="Invite others to this room"
-            description="Copy the room code below and seqwend it to your friends."
-            content={<JoinRoomDialogContent roomCode={roomCode}/>}
-            closeButton={false}
+            title="Send request to join a room"
+            description="Enter the room code to send a request to join the room."
+            content={<JoinRoomDialogContent/>}
+            actionButton={
+                <DialogClose asChild>
+                    <Button type="submit" variant="default" onClick={handleJoinRoom}>
+                        Send Request
+                    </Button>
+                </DialogClose>}
         />
     );
 };
 
-function JoinRoomDialogContent({roomCode}: { roomCode: string }) {
+function JoinRoomDialogContent() {
     return (
         <div className="w-full flex gap-2">
-            <div className="w-full flex gap-2">
-                <Label htmlFor="link" className="sr-only">
-                    Link
-                </Label>
-                <Input
-                    id="link"
-                    defaultValue={roomCode}
-                    readOnly
-                />
-            </div>
-            <Button onClick={() => {
-                navigator.clipboard.writeText(`You are invited to a ChatFlow room with room code ${roomCode}.`)
-            }}>
-                Copy
-            </Button>
+            <Label htmlFor="roomCode" className="sr-only">
+                Room Code
+            </Label>
+            <Input
+                id="roomCode"
+                placeholder={"Room Code"}
+                onChange={handleInputChange}
+            />
         </div>
     );
 }

@@ -39,7 +39,7 @@ export default function RoomsMenuStatus({isLoading, error, rooms}: { isLoading: 
                     <p>Error: {error.message}</p>
                 </div>
             ) : rooms.length === 0 ? (
-                <div className="flex flex-col gap-2 items-center justify-center text-xl font-semibold">
+                <div className="flex flex-col gap-2 items-center justify-center text-lg font-medium">
                     <PackageOpen className="size-12" />
                     <p>No rooms yet.</p>
                 </div>

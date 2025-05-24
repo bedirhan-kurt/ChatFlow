@@ -5,11 +5,5 @@ export default async function checkRoomExistence(roomCode: string) {
     const roomRef = doc(db, "rooms", roomCode); // Belge referansı olmalı
     const docSnap = await getDoc(roomRef);
 
-    if (docSnap.exists()) {
-        console.log("Doküman var.");
-        return true;
-    } else {
-        console.log("Doküman yok.");
-        return false;
-    }
+    return !!docSnap.exists();
 }

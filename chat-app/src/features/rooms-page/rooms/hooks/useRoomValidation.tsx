@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
-import checkRoomExistence from "@/features/rooms-page/rooms/api/checkRoomExistence.ts";
+import checkRoomExistence from "@/features/chat-page/rooms-menu/api/checkRoomExistence.ts";
 import { formatRoomCode } from "@/features/rooms-page/rooms/lib/utils.ts";
 
 type RoomValidationContextType = {

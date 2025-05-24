@@ -10,7 +10,7 @@ export default function AppPage() {
             <div className="w-full h-screen flex flex-col">
                 <HeaderMenu className="w-full flex justify-between items-center border-b px-6 py-4" />
                 <div className="w-full h-full flex">
-                    <RoomsMenu className="w-120 h-full flex flex-col items-center justify-between border-r p-4"></RoomsMenu>
+                    <RoomsMenu className="w-120 h-full flex flex-col items-center justify-start border-r p-4"></RoomsMenu>
                     <ChatArea className="w-full h-full p-4 flex flex-col flex-grow gap-1 bg-gray-50 dark:bg-gray-800"/>
                     <UsersAndActionsMenu className="w-120 h-full flex flex-col items-center justify-between border-l p-4" />
                 </div>
