@@ -9,8 +9,8 @@ export function useJoinRoom() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setRoomCode(e.target.value);
+    const handleCodeChange = useCallback((newCode: string) => {
+        setRoomCode(newCode);
         if (error) {
             setError(null); // Clear error when input changes
         }
@@ -31,7 +31,7 @@ export function useJoinRoom() {
     return {
         roomCode,
         setRoomCode,
-        handleInputChange,
+        handleCodeChange,
         handleJoinRoom,
         isLoading,
         error,

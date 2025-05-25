@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useUser} from "@/features/chat-page/header-menu/hooks/useUser.tsx";
-import addNewRoom from "@/features/rooms-page/rooms/api/addNewRoom.ts";
+import createNewRoom from "@/features/chat-page/rooms-menu/api/createNewRoom.ts";
 
 export default function useCreateRoom() {
     const [roomCode, setRoomCode] = useState<string | "">("");
@@ -8,7 +8,7 @@ export default function useCreateRoom() {
 
     const handleCreateRoom = async () => {
         try {
-            const newRoomCode = await addNewRoom({user, username});
+            const newRoomCode = await createNewRoom({user, username});
             setRoomCode(newRoomCode); // Save the document ID
         } catch (error) {
             console.error(error); // Log the error or handle it appropriately

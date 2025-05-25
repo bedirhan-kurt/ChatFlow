@@ -16,7 +16,6 @@ function App() {
                     <Router>
                         <Routes>
                             <Route path="/lading" element={<LadingPage />}></Route>
-                            <Route path="/newchatpage" element={<AppPage />}></Route>
                             <Route element={<RememberUser />}>
                                 <Route index element={<SignIn />}></Route>
                             </Route>

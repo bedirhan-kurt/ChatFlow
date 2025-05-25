@@ -9,7 +9,7 @@ const provider = new GoogleAuthProvider();
 export async function signInWithGoogle() {
     try {
         const { user } = await signInWithPopup(auth, provider);
-        const userRef = doc(db, "profile", user.uid);
+        const userRef = doc(db, "users", user.uid);
 
         if (!(await getDoc(userRef)).exists()) {
             await setDoc(userRef, {
