@@ -11,13 +11,16 @@ export function useJoinRoom() {
 
     const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setRoomCode(e.target.value);
-    }, []);
+        if (error) {
+            setError(null); // Clear error when input changes
+        }
+    }, [error]);
 
     const handleJoinRoom = useCallback(async () => {
         setIsLoading(true);
         setError(null);
         try {
-            await sendJoinRoomRequest(roomCode, userId || "");
+            await sendJoinRoomRequest(roomCode, userId as string, setError);
         } catch (err: any) {
             setError(err.message || "An error occurred");
         } finally {

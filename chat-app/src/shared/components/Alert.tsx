@@ -14,7 +14,7 @@ export default function Alert({ variant = "destructive", title, description, ico
     return (
         <BaseAlert variant={variant} className={`border-red-500 ${className}`}>
             <AlertCircle className="h-4 w-4" />
-            <AlertTitle>{title}</AlertTitle>
+            <AlertTitle className='font-semibold'>{title}</AlertTitle>
             <AlertDescription className="w-full flex flex-wrap break-words whitespace-normal text-sm">
                 {icon}
                 {description}

@@ -8,7 +8,7 @@ export function useSignIn() {
     async function handleGoogleSignIn(): Promise<void> {
         const user = await signInWithGoogle();
         if (user) {
-            navigate("/rooms");
+            navigate(`/app/${user.uid}`);
         }
     }
 

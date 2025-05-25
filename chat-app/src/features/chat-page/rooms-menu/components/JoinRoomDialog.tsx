@@ -4,12 +4,13 @@ import {Input} from "@/shared/components/ui/input.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {Plus} from "lucide-react";
-import {DialogClose} from "@/shared/components/ui/dialog.tsx";
 import {useJoinRoom} from "@/features/chat-page/rooms-menu/hooks/useJoinRoom.ts";
+import React from "react";
+import InvalidRoomCodeAlert from "@/features/chat-page/rooms-menu/components/InvalidRoomCodeAlert.tsx";
 
 export default function JoinRoomDialog() {
     const {userId} = useParams();
-    const {roomCode, setRoomCode, handleInputChange, handleJoinRoom} = useJoinRoom();
+    const {error, handleInputChange, handleJoinRoom} = useJoinRoom();
 
     if (!userId) {
         return;
@@ -25,28 +26,29 @@ export default function JoinRoomDialog() {
             }
             title="Send request to join a room"
             description="Enter the room code to send a request to join the room."
-            content={<JoinRoomDialogContent/>}
+            content={<JoinRoomDialogContent handleInputChange={handleInputChange} error={error} />}
             actionButton={
-                <DialogClose asChild>
-                    <Button type="submit" variant="default" onClick={handleJoinRoom}>
-                        Send Request
-                    </Button>
-                </DialogClose>}
+            <Button variant="default" onClick={handleJoinRoom}>
+                Send Request
+            </Button>}
         />
     );
 };
 
-function JoinRoomDialogContent() {
+function JoinRoomDialogContent({ handleInputChange, error }: { handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void; error?: string | null }) {
     return (
         <div className="w-full flex gap-2">
             <Label htmlFor="roomCode" className="sr-only">
                 Room Code
             </Label>
-            <Input
-                id="roomCode"
-                placeholder={"Room Code"}
-                onChange={handleInputChange}
-            />
+            <div className="w-full flex flex-col gap-2">
+                <Input
+                    id="roomCode"
+                    placeholder={"Room Code"}
+                    onChange={handleInputChange}
+                />
+                {error && <InvalidRoomCodeAlert />}
+            </div>
         </div>
     );
 }
