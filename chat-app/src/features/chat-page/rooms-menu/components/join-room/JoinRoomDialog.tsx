@@ -5,7 +5,7 @@ import {DoorClosed} from "lucide-react";
 import {useJoinRoom} from "@/features/chat-page/rooms-menu/hooks/useJoinRoom.ts";
 import {JoinRoomDialogContent} from "@/features/chat-page/rooms-menu/components/join-room/JoinRoomDialogContent.tsx";
 
-export default function JoinRoomDialog() {
+export default function JoinRoomDialog({className}: {className?: string}) {
     const {userId} = useParams();
     const {error, handleCodeChange, handleJoinRoom} = useJoinRoom();
 
@@ -16,17 +16,17 @@ export default function JoinRoomDialog() {
     return (
         <Dialog
             trigger={
-                <Button variant="outline" className="flex items-center justify-center gap-2">
-                    <span>Send Request</span>
+                <Button variant="outline" className={`flex items-center justify-center gap-2 ${className}`}>
+                    <span>Join Room</span>
                     <DoorClosed></DoorClosed>
                 </Button>
             }
-            title="Send request to join a room"
-            description="Enter the room code to send a request to join the room."
+            title="Join a room"
+            description="Enter the room code to join directly or request access."
             content={<JoinRoomDialogContent handleCodeChange={handleCodeChange} error={error} />}
             actionButton={
             <Button variant="default" onClick={handleJoinRoom}>
-                Send Request
+                Continue
             </Button>}
         />
     );

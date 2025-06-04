@@ -1,6 +1,6 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/shared/components/ui/card.tsx";
 import {Bell, Check} from "lucide-react"
-import {cn} from "@/shared/lib/utils.ts";
+import {cn} from "@/shared/lib/utils/cn.ts";
 import {Button} from "@/shared/components/ui/button.tsx";
 import React from "react";
 import {Popover, PopoverContent, PopoverTrigger} from "@/shared/components/ui/popover.tsx";

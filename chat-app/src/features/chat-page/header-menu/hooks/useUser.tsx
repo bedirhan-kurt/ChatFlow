@@ -22,7 +22,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
             setUsername("");
             return;
         }
-
+        console.log("User:", user.uid);
         const fetchUsername = async () => {
             const resolvedUsername = await getUsername(user.uid);
             setUsername(resolvedUsername);

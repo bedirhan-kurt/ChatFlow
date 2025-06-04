@@ -6,6 +6,7 @@ export function subscribeToUserRoomCodes(
     onChange: (roomIds: string[]) => void,
     onError: (error: Error) => void
 ): Unsubscribe {
+    console.log("Subscribing to user rooms:", userId);
     const userDocRef = doc(db, "users", userId);
 
     return onSnapshot(

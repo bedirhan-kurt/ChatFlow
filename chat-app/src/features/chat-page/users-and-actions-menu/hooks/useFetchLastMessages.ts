@@ -5,7 +5,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { useParams } from "react-router";
-import {toReadableDate} from "@/features/chat-page/chat-area/lib/utils.ts";
+import {toReadableDate} from "@/shared/lib/utils/toReadableDate.ts";
 
 type LastMessageMap = Record<string, { content: string; createdAt: string }>;
 

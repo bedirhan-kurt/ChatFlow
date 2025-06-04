@@ -3,6 +3,7 @@ import { subscribeToUserRoomCodes } from "../api/subscribeToUserRoomCodes";
 import {fetchJoinedRoomsData} from "@/features/chat-page/rooms-menu/api/fetchJoinedRoomsData.ts";
 
 export type Room = {
+    name: string;
     createdAt: string;
     creatorId: string;
     creatorUsername: string;
@@ -23,15 +24,15 @@ export function useJoinedRooms(userId: string) {
 
         const unsubscribe = subscribeToUserRoomCodes(
             userId,
-            async (roomIds) => {
-                if (roomIds.length === 0) {
+            async (roomCodes) => {
+                if (roomCodes.length === 0) {
                     setRooms([]);
                     setIsLoading(false);
                     return;
                 }
 
                 try {
-                    const rooms = await fetchJoinedRoomsData(roomIds);
+                    const rooms = await fetchJoinedRoomsData(roomCodes);
                     setRooms(rooms);
                 } catch (err) {
                     setError(err instanceof Error ? err : new Error(String(err)));
