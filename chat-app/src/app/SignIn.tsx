@@ -25,7 +25,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/shared/components/ui/card.tsx"
-import SignInButton from "@/features/auth-page/auth/components/SignInButton.tsx";
+import SignInButton from "@/features/auth [page]/auth [feat]/components/SignInButton.tsx";
 
 export default function SignIn() {
     return (

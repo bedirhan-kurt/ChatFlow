@@ -15,10 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        working-directory: ./chat-area-app
+        working-directory: ./chat-area [section]-app
         run: npm install
       - name: Build application
-        working-directory: ./chat-area-app
+        working-directory: ./chat-area [section]-app
         run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -26,4 +26,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHATFLOW_817CF }}
           channelId: live
           projectId: chatflow-817cf
-          entryPoint: chat-area-app
+          entryPoint: chat-area [section]-app
