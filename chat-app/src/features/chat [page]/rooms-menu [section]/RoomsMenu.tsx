@@ -1,5 +1,5 @@
 import { Separator } from "@/shared/components/ui/separator.tsx";
-import { useUser } from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import { useUser } from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import { toReadableDate } from "@/shared/lib/utils/toReadableDate.ts";
 import RoomsMenuStatus
     from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/components/RoomsMenuStatus.tsx";
@@ -34,6 +34,7 @@ export default function RoomsMenu({ className }: { className?: string }) {
                         <span className="text-sm text-gray-500">Rooms</span>
                         {rooms.map((room) => (
                             <RoomCard
+                                roomCode={room.roomCode}
                                 key={room.roomCode || room.name}
                                 roomName={room.name}
                                 createdAt={toReadableDate(room.createdAt)}

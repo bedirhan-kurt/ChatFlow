@@ -4,9 +4,9 @@ interface RoomContextType {
     roomCode: string;
     loading: boolean;
     error: Error | undefined;
-    setRoomCode?: React.Dispatch<React.SetStateAction<string>>;
-    setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
-    setError?: React.Dispatch<React.SetStateAction<Error | undefined>>;
+    setRoomCode: React.Dispatch<React.SetStateAction<string>>;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setError: React.Dispatch<React.SetStateAction<Error | undefined>>;
 }
 
 const RoomContext = createContext<RoomContextType | undefined>(undefined);

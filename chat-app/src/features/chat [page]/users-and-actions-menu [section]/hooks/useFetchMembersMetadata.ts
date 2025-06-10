@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { getMembersData } from "@/features/chat [page]/users-and-actions-menu [section]/api/getMembersData.ts";
-import {useUser} from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 
 type Member = {
     uid: string;

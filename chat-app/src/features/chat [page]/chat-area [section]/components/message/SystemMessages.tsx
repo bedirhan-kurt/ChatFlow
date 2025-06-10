@@ -5,7 +5,7 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
  *
  * Responsibility:
  * This component is responsible for rendering the system chat-area [section] UI.
- * It provides a container for displaying system-related chat-area [section] or notifications [section]
+ * It provides a container for displaying system-related chat-area [section] or notifications [feat]
  * in a structured and styled format.
  *
  * Features:

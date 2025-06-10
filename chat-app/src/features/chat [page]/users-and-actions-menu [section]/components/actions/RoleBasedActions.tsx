@@ -1,4 +1,4 @@
-import { useUser } from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import { useUser } from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import { useEffect, useState } from "react";
 import checkRoomCreator from "@/features/chat [page]/users-and-actions-menu [section]/api/checkRoomCreator.ts";
 import { useParams } from "react-router";

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import RoomContext from "@/features/chat [page]/context [core]/RoomContext.tsx";
+import RoomContext from "@/features/chat [page]/[page-core]/context [core]/RoomContext.tsx";
 
 export function useRoom() {
     const context = useContext(RoomContext);

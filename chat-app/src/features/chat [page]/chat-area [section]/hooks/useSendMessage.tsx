@@ -1,13 +1,13 @@
 // useSendMessage.ts
 import { useState } from 'react';
 import addNewMessage from "@/features/chat [page]/chat-area [section]/api/addNewMesssage.ts";
-import {useUser} from "@/features/chat [page]/hooks [core]/useUser.tsx";
-import {useParams} from "react-router";
+import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import saveLastMessage from "@/features/chat [page]/chat-area [section]/api/saveLastMessage.ts";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 export const useSendMessage = (messageContent: string) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const { roomCode } = useParams()
+    const { roomCode } = useRoom()
     const { user, username } = useUser();
 
     const handleSendMessage = async () => {

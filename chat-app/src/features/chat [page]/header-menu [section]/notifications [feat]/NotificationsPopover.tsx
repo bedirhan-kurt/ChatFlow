@@ -9,7 +9,7 @@ export default function NotificationsPopover() {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button variant="outline"><Bell /></Button>
+                <Button variant="outline" size="icon"><Bell /></Button>
             </PopoverTrigger>
             <PopoverContent className="w-80" asChild={true}>
                 <NotificationsCardContent />

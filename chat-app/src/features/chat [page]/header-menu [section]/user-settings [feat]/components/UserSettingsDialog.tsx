@@ -2,7 +2,7 @@
 import Dialog from "@/shared/components/Dialog.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {User} from "lucide-react";
-import {useUser} from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import {
     Form,
     FormControl,

@@ -2,7 +2,7 @@ import UserProfileCard from "@/features/chat [page]/users-and-actions-menu [sect
 import {useFetchMembersMetadata} from "@/features/chat [page]/users-and-actions-menu [section]/hooks/useFetchMembersMetadata.ts";
 import RoleBasedActions from "@/features/chat [page]/users-and-actions-menu [section]/components/actions/RoleBasedActions.tsx";
 import {useFetchLastMessages} from "@/features/chat [page]/users-and-actions-menu [section]/hooks/useFetchLastMessages.ts";
-import InviteDialog from "@/features/chat [page]/header-menu [section]/components/InviteDialog.tsx";
+import InviteDialog from "@/features/chat [page]/header-menu [section]/[section-core]/components/InviteDialog.tsx";
 import {Separator} from "@/shared/components/ui/separator.tsx";
 
 export default function UsersAndActionsMenu({className}: { className?: string }) {

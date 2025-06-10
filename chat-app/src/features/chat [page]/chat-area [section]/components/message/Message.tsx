@@ -2,7 +2,7 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
 import {MessageOptionsDropdown} from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageOptionsDropdown.tsx";
 import MessageEditButton from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageEditButton.tsx";
 import MessageDeleteButton from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageDeleteButton.tsx";
-import {useParams} from "react-router";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 /**
  * Message Component
@@ -41,7 +41,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
     isOwned?: boolean,
     createdAt: string
 }) {
-    const {roomCode} = useParams()
+    const {roomCode} = useRoom()
     if (!roomCode) {
         throw new Error("Room code is not defined");
     }

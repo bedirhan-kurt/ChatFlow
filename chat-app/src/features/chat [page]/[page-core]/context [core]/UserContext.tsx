@@ -1,7 +1,7 @@
 import React, {createContext, useEffect, useState} from "react";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "@/shared/api/firebaseConfig.ts";
-import {getUsername} from "@/features/chat [page]/header-menu [section]/api/getUsername.ts";
+import {getUsername} from "@/features/chat [page]/header-menu [section]/user-settings [feat]/api/getUsername.ts";
 
 interface UserContextType {
     user: any;

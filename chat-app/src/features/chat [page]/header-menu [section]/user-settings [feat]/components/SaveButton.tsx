@@ -1,8 +1,8 @@
-import updateUsername from "@/features/chat [page]/header-menu [section]/api/updateUsername.ts";
 import {auth} from "@/shared/api/firebaseConfig.ts";
 import {DialogClose} from "@/shared/components/ui/dialog.tsx";
 import React from "react";
-import {useUser} from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
+import updateUsername from "@/features/chat [page]/header-menu [section]/user-settings [feat]/api/updateUsername.ts";
 
 export default function  SaveButton({usernameContentRef}: {usernameContentRef: React.MutableRefObject<string>}) {
     const {setUsername} = useUser();

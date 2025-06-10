@@ -7,7 +7,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu.tsx"
-import { useTheme } from "@/features/chat [page]/header-menu [section]/components/dark-mode/theme-provider.tsx"
+import {useTheme} from "@/features/chat [page]/header-menu [section]/dark-mode [feat]/components/theme-provider.tsx";
 
 /**
  * ModeToggle Component

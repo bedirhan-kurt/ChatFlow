@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UserContext from "@/features/chat [page]/context [core]/UserContext.tsx";
+import UserContext from "@/features/chat [page]/[page-core]/context [core]/UserContext.tsx";
 
 export function useUser() {
     const context = useContext(UserContext);

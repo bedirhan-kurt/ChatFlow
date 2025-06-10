@@ -34,7 +34,7 @@ export default function ProfaneAlert({messageContent}: { messageContent: string 
                 <Alert
                     title="Don't use profane content"
                     description="Please avoid using profane language in the public chat room."
-                    className="break-words"
+                    className="break-words bg-red-50"
                 />
                 : null
             }

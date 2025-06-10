@@ -1,7 +1,6 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
-import useCreateRoom from "@/features/rooms [page]/rooms/hooks/useCreateRoom.ts";
 
 import {
     MultistepForm,
@@ -24,6 +23,7 @@ import { StepSettings } from "./multistep-form-content/StepSettings.tsx";
 import {
     StepLimits
 } from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/multistep-form-content/StepLimits.tsx";
+import useCreateRoom from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/hooks/useCreateRoom.tsx";
 
 type FormValues = z.infer<typeof createRoomSchema>;
 
@@ -54,7 +54,7 @@ export default function CreateRoomDialogContent() {
                 console.error("Room creation error:", result.error);
             } else {
                 setIsRoomCreated(true);
-                console.log(`Room created with code: ${result.roomCode}`);
+                console.log(`Room created with code: ${result.createdRoomCode}`);
             }
         } catch (e) {
             console.error("Unexpected error:", e);

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../shared/api/firebaseConfig.ts";
 import setOfflineStatus from "@/features/auth [page]/auth [feat]/api/setOfflineStatus.ts";
-import {useUser} from "@/features/chat [page]/hooks [core]/useUser.tsx";
+import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 
 const AUTO_LOGOUT_TIME = 20 * 60 * 1000; // 4 min (milliseconds)
 

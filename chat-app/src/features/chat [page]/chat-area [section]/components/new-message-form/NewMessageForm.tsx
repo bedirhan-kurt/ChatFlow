@@ -32,13 +32,13 @@ export default function NewMessageForm() {
     const {handleSendMessage} = useSendMessage(messageContent);
 
     return (
-        <div className='flex flex-col gap-2'>
+        <div className='bg-white flex overflow-y-auto flex-col gap-2'>
             <ProfaneAlert messageContent={messageContent}></ProfaneAlert>
             <MessageFeaturesMenu appendToMessage={appendToMessage} />
             <div className="flex gap-4">
                 <Input
                     placeholder="Type your message..."
-                    className=" resize-none flex-1"
+                    className="resize-none flex-1"
                     value={messageContent}
                     onChange={handleInputChange}
                     onKeyDown={(e) => {
