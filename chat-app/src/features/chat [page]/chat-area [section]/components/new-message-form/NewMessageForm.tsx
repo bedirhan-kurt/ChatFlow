@@ -32,7 +32,7 @@ export default function NewMessageForm() {
     const {handleSendMessage} = useSendMessage(messageContent);
 
     return (
-        <div className='bg-white flex overflow-y-auto flex-col gap-2'>
+        <div className='bg-background p-4 flex overflow-y-auto flex-col gap-2'>
             <ProfaneAlert messageContent={messageContent}></ProfaneAlert>
             <MessageFeaturesMenu appendToMessage={appendToMessage} />
             <div className="flex gap-4">

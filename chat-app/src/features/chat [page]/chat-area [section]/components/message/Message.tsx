@@ -50,9 +50,9 @@ export default function Message({id, message, author, isOwned = false, createdAt
     const isAdmin = author === "ADMIN";
     const flexDirection = isOwned ? "items-end" : "items-start";
     const cardClass =
-        isOwned ? "bg-gray-100 text-black dark:bg-input dark:text-primary" :
+        isOwned ? "bg-gray-100 text-black dark:bg-zinc-900 dark:text-primary" :
             isAdmin ? "bg-primary text-white dark:bg-red-500 dark:text-white" :
-                "bg-gray-50 dark:bg-secondary dark:text-white";
+                "bg-gray-50 dark:bg-zinc-800 dark:text-white";
     const messageStructure = isOwned ? (
         <div className="flex gap-2 items-center">
             <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>

@@ -2,15 +2,11 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
 import EditModeMessage from "@/features/chat [page]/chat-area [section]/components/message/message-options/EditModeMessage.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {Input} from "@/shared/components/ui/input.tsx";
-
-const dottedBackgroundStyle = {
-    backgroundImage: 'radial-gradient(circle, rgba(237, 237, 237, 0.6) 3px, transparent 1px)', // opaklık %60
-    backgroundSize: '40px 40px',
-    backgroundPosition: '0 0',
-    weight: '%',
-};
+import {useDottedBackgroundStyle} from "@/features/chat [page]/chat-area [section]/hooks/useDottedBackgroundStyle.ts";
 
 export default function EditMessageForm({message, newMessage, setNewMessage, createdAt}: {message: string, newMessage: string, setNewMessage: (message: string) => void, createdAt: string}) {
+    const dottedBackgroundStyle = useDottedBackgroundStyle()
+
     return (
         <div className='flex flex-col gap-8 mt-4'>
             <div className='flex flex-col'>

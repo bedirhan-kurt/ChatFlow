@@ -31,7 +31,7 @@ export default function RoomCard({ roomCode, roomName, lastMessage, numberOfMemb
             <div className="flex items-center gap-3 w-full justify-between">
                 <div className="flex items-center gap-3">
                     <Avatar className="w-10 h-10">
-                        <AvatarFallback className="bg-gray-200">{generateInitials(roomName)}</AvatarFallback>
+                        <AvatarFallback className="bg-gray-200 dark:bg-zinc-700">{generateInitials(roomName)}</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col w-full items-start">
                         <span className="font-medium text-sm">{roomName}</span>

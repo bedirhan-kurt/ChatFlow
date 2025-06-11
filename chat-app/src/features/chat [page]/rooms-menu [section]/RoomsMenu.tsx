@@ -31,7 +31,8 @@ export default function RoomsMenu({ className }: { className?: string }) {
             {rooms.length > 0 && !isLoading && !error && (
                 <>
                     <div className="w-full flex flex-col gap-2 mt-2">
-                        <span className="text-sm text-gray-500">Rooms</span>
+                        <span className="text-sm ">Rooms</span>
+                        <Separator orientation="horizontal" className="w-full" />
                         {rooms.map((room) => (
                             <RoomCard
                                 roomCode={room.roomCode}
