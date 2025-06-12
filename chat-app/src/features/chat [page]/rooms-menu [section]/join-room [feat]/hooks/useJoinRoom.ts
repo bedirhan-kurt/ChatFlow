@@ -1,6 +1,6 @@
 import {useState, useCallback} from "react";
 import {useParams} from "react-router";
-import sendJoinRoomRequest from "../api/join-room/sendJoinRoomRequest";
+import sendJoinRoomRequest from "../api/sendJoinRoomRequest.ts";
 
 export function useJoinRoom() {
     const {userId} = useParams();

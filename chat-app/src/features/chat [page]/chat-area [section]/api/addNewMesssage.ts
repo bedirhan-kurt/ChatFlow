@@ -14,10 +14,8 @@ interface AddNewMessageParams {
 export default async function addNewMessage(
     messageData: AddNewMessageParams
 ) {
-    const {roomCode} = messageData
-
     try {
-        await addDoc(collection(db, "rooms", roomCode, "messages"), {
+        await addDoc(collection(db, "rooms", messageData.roomCode, "messages"), {
             ...messageData
         });
     } catch (error) {

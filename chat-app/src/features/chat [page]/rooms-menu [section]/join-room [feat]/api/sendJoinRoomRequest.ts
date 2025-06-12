@@ -1,7 +1,7 @@
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import checkRoomExistence
-    from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/api/join-room/checkRoomExistence.ts";
+    from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/api/checkRoomExistence.ts";
 
 export default async function sendJoinRoomRequest(roomCode: string, userId: string, setError: (error: string | null) => void) {
     const roomRef = doc(db, "rooms", roomCode);

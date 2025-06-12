@@ -15,6 +15,7 @@ export const useSendMessage = (messageContent: string) => {
             console.error('roomCode is required');
             return;
         }
+        console.log("roomCode", roomCode);
         try {
             setIsLoading(true);
             await addNewMessage({
