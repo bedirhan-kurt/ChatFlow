@@ -16,7 +16,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         working-directory: ./chat-app
-        run: npm install
+        run: npm install --legacy-peer-deps
+
       - name: Build application
         working-directory: ./chat-app
         run: npm run build
