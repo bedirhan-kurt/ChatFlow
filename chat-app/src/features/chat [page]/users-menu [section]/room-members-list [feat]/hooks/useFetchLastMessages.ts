@@ -4,13 +4,13 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
-import { useParams } from "react-router";
 import {toReadableDate} from "@/shared/lib/utils/toReadableDate.ts";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 type LastMessageMap = Record<string, { content: string; createdAt: string }>;
 
 export function useFetchLastMessages() {
-    const { roomCode } = useParams();
+    const { roomCode } = useRoom();
     const [lastMessages, setLastMessages] = useState<LastMessageMap>({});
 
     useEffect(() => {

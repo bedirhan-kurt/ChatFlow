@@ -3,7 +3,7 @@ import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/shared
 import {Button} from "@/shared/components/ui/button.tsx";
 import {useNavigate, useParams} from "react-router";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
-import leaveRoom from "@/features/chat [page]/users-and-actions-menu [section]/api/leaveRoom.ts";
+import leaveRoom from "@/features/chat [page]/users-menu [section]/[section-core]/api/leaveRoom.ts";
 
 export default function LeaveRoomButton() {
     const navigate = useNavigate();

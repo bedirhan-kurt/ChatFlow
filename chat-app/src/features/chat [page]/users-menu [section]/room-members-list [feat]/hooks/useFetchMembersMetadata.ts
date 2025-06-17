@@ -1,9 +1,9 @@
-import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
-import { getMembersData } from "@/features/chat [page]/users-and-actions-menu [section]/api/getMembersData.ts";
+import { getMembersData } from "@/features/chat [page]/users-menu [section]/room-members-list [feat]/api/getMembersData.ts";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 type Member = {
     uid: string;
@@ -12,7 +12,7 @@ type Member = {
 };
 
 export function useFetchMembersMetadata() {
-    const { roomCode } = useParams();
+    const { roomCode } = useRoom();
     const { username } = useUser();
 
     const [members, setMembers] = useState<Member[]>([]);
@@ -20,7 +20,7 @@ export function useFetchMembersMetadata() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!roomCode) return;
+        if (!roomCode || roomCode === "No Room Selected") return;
 
         const roomDocRef = doc(db, "rooms", roomCode);
         const unsubscribe = onSnapshot(roomDocRef, async (snapshot) => {

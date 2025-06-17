@@ -18,7 +18,6 @@ export function useFetchMessages() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
-    console.log(2, roomCode)
 
     useEffect(() => {
         if (!roomCode) return;

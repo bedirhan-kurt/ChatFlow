@@ -4,6 +4,7 @@ import addNewMessage from "@/features/chat [page]/chat-area [section]/api/addNew
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import saveLastMessage from "@/features/chat [page]/chat-area [section]/api/saveLastMessage.ts";
 import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
+import {serverTimestamp} from "firebase/firestore";
 
 export const useSendMessage = (messageContent: string) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -23,7 +24,7 @@ export const useSendMessage = (messageContent: string) => {
                 authorId: user.uid,
                 authorUsername: username,
                 content: messageContent,
-                createdAt: new Date().toISOString(),
+                createdAt: serverTimestamp(),
             });
 
             await saveLastMessage(roomCode, {

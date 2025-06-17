@@ -1,22 +1,21 @@
-import {db} from "../../../../shared/api/firebaseConfig.ts";
-import {collection, addDoc} from "firebase/firestore";
+import { db } from "@/shared/api/firebaseConfig";
+import { collection, addDoc, FieldValue } from "firebase/firestore";
 
-interface AddNewMessageParams {
+export interface AddNewMessageParams {
     roomCode: string;
     authorId: string;
     authorUsername: string;
     content: string;
-    createdAt: string;
+    createdAt: FieldValue;
     responseTo?: string;
-    reactions?: { [key: string]: number }
+    reactions?: { [key: string]: number };
 }
 
-export default async function addNewMessage(
-    messageData: AddNewMessageParams
-) {
+export default async function addNewMessage(messageData: AddNewMessageParams) {
     try {
-        await addDoc(collection(db, "rooms", messageData.roomCode, "messages"), {
-            ...messageData
+        const { roomCode, ...messagePayload } = messageData;
+        await addDoc(collection(db, "rooms", roomCode, "messages"), {
+            ...messagePayload,
         });
     } catch (error) {
         console.error("Error adding document: ", error);

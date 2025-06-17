@@ -22,7 +22,6 @@ export default function RoomCard({ roomCode, roomName, lastMessage, numberOfMemb
             console.error("Room code is not defined");
         } else {
             setRoomCode(roomCode)
-            console.log(`Navigating to room with code: ${roomCode}`);
         }
     }
 
