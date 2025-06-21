@@ -1,10 +1,10 @@
 // useSendMessage.ts
 import { useState } from 'react';
-import addNewMessage from "@/features/chat [page]/chat-area [section]/api/addNewMesssage.ts";
+import addNewMessage from "@/features/chat [page]/chat-area [section]/message-sending [feat]/api/addNewMesssage.ts";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
-import saveLastMessage from "@/features/chat [page]/chat-area [section]/api/saveLastMessage.ts";
 import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 import {serverTimestamp} from "firebase/firestore";
+import saveLastMessage from "@/features/chat [page]/chat-area [section]/message-sending [feat]/api/saveLastMessage.ts";
 
 export const useSendMessage = (messageContent: string) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);

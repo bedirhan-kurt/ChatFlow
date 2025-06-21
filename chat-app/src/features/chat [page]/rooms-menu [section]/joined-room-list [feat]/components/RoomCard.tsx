@@ -1,9 +1,7 @@
 import { Avatar, AvatarFallback } from "@/shared/components/ui/avatar.tsx";
-import {
-    generateInitials
-} from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/lib/utils/generateInitials.ts";
 import { Button } from "@/shared/components/ui/button";
 import { useRoom } from "@/features/chat [page]/[page-core]/hooks [core]/useRoom";
+import {generateInitials} from "@/features/chat [page]/[page-core]/lib/utils/generateInitials.ts";
 
 type RoomCard = {
     roomCode: string;

@@ -1,5 +1,5 @@
-import { db } from "../../../../shared/api/firebaseConfig.ts";
 import { deleteDoc, doc } from "firebase/firestore";
+import {db} from "@/shared/api/firebaseConfig.ts";
 
 export default async function deleteMessage(roomCode: string, messageId: string) {
     if (!roomCode) {

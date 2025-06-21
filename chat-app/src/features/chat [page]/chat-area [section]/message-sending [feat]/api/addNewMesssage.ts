@@ -1,4 +1,4 @@
-import { db } from "@/shared/api/firebaseConfig";
+import { db } from "@/shared/api/firebaseConfig.ts";
 import { collection, addDoc, FieldValue } from "firebase/firestore";
 
 export interface AddNewMessageParams {

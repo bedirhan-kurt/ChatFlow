@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
-import deleteMessage from "@/features/chat [page]/chat-area [section]/api/deleteMessage.ts";
 import AlertDialog from "@/shared/components/AlertDialog.tsx";
+import deleteMessage from "@/features/chat [page]/chat-area [section]/messages-list [feat]/api/deleteMessage.ts";
 
 /**
  * MessageDeleteButton Component

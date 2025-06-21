@@ -1,8 +1,9 @@
 import {Card, CardContent} from "@/shared/components/ui/card.tsx";
-import EditModeMessage from "@/features/chat [page]/chat-area [section]/components/message/message-options/EditModeMessage.tsx";
 import {Label} from "@/shared/components/ui/label.tsx";
 import {Input} from "@/shared/components/ui/input.tsx";
-import {useDottedBackgroundStyle} from "@/features/chat [page]/chat-area [section]/hooks/useDottedBackgroundStyle.ts";
+import {useDottedBackgroundStyle} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/hooks/useDottedBackgroundStyle.ts";
+import EditModeMessage
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/message-options/EditModeMessage.tsx";
 
 export default function EditMessageForm({message, newMessage, setNewMessage, createdAt}: {message: string, newMessage: string, setNewMessage: (message: string) => void, createdAt: string}) {
     const dottedBackgroundStyle = useDottedBackgroundStyle()

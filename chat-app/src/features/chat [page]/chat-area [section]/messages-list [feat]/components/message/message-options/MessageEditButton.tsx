@@ -1,9 +1,10 @@
 import {Pencil} from "lucide-react";
 import {useState} from "react";
-import {editMessage} from "@/features/chat [page]/chat-area [section]/api/editMessage.ts";
 import {Separator} from "@/shared/components/ui/separator.tsx";
-import EditMessageForm from "@/features/chat [page]/chat-area [section]/components/message/message-options/EditMessageForm.tsx";
 import AlertDialog from "@/shared/components/AlertDialog.tsx";
+import EditMessageForm
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/message-options/EditMessageForm.tsx";
+import {editMessage} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/api/editMessage.ts";
 
 export default function MessageEditButton({roomCode, id, message, createdAt}: {
     roomCode: string,

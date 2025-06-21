@@ -1,5 +1,5 @@
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../../../shared/api/firebaseConfig.ts";
+import {db} from "@/shared/api/firebaseConfig.ts";
 
 export async function editMessage(roomCode: string, messageId: string, newContent: string) {
     try {

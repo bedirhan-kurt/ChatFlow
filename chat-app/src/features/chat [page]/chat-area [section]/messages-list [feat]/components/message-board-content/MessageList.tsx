@@ -1,5 +1,5 @@
-import Message from "@/features/chat [page]/chat-area [section]/components/message/Message.tsx";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
+import Message from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/Message.tsx";
 
 export default function MessageList({messages}: { messages: any[] }) {
     const {user} = useUser();

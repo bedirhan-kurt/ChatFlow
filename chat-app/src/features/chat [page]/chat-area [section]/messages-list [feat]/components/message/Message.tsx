@@ -1,8 +1,12 @@
 import {Card, CardContent} from "@/shared/components/ui/card.tsx";
-import {MessageOptionsDropdown} from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageOptionsDropdown.tsx";
-import MessageEditButton from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageEditButton.tsx";
-import MessageDeleteButton from "@/features/chat [page]/chat-area [section]/components/message/message-options/MessageDeleteButton.tsx";
 import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
+import {
+    MessageOptionsDropdown
+} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/message-options/MessageOptionsDropdown.tsx";
+import MessageDeleteButton
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/message-options/MessageDeleteButton.tsx";
+import MessageEditButton
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message/message-options/MessageEditButton.tsx";
 
 /**
  * Message Component

@@ -1,6 +1,6 @@
 // useMessageContent.ts
 import React, { useState } from 'react';
-import { useProfanityCheck } from "@/features/chat [page]/chat-area [section]/hooks/useProfanityCheck.ts";
+import { useProfanityCheck } from "@/features/chat [page]/chat-area [section]/message-sending [feat]/hooks/useProfanityCheck.ts";
 
 export const useMessageContent = () => {
     const [messageContent, setMessageContent] = useState<string>('');

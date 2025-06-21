@@ -1,4 +1,5 @@
-import {Avatar, AvatarImage} from "@/shared/components/ui/avatar.tsx";
+import {Avatar, AvatarFallback} from "@/shared/components/ui/avatar.tsx";
+import {generateInitials} from "@/features/chat [page]/[page-core]/lib/utils/generateInitials.ts";
 
 type Member = {
     username: string;
@@ -14,7 +15,7 @@ export default function UserProfileCard({username, isOnline, lastMessage, lastMe
         <div className="w-full flex items-center gap-3 px-4 py-2 hover:bg-muted rounded-xl">
             <div className="relative">
                 <Avatar className="w-10 h-10">
-                    <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
+                    <AvatarFallback className="bg-gray-200 dark:bg-zinc-700">{generateInitials(username)}</AvatarFallback>
                 </Avatar>
                 {/* Online status dot */}
                 <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 ${statusColor} rounded-full ring-2 ring-white`} />

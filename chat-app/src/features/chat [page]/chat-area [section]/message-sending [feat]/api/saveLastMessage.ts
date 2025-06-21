@@ -1,5 +1,5 @@
-import {db} from "../../../../shared/api/firebaseConfig.ts";
 import {setDoc, doc, serverTimestamp} from "firebase/firestore";
+import {db} from "@/shared/api/firebaseConfig.ts";
 
 interface LastMessageParams {
     authorId: string;

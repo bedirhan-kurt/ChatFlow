@@ -1,8 +1,10 @@
-import MessageList from "@/features/chat [page]/chat-area [section]/components/message-board-content/MessageList.tsx";
-import NewMessageForm from "@/features/chat [page]/chat-area [section]/components/new-message-form/NewMessageForm.tsx";
-import { useFetchMessages } from "@/features/chat [page]/chat-area [section]/hooks/useFetchMessages.ts";
-import MessageAreaStatus from "@/features/chat [page]/chat-area [section]/components/message-board-content/MessageAreaStatus.tsx";
-import {useDottedBackgroundStyle} from "@/features/chat [page]/chat-area [section]/hooks/useDottedBackgroundStyle.ts";
+import NewMessageForm from "@/features/chat [page]/chat-area [section]/message-sending [feat]/components/NewMessageForm.tsx";
+import {useFetchMessages} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/hooks/useFetchMessages.ts";
+import {useDottedBackgroundStyle} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/hooks/useDottedBackgroundStyle.ts";
+import MessageAreaStatus
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message-board-content/MessageAreaStatus.tsx";
+import MessageList
+    from "@/features/chat [page]/chat-area [section]/messages-list [feat]/components/message-board-content/MessageList.tsx";
 
 export default function ChatArea({ className }: { className?: string }) {
     const dottedBackgroundStyle = useDottedBackgroundStyle();

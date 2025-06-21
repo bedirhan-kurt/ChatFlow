@@ -1,5 +1,5 @@
 import Alert from "@/shared/components/Alert.tsx";
-import {useProfanityCheck} from "@/features/chat [page]/chat-area [section]/hooks/useProfanityCheck.ts";
+import {useProfanityCheck} from "@/features/chat [page]/chat-area [section]/message-sending [feat]/hooks/useProfanityCheck.ts";
 import {useEffect} from "react";
 
 /**

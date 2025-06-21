@@ -1,9 +1,9 @@
 import {Send} from "lucide-react";
 import {Button} from "@/shared/components/ui/button.tsx";
-import ProfaneAlert from "@/features/chat [page]/chat-area [section]/components/new-message-form/ProfaneAlert.tsx";
-import MessageFeaturesMenu from "@/features/chat [page]/chat-area [section]/components/new-message-form/message-features/MessageFeaturesMenu.tsx";
-import {useSendMessage} from "@/features/chat [page]/chat-area [section]/hooks/useSendMessage.tsx";
-import {useMessageContent} from "@/features/chat [page]/chat-area [section]/hooks/useMessageContent.ts";
+import ProfaneAlert from "@/features/chat [page]/chat-area [section]/message-sending [feat]/components/ProfaneAlert.tsx";
+import MessageFeaturesMenu from "@/features/chat [page]/chat-area [section]/message-sending [feat]/components/message-features/MessageFeaturesMenu.tsx";
+import {useSendMessage} from "@/features/chat [page]/chat-area [section]/message-sending [feat]/hooks/useSendMessage.tsx";
+import {useMessageContent} from "@/features/chat [page]/chat-area [section]/message-sending [feat]/hooks/useMessageContent.ts";
 import {Input} from "@/shared/components/ui/input.tsx";
 
 /**
