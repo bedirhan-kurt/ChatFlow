@@ -29,7 +29,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "emblor": "^1.4.8",
-    "emoji-picker-react": "^4.12.2",
     "firebase": "^11.5.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.483.0",

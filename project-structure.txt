@@ -1,0 +1,231 @@
+ChatFlow/
+├── .github/
+├── .idea/
+├── chat-app/
+│   ├── .firebase/
+│   ├── node_modules/
+│   ├── public/
+│   ├── src/
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   ├── vite-env.d.ts
+│   │   ├── app/
+│   │   │   ├── AppPage.tsx
+│   │   │   ├── LadingPage.tsx
+│   │   │   └── SignIn.tsx
+│   │   ├── features/
+│   │   │   ├── auth [page]/
+│   │   │   │   └── auth [feat]/
+│   │   │   │       ├── api/
+│   │   │   │       │   ├── setOfflineStatus.ts
+│   │   │   │       │   └── signInWithGoogle.ts
+│   │   │   │       ├── components/
+│   │   │   │       │   ├── AuthRedirect.tsx
+│   │   │   │       │   ├── AuthRequired.tsx
+│   │   │   │       │   └── SignInButton.tsx
+│   │   │   │       └── hooks/
+│   │   │   │           ├── useEndSession.ts
+│   │   │   │           ├── useSignIn.ts
+│   │   │   │           └── useSignOut.ts
+│   │   │   ├── chat [page]/
+│   │   │   │   ├── chat-area [section]/
+│   │   │   │   │   ├── message-sending [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   ├── addNewMesssage.ts
+│   │   │   │   │   │   │   └── saveLastMessage.ts
+│   │   │   │   │   │   ├── components/
+│   │   │   │   │   │   │   ├── NewMessageForm.tsx
+│   │   │   │   │   │   │   ├── ProfaneAlert.tsx
+│   │   │   │   │   │   │   ├── Scroller.tsx
+│   │   │   │   │   │   │   └── message-features/
+│   │   │   │   │   │   │       ├── MessageFeaturesMenu.tsx
+│   │   │   │   │   │   │       └── feature-components/
+│   │   │   │   │   │   │           └── CustomEmojiPicker.tsx
+│   │   │   │   │   │   └── hooks/
+│   │   │   │   │   │       ├── useMessageContent.ts
+│   │   │   │   │   │       ├── useProfanityCheck.ts
+│   │   │   │   │   │       └── useSendMessage.tsx
+│   │   │   │   │   ├── messages-list [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   ├── deleteMessage.ts
+│   │   │   │   │   │   │   └── editMessage.ts
+│   │   │   │   │   │   ├── components/
+│   │   │   │   │   │   │   ├── message/
+│   │   │   │   │   │   │   │   ├── Message.tsx
+│   │   │   │   │   │   │   │   ├── SystemMessages.tsx
+│   │   │   │   │   │   │   │   └── message-options/
+│   │   │   │   │   │   │   │       ├── EditMessageForm.tsx
+│   │   │   │   │   │   │   │       ├── EditModeMessage.tsx
+│   │   │   │   │   │   │   │       ├── MessageDeleteButton.tsx
+│   │   │   │   │   │   │   │       ├── MessageEditButton.tsx
+│   │   │   │   │   │   │   │       └── MessageOptionsDropdown.tsx
+│   │   │   │   │   │   │   └── message-board-content/
+│   │   │   │   │   │   │       ├── MessageAreaStatus.tsx
+│   │   │   │   │   │   │       └── MessageList.tsx
+│   │   │   │   │   │   └── hooks/
+│   │   │   │   │   │       ├── useDottedBackgroundStyle.ts
+│   │   │   │   │   │       └── useFetchMessages.ts
+│   │   │   │   │   └── [section-core]/
+│   │   │   │   │       └── components/
+│   │   │   │   │           └── ChatArea.tsx
+│   │   │   │   ├── header-menu [section]/
+│   │   │   │   │   ├── dark-mode [feat]/
+│   │   │   │   │   │   └── components/
+│   │   │   │   │   │       ├── mode-toggle.tsx
+│   │   │   │   │   │       └── theme-provider.tsx
+│   │   │   │   │   ├── user-settings [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   ├── getUsername.ts
+│   │   │   │   │   │   │   └── updateUsername.ts
+│   │   │   │   │   │   └── components/
+│   │   │   │   │   │       ├── SaveButton.tsx
+│   │   │   │   │   │       ├── SelfProfileCard.tsx
+│   │   │   │   │   │       └── UserSettingsDialog.tsx
+│   │   │   │   │   └── [section-core]/
+│   │   │   │   │       ├── assets/
+│   │   │   │   │       └── components/
+│   │   │   │   │           ├── HeaderMenu.tsx
+│   │   │   │   │           ├── InviteDialog.tsx
+│   │   │   │   │           └── Logo.tsx
+│   │   │   │   ├── rooms-menu [section]/
+│   │   │   │   │   ├── RoomsMenu.tsx
+│   │   │   │   │   ├── create-room [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   └── createNewRoom.ts
+│   │   │   │   │   │   ├── components/
+│   │   │   │   │   │   │   ├── CreateRoomDialog.tsx
+│   │   │   │   │   │   │   ├── CreateRoomDialogContent.tsx
+│   │   │   │   │   │   │   └── multistep-form-content/
+│   │   │   │   │   │   │       ├── formSchema.ts
+│   │   │   │   │   │   │       ├── StepBasicInfo.tsx
+│   │   │   │   │   │   │       ├── StepLimits.tsx
+│   │   │   │   │   │   │       ├── StepSettings.tsx
+│   │   │   │   │   │   │       └── SuccessScreen.tsx
+│   │   │   │   │   │   ├── hooks/
+│   │   │   │   │   │   │   └── useCreateRoom.tsx
+│   │   │   │   │   │   └── lib/
+│   │   │   │   │   │       └── types.ts
+│   │   │   │   │   ├── join-room [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   ├── checkRoomExistence.ts
+│   │   │   │   │   │   │   └── sendJoinRoomRequest.ts
+│   │   │   │   │   │   ├── components/
+│   │   │   │   │   │   │   └── join-room/
+│   │   │   │   │   │   │       ├── InvalidRoomCodeAlert.tsx
+│   │   │   │   │   │   │       ├── JoinRoomDialog.tsx
+│   │   │   │   │   │   │       ├── JoinRoomDialogContent.tsx
+│   │   │   │   │   │   │       └── RoomCodeInput.tsx
+│   │   │   │   │   │   └── hooks/
+│   │   │   │   │   │       └── useJoinRoom.ts
+│   │   │   │   │   └── joined-room-list [feat]/
+│   │   │   │   │       ├── api/
+│   │   │   │   │       │   ├── fetchJoinedRoomsData.ts
+│   │   │   │   │       │   └── subscribeToUserRoomCodes.ts
+│   │   │   │   │       ├── components/
+│   │   │   │   │       │   ├── RoomCard.tsx
+│   │   │   │   │       │   └── RoomsMenuStatus.tsx
+│   │   │   │   │       └── hooks/
+│   │   │   │   │           └── useJoinedRooms.ts
+│   │   │   │   ├── users-menu [section]/
+│   │   │   │   │   ├── room-members-list [feat]/
+│   │   │   │   │   │   ├── api/
+│   │   │   │   │   │   │   └── getMembersData.ts
+│   │   │   │   │   │   ├── components/
+│   │   │   │   │   │   │   └── RoomMembersList.tsx
+│   │   │   │   │   │   └── hooks/
+│   │   │   │   │   │       ├── useFetchLastMessages.ts
+│   │   │   │   │   │       └── useFetchMembersMetadata.ts
+│   │   │   │   │   └── [section-core]/
+│   │   │   │   │       ├── api/
+│   │   │   │   │       │   ├── checkRoomCreator.ts
+│   │   │   │   │       │   ├── deleteRoom.ts
+│   │   │   │   │       │   └── leaveRoom.ts
+│   │   │   │   │       └── components/
+│   │   │   │   │           ├── UsersMenu.tsx
+│   │   │   │   │           └── actions/
+│   │   │   │   │               ├── RoleBasedActions.tsx
+│   │   │   │   │               ├── UserProfileCard.tsx
+│   │   │   │   │               ├── delete-room/
+│   │   │   │   │               │   └── DeleteRoomAlertDialog.tsx
+│   │   │   │   │               ├── leave-room/
+│   │   │   │   │               │   └── LeaveRoomButton.tsx
+│   │   │   │   │               └── room-options/
+│   │   │   │   │                   └── DeleteRoomAlertDialog.tsx
+│   │   │   │   └── [page-core]/
+│   │   │   │       ├── context [core]/
+│   │   │   │       │   ├── RoomContext.tsx
+│   │   │   │       │   └── UserContext.tsx
+│   │   │   │       ├── hooks [core]/
+│   │   │   │       │   ├── useRoom.tsx
+│   │   │   │       │   └── useUser.tsx
+│   │   │   │       └── lib/
+│   │   │   │           └── utils/
+│   │   │   │               └── generateInitials.ts
+│   │   │   └── rooms [page]/
+│   │   │       └── rooms/
+│   │   │           ├── api/
+│   │   │           │   ├── deleteRoom.ts
+│   │   │           │   ├── updateRoomMembers.ts
+│   │   │           │   └── updateUsersJoinedRooms.ts
+│   │   │           ├── hooks/
+│   │   │           │   ├── useRoomNavigation.ts
+│   │   │           │   └── useRoomValidation.tsx
+│   │   │           └── lib/
+│   │   │               └── utils.ts
+│   │   └── shared/
+│   │       ├── api/
+│   │       │   └── firebaseConfig.ts
+│   │       ├── components/
+│   │       │   ├── Alert.tsx
+│   │       │   ├── AlertDialog.tsx
+│   │       │   ├── BetaTag.tsx
+│   │       │   ├── Dialog.tsx
+│   │       │   └── ui/
+│   │       │       ├── alert-dialog.tsx
+│   │       │       ├── alert.tsx
+│   │       │       ├── avatar.tsx
+│   │       │       ├── badge.tsx
+│   │       │       ├── button.tsx
+│   │       │       ├── card.tsx
+│   │       │       ├── checkbox.tsx
+│   │       │       ├── dialog.tsx
+│   │       │       ├── dropdown-menu.tsx
+│   │       │       ├── form.tsx
+│   │       │       ├── input-otp.tsx
+│   │       │       ├── input.tsx
+│   │       │       ├── label.tsx
+│   │       │       ├── popover.tsx
+│   │       │       ├── separator-with-text.tsx
+│   │       │       ├── separator.tsx
+│   │       │       ├── sheet.tsx
+│   │       │       ├── sidebar.tsx
+│   │       │       ├── skeleton.tsx
+│   │       │       ├── switch.tsx
+│   │       │       ├── TagInput.tsx
+│   │       │       ├── textarea.tsx
+│   │       │       ├── toggle.tsx
+│   │       │       └── tooltip.tsx
+│   │       ├── hooks/
+│   │       │   ├── use-mobile.ts
+│   │       │   └── useTagInput.ts
+│   │       └── lib/
+│   │           └── utils/
+│   │               ├── cn.ts
+│   │               └── toReadableDate.ts
+│   ├── .firebaserc
+│   ├── .gitignore
+│   ├── components.json
+│   ├── firebase.json
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .DS_Store
+├── .gitattributes
+├── LICENSE
+├── qodana.yaml
+├── README.md
+└── SECURITY.md

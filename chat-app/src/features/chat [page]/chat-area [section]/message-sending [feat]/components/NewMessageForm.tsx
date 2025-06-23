@@ -34,8 +34,8 @@ export default function NewMessageForm() {
     return (
         <div className='bg-background p-4 flex overflow-y-auto flex-col gap-2'>
             <ProfaneAlert messageContent={messageContent}></ProfaneAlert>
-            <MessageFeaturesMenu appendToMessage={appendToMessage} />
-            <div className="flex gap-4">
+            <div className="flex gap-2">
+                <MessageFeaturesMenu appendToMessage={appendToMessage} />
                 <Input
                     placeholder="Type your message..."
                     className="resize-none flex-1"

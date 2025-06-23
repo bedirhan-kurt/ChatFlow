@@ -14,12 +14,8 @@ export default function useCreateRoom() {
                                         name,
                                         description,
                                         canEveryoneJoin,
-                                        passwordProtection,
-                                        password,
                                         limitUsers,
                                         maxMembers,
-                                        expiryEnabled,
-                                        expiryDate,
                                     }: CreateRoomParams): Promise<CreateRoomResult> => {
         try {
             const createdRoomCode = await createNewRoom({
@@ -28,12 +24,8 @@ export default function useCreateRoom() {
                 name,
                 description,
                 canEveryoneJoin,
-                passwordProtection,
-                password,
                 limitUsers,
                 maxMembers,
-                expiryEnabled,
-                expiryDate,
             });
             return { createdRoomCode: createdRoomCode };
         } catch (error: any) {

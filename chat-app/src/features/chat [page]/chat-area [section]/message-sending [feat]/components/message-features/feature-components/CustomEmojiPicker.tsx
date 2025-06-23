@@ -6,7 +6,12 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/shared/components/ui/
 
 export default function CustomEmojiPicker({appendToMessage}: { appendToMessage: (text: string) => void }) {
     const [showPicker, setShowPicker] = useState(false);
-    const emojies = ['😊', '😀', '❤️', '🔥', '😂', '🎉', '👍', '💀', '🌹', '😎'];
+    const emojies = [
+        '😊', '😀', '❤️', '🔥', '😂', '🎉', '👍', '💀', '🌹', '😎',
+        '🥳', '🤩', '😢', '😡', '🤔', '🙌', '✨', '💪', '🌟', '🍀',
+        '🐱', '🐶', '🍕', '🚀', '🎶', '🍩', '⚽', '🎂', '📚',
+        '🎬', '🌻', '👑', '💼', '🎨', '🎯', '🧩', '💡', '🎧', '🕶️'
+    ];
 
     return (
         <div className="flex flex-col gap-4">

@@ -10,12 +10,8 @@ export default async function createNewRoom({
                                                 name,
                                                 description,
                                                 canEveryoneJoin,
-                                                passwordProtection,
-                                                password,
                                                 limitUsers,
                                                 maxMembers,
-                                                expiryEnabled,
-                                                expiryDate,
                                             }: CreateRoomParams) {
     const numericId = customAlphabet('0123456789', 9);
     const roomCode = formatRoomCode(numericId());
@@ -33,15 +29,11 @@ export default async function createNewRoom({
             name,
             description,
             canEveryoneJoin: canEveryoneJoin ?? false,
-            passwordProtection,
             limitUsers: limitUsers ?? false,
-            expiryEnabled: expiryEnabled ?? false,
             createdAt: serverTimestamp(),
             members: members,
             ...(limitUsers ? { maxMembers } : {}),
             ...(canEveryoneJoin ? {} : { joinRequests: [] }),
-            ...(passwordProtection ? { password } : {}),
-            ...(expiryEnabled ? { expiryDate } : {}),
         });
 
         if (creatorId) {
