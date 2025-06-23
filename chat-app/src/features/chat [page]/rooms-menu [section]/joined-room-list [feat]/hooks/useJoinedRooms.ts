@@ -3,11 +3,10 @@ import { subscribeToUserRoomCodes } from "@/features/chat [page]/rooms-menu [sec
 import {
     fetchJoinedRoomsData
 } from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/api/fetchJoinedRoomsData.ts";
-import {FieldValue} from "firebase/firestore";
 
 export type Room = {
     name: string;
-    createdAt: FieldValue;
+    createdAt: string;
     creatorId: string;
     creatorUsername: string;
     members: string[];

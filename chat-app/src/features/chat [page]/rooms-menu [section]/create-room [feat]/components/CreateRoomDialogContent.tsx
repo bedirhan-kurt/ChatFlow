@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-import { createRoomSchema } from "./multistep-form-content/formSchema.ts";
+import { createRoomSchema } from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/form-content/formSchema.ts";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/components/ui/form.tsx";
 import { Input } from "@/shared/components/ui/input.tsx";
 import { Switch } from "@/shared/components/ui/switch.tsx";
@@ -10,7 +10,7 @@ import {Button} from "@/shared/components/ui/button.tsx";
 import {useState} from "react";
 import useCreateRoom from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/hooks/useCreateRoom.tsx";
 import SuccessScreen
-    from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/multistep-form-content/SuccessScreen.tsx";
+    from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/form-content/SuccessScreen.tsx";
 
 type FormValues = z.infer<typeof createRoomSchema>;
 

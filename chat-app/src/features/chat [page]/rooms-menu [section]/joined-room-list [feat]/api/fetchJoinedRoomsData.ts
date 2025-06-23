@@ -1,6 +1,7 @@
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { doc, getDoc } from "firebase/firestore";
 import type { Room } from "../hooks/useJoinedRooms.ts";
+import { toReadableDate } from "@/shared/lib/utils/toReadableDate.ts";
 
 export async function fetchJoinedRoomsData(roomCodes: string[]): Promise<Room[]> {
     const result: Room[] = [];
@@ -12,7 +13,15 @@ export async function fetchJoinedRoomsData(roomCodes: string[]): Promise<Room[]>
         const docRef = doc(db, "rooms", roomCode);
         const snap = await getDoc(docRef);
         if (snap.exists()) {
-            result.push({ ...(snap.data() as Room), roomCode: roomCode });
+            const data = snap.data();
+            result.push({
+                roomCode: roomCode,
+                createdAt: toReadableDate(data.createdAt),
+                name: data.name || "",
+                creatorId: data.creatorId || "",
+                creatorUsername: data.creatorUsername || "",
+                members: data.members || []
+            } as Room);
         }
     }
 

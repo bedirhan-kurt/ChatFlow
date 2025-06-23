@@ -10,10 +10,10 @@ export default function AppPage() {
         <RoomProvider>
             <div className="w-full h-screen flex flex-col">
                 <HeaderMenu className="w-full flex justify-between items-center bg-sidebar border-b" />
-                <div className="w-full h-full flex">
-                    <RoomsMenu className="w-2/8 h-full flex flex-col items-center justify-between bg-sidebar border-r p-4"></RoomsMenu>
+                <div className="w-full h-full flex overflow-hidden">
+                    <RoomsMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar border-r p-4"></RoomsMenu>
                     <ChatArea className="w-4/8 h-full flex flex-col flex-grow gap-1 bg-background"/>
-                    <UsersMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar justify-between border-l p-4" />
+                    <UsersMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar border-l p-4" />
                 </div>
             </div>
         </RoomProvider>
