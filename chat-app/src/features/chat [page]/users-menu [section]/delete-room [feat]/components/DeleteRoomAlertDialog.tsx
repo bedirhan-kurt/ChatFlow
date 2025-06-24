@@ -1,18 +1,15 @@
-import {useNavigate, useParams} from "react-router";
-import deleteRoom from "@/features/rooms [page]/rooms/api/deleteRoom.ts";
 import AlertDialog from "@/shared/components/AlertDialog.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {Trash} from "lucide-react";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
+import deleteRoom from "@/features/chat [page]/users-menu [section]/delete-room [feat]/api/deleteRoom.ts";
 
 export default function DeleteRoomAlertDialog() {
-    const {roomCode} = useParams();
-    const navigate = useNavigate();
+    const {roomCode} = useRoom();
 
     function handleDeleteRoom() {
         if (roomCode) {
             deleteRoom(roomCode)
-            navigate("/rooms")
-        } else {
             console.error("Room code is undefined");
         }
     }

@@ -1,13 +1,12 @@
 import {SquareArrowLeft} from "lucide-react";
 import {Button} from "@/shared/components/ui/button.tsx";
-import {useNavigate, useParams} from "react-router";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import leaveRoom from "@/features/chat [page]/users-menu [section]/leave-room [feat]/api/leaveRoom.ts";
 import AlertDialog from "@/shared/components/AlertDialog.tsx";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 export default function LeaveRoomButton() {
-    const navigate = useNavigate();
-    const {roomCode} = useParams();
+    const {roomCode} = useRoom();
     const {user} = useUser()
 
     function handleLeaveRoom() {
@@ -17,8 +16,6 @@ export default function LeaveRoomButton() {
         }
 
         leaveRoom(roomCode, user.uid)
-
-        navigate("/rooms")
     }
 
     return (
