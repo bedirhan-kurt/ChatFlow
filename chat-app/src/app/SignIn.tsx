@@ -3,7 +3,7 @@
  *
  * Responsibility:
  * Responsible for rendering the sign-in page's user interface.
- * This component provides a card layout with a title, description, and a button
+ * This components provides a card layout with a title, description, and a button
  * to initiate the Google sign-in process.
  *
  * Features:
@@ -14,8 +14,8 @@
  * - `Card`, `CardContent`, `CardDescription`, `CardHeader`, `CardTitle` from the UI components for layout.
  * - `SignInButton` for handling the Google sign-in functionality.
  *
- * @component
- * @returns {TSX.Element} The rendered SignIn component.
+ * @components
+ * @returns {TSX.Element} The rendered SignIn components.
  */
 
 import {

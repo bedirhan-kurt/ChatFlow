@@ -3,7 +3,7 @@ import { useContext, useEffect, useState, createContext } from "react"
 // Define the available theme options
 type Theme = "dark" | "light" | "system"
 
-// Define the props for the ThemeProvider component
+// Define the props for the ThemeProvider components
 type ThemeProviderProps = {
     children: React.ReactNode
     defaultTheme?: Theme
@@ -24,16 +24,16 @@ const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undef
  *
  * Responsibility:
  * Provides a context for managing and sharing the application's theme state.
- * This component allows the theme to be dynamically updated and persists the theme in localStorage.
+ * This components allows the theme to be dynamically updated and persists the theme in localStorage.
  *
  * Features:
  * - Manages the theme state (light, dark, or system).
  * - Applies the selected theme to the document's root element.
  * - Persists the theme in localStorage for consistency across sessions.
  *
- * @component
- * @param {ThemeProviderProps} props - The props for the ThemeProvider component.
- * @returns {JSX.Element} The ThemeProvider component.
+ * @components
+ * @param {ThemeProviderProps} props - The props for the ThemeProvider components.
+ * @returns {JSX.Element} The ThemeProvider components.
  */
 
 export function ThemeProvider({

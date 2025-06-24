@@ -2,7 +2,7 @@ import HeaderMenu from "@/features/chat [page]/header-menu [section]/[section-co
 import UsersMenu from "@/features/chat [page]/users-menu [section]/[section-core]/components/UsersMenu.tsx";
 import ChatArea from "@/features/chat [page]/chat-area [section]/[section-core]/components/ChatArea.tsx";
 import { RoomProvider } from "@/features/chat [page]/[page-core]/context [core]/RoomContext";
-import RoomsMenu from "@/features/chat [page]/rooms-menu [section]/RoomsMenu.tsx";
+import RoomsMenu from "@/features/chat [page]/rooms-menu [section]/[section-core]/components/RoomsMenu.tsx";
 
 
 export default function AppPage() {

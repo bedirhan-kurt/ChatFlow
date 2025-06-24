@@ -6,7 +6,7 @@ import deleteMessage from "@/features/chat [page]/chat-area [section]/messages-l
  * MessageDeleteButton Component
  *
  * Responsibility:
- * This component provides a button to delete a message. It uses an alert dialog
+ * This components provides a button to delete a message. It uses an alert dialog
  * to confirm the deletion action, ensuring the user is aware that the action
  * cannot be undone.
  *
@@ -22,10 +22,10 @@ import deleteMessage from "@/features/chat [page]/chat-area [section]/messages-l
  * - `AlertDialog` and its subcomponents for rendering the confirmation dialog.
  * - `deleteMessage` API function for performing the delete operation.
  *
- * @component
- * @param {Object} props - The props for the component.
+ * @components
+ * @param {Object} props - The props for the components.
  * @param {string} props.id - The unique identifier of the message to delete.
- * @returns {TSX.Element} The rendered MessageDeleteButton component.
+ * @returns {TSX.Element} The rendered MessageDeleteButton components.
  */
 
 export default function MessageDeleteButton({roomCode, id}: { roomCode: string, id: string }) {

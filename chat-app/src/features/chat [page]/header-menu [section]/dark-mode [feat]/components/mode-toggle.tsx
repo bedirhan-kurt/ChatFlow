@@ -14,7 +14,7 @@ import {useTheme} from "@/features/chat [page]/header-menu [section]/dark-mode [
  *
  * Responsibility:
  * Provides a dropdown menu for toggling between light, dark, and system themes.
- * This component allows dark-mode to change the application's theme dynamically.
+ * This components allows dark-mode to change the application's theme dynamically.
  *
  * Features:
  * - Displays a button with icons representing the current theme.
@@ -23,12 +23,12 @@ import {useTheme} from "@/features/chat [page]/header-menu [section]/dark-mode [
  *
  * Dependencies:
  * - `useTheme` hook for managing and updating the theme.
- * - `Button` component for rendering the toggle button.
+ * - `Button` components for rendering the toggle button.
  * - `DropdownMenu` components for creating the dropdown menu.
  * - `Moon` and `Sun` icons from `lucide-react` for visual representation of themes.
  *
- * @component
- * @returns {JSX.Element} The rendered ModeToggle component.
+ * @components
+ * @returns {JSX.Element} The rendered ModeToggle components.
  */
 
 export function ModeToggle() {

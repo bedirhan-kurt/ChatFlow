@@ -10,7 +10,7 @@ import {Input} from "@/shared/components/ui/input.tsx";
  * NewMessageForm Component
  *
  * Responsibility:
- * This component provides a form for dark-mode to compose and send new chat-area [section].
+ * This components provides a form for dark-mode to compose and send new chat-area [section].
  * It includes a textarea for message input, a button to send the message, and
  * an alert for detecting profane content.
  *
@@ -23,8 +23,8 @@ import {Input} from "@/shared/components/ui/input.tsx";
  * Hooks:
  * - `useSendMessage`: Custom hook to manage message state and event handlers.
  *
- * @component
- * @returns {TSX.Element} The rendered NewMessageForm component.
+ * @components
+ * @returns {TSX.Element} The rendered NewMessageForm components.
  */
 
 export default function NewMessageForm() {

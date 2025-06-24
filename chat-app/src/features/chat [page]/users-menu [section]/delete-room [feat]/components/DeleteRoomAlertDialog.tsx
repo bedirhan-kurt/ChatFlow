@@ -21,8 +21,8 @@ export default function DeleteRoomAlertDialog() {
         <AlertDialog
             trigger={
                 <Button variant="outline" className="hover:cursor-pointer">
-                    <span>Delete</span>
                     <Trash></Trash>
+                    <span>Delete</span>
                 </Button>
             }
             title="Are you sure you want to delete this room?"

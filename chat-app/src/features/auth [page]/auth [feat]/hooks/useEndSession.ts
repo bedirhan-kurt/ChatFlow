@@ -44,11 +44,11 @@ export default function useEndSession() {
         // Add event listeners for each activity event
         events.forEach((event) => window.addEventListener(event, resetTimer));
 
-        // Initialize the timer when the component mounts
+        // Initialize the timer when the components mounts
         resetTimer();
 
         return () => {
-            // Cleanup: Clear the timer and remove event listeners when the component unmounts
+            // Cleanup: Clear the timer and remove event listeners when the components unmounts
             if (timerRef.current) {
                 clearTimeout(timerRef.current);
             }

@@ -4,8 +4,7 @@ import {
 import {
     useFetchLastMessages
 } from "@/features/chat [page]/users-menu [section]/room-members-list [feat]/hooks/useFetchLastMessages.ts";
-import UserProfileCard
-    from "@/features/chat [page]/users-menu [section]/[section-core]/components/actions/UserProfileCard.tsx";
+import UserProfileCard from "../../[section-core]/components/UserProfileCard";
 
 export default function RoomMembersList() {
     const { members } = useFetchMembersMetadata();

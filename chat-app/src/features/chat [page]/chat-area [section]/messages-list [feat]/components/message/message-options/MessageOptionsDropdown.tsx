@@ -11,7 +11,7 @@ import React from "react";
  * MessageOptionsDropdown Component
  *
  * Responsibility:
- * This component renders a dropdown menu for message options, allowing dark-mode to
+ * This components renders a dropdown menu for message options, allowing dark-mode to
  * perform actions such as editing or deleting a message.
  *
  * Features:
@@ -27,10 +27,10 @@ import React from "react";
  * - `MessageDeleteButton` for handling message deletion.
  * - `MessageEditButton` for handling message editing.
  *
- * @component
- * @param {Object} props - The props for the component.
+ * @components
+ * @param {Object} props - The props for the components.
  * @param {string} props.id - The unique identifier of the message.
- * @returns {TSX.Element} The rendered MessageOptionsDropdown component.
+ * @returns {TSX.Element} The rendered MessageOptionsDropdown components.
  */
 
 export function MessageOptionsDropdown({ children }: { children: React.ReactNode }) {

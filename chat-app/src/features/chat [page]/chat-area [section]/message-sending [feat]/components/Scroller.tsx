@@ -4,7 +4,7 @@ import {useRef} from "react";
  * Scroller Component
  *
  * Responsibility:
- * This component is responsible for managing the scrolling behavior in a chat-area [section] application.
+ * This components is responsible for managing the scrolling behavior in a chat-area [section] application.
  * It ensures that the view scrolls to the bottom when new chat-area [section] are added.
  *
  * Features:
@@ -14,7 +14,7 @@ import {useRef} from "react";
  * Hooks:
  * - `useRef`: React hook used to create a reference to the bottom element.
  *
- * @component
+ * @components
  * @returns {JSX.Element} A div element that acts as a reference point for scrolling.
  */
 

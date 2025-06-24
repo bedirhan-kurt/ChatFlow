@@ -18,9 +18,7 @@ export default function RoomsMenu({ className }: { className?: string }) {
     return (
         <div className={`${className} flex flex-col h-full overflow-hidden`}>
             {/* Header - Always visible */}
-            <div className="flex-shrink-0">
-                <RoomsMenuStatus isLoading={isLoading} error={error} rooms={rooms} />
-            </div>
+            <RoomsMenuStatus isLoading={isLoading} error={error} rooms={rooms} />
 
             {/* Empty state with actions */}
             {showActions && (
@@ -55,7 +53,6 @@ export default function RoomsMenu({ className }: { className?: string }) {
 
                     {/* Footer with actions - Always at bottom */}
                     <div className="w-full flex flex-col gap-2 mt-2 flex-shrink-0">
-                        <span className="text-sm text-gray-500">Actions</span>
                         <Separator orientation="horizontal" className="w-full" />
                         <CreateRoomDialog className="w-full" />
                         <JoinRoomDialog className="w-full" />

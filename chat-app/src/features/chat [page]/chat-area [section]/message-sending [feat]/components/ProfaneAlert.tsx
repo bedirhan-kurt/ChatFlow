@@ -6,7 +6,7 @@ import {useEffect} from "react";
  * ProfaneAlert Component
  *
  * Responsibility:
- * This component renders an alert message when the user types profane content
+ * This components renders an alert message when the user types profane content
  * in the chat-area [section] input. It provides a warning to encourage polite language in the
  * public chat-area [section] room.
  *
@@ -17,8 +17,8 @@ import {useEffect} from "react";
  * Hooks:
  * - `useSendMessage`: Custom hook to access the `isProfane` state.
  *
- * @component
- * @returns {TSX.Element | null} The rendered ProfaneAlert component or null if no profanity is detected.
+ * @components
+ * @returns {TSX.Element | null} The rendered ProfaneAlert components or null if no profanity is detected.
  */
 
 export default function ProfaneAlert({messageContent}: { messageContent: string }) {

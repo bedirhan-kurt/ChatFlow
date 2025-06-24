@@ -4,7 +4,7 @@
  * Responsibility:
  * Ensures that authenticated dark-mode are redirected to the "/rooms" route,
  * while unauthenticated dark-mode can access child routes.
- * This component handles session cleanup and manages navigation based on
+ * This components handles session cleanup and manages navigation based on
  * the user's authentication state.
  *
  * Features:
@@ -18,7 +18,7 @@
  * - `useEndSession` custom hook for handling session cleanup.
  * - `auth [feat]` from Firebase configuration for authentication.
  *
- * @component
+ * @components
  * @returns {TSX.Element | null} Renders child components if the user is unauthenticated, otherwise returns `null`.
  */
 

@@ -5,7 +5,7 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
  *
  * Responsibility:
  * Responsible for rendering a single message based on the user type (admin, other user, or self).
- * This component dynamically adjusts its appearance and structure depending on whether the message
+ * This components dynamically adjusts its appearance and structure depending on whether the message
  * is owned by the current user, sent by an admin, or sent by another user.
  *
  * Features:
@@ -20,14 +20,14 @@ import {Card, CardContent} from "@/shared/components/ui/card.tsx";
  * - `isOwned` (boolean, optional): Indicates if the message is owned by the current user. Defaults to `false`.
  * - `createdAt` (string): The timestamp of when the message was created.
  *
- * @component
- * @param {Object} props - The props for the component.
+ * @components
+ * @param {Object} props - The props for the components.
  * @param {string} props.id - Unique identifier for the message.
  * @param {string} props.message - The content of the message.
  * @param {string} props.author - The username of the message author.
  * @param {boolean} [props.isOwned=false] - Indicates if the message is owned by the current user.
  * @param {string} props.createdAt - The timestamp of when the message was created.
- * @returns {TSX.Element} The rendered Message component.
+ * @returns {TSX.Element} The rendered Message components.
  */
 
 export default function EditModeMessage({message, createdAt}: {

@@ -3,7 +3,7 @@
  *
  * Responsibility:
  * Responsible for checking the chat-area [section] data and rendering the appropriate message.
- * This component displays different states based on the provided props:
+ * This components displays different states based on the provided props:
  * - A loading message when data is being fetched.
  * - An error message if an error occurs.
  * - A "no chat-area [section]" message if the chat-area [section] array is empty.
@@ -17,12 +17,12 @@
  * - `error` (Error | null): Represents an error object if an error occurs, otherwise null.
  * - `chat-area [section]` (any[]): An array of chat-area [section] to check for content.
  *
- * @component
- * @param {Object} props - The props for the component.
+ * @components
+ * @param {Object} props - The props for the components.
  * @param {boolean} props.isLoading - Indicates loading state.
  * @param {Error | null} props.error - Error object or null.
  * @param {any[]} props.chat-area [section] - Array of chat-area [section].
- * @returns {TSX.Element} The rendered MessageAreaStatus component.
+ * @returns {TSX.Element} The rendered MessageAreaStatus components.
  */
 import {Hourglass, PackageOpen} from "lucide-react";
 
