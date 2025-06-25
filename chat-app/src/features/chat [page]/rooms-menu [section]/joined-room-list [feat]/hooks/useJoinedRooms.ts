@@ -3,15 +3,7 @@ import { subscribeToUserRoomCodes } from "@/features/chat [page]/rooms-menu [sec
 import {
     fetchJoinedRoomsData
 } from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/api/fetchJoinedRoomsData.ts";
-
-export type Room = {
-    name: string;
-    createdAt: string;
-    creatorId: string;
-    creatorUsername: string;
-    members: string[];
-    roomCode: string;
-};
+import {Room} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/lib/types.ts";
 
 export function useJoinedRooms(userId: string) {
     const [rooms, setRooms] = useState<Room[]>([]);
@@ -53,5 +45,7 @@ export function useJoinedRooms(userId: string) {
         return () => unsubscribe();
     }, [userId]);
 
-    return { rooms, isLoading, error };
+    const isRoomsEmpty = rooms.length === 0;
+
+    return { rooms, isLoading, error, isRoomsEmpty };
 }

@@ -20,7 +20,10 @@ export function useFetchMessages() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!roomCode) return;
+        if (!roomCode) {
+            setError(new Error('No room selected'));
+            return;
+        }
 
         const messageRef = collection(db, "rooms", roomCode, "messages");
         const q = query(messageRef, orderBy("createdAt", "asc"), limit(15));

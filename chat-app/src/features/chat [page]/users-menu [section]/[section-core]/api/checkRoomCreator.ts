@@ -11,7 +11,6 @@ export default async function checkRoomCreator(roomCode: string, uid: string) {
                 const creatorId = roomData.creatorId;
                 return creatorId === uid;
             } else {
-                console.log("No such room!");
                 return false;
             }
         })
