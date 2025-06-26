@@ -1,7 +1,7 @@
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { doc, getDoc } from "firebase/firestore";
-import type { Room } from "../hooks/useJoinedRooms.ts";
 import { toReadableDate } from "@/shared/lib/utils/toReadableDate.ts";
+import {Room} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/lib/types.ts";
 
 export async function fetchJoinedRoomsData(roomCodes: string[]): Promise<Room[]> {
     const result: Room[] = [];

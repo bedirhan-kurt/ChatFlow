@@ -7,6 +7,7 @@ import SearchBar from "@/features/chat [page]/header-menu [section]/search-messa
 import {
     SearchMessageProvider
 } from "@/features/chat [page]/header-menu [section]/search-message [feat]/context/SearchMessageContext.tsx";
+import RoomInfo from "@/features/chat [page]/header-menu [section]/room-info [feat]/components/RoomInfo.tsx";
 
 export default function HeaderMenu({ className }: { className?: string }) {
     const {user, username} = useUser();
@@ -14,7 +15,8 @@ export default function HeaderMenu({ className }: { className?: string }) {
     return (
         <header className={`${className}`}>
             <Logo></Logo>
-            <div className="w-4/8 px-4 py-4 flex items-center justify-between border-r h-full">
+            <div className="w-4/8 px-4 py-4 flex items-center gap-10 justify-between border-r h-full">
+                <RoomInfo></RoomInfo>
                 <SearchMessageProvider>
                     <SearchBar />
                 </SearchMessageProvider>

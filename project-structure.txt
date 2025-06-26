@@ -119,7 +119,7 @@ ChatFlow/
 │   │   │   │   │   │       └── useJoinRoom.ts
 │   │   │   │   │   └── joined-room-list [feat]/
 │   │   │   │   │       ├── api/
-│   │   │   │   │       │   ├── fetchJoinedRoomsData.ts
+│   │   │   │   │       │   ├── fetchActiveRoomsData.ts
 │   │   │   │   │       │   └── subscribeToUserRoomCodes.ts
 │   │   │   │   │       ├── components/
 │   │   │   │   │       │   ├── RoomCard.tsx
