@@ -7,6 +7,9 @@ import {
     useJoinedRooms
 } from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
+import {
+    ScrollToSearchedProvider
+} from "@/features/chat [page]/header-menu [section]/search-message [feat]/context/ScrollToSearchedContext.tsx";
 
 
 export default function AppPage() {
@@ -16,19 +19,21 @@ export default function AppPage() {
 
     return (
         <RoomProvider>
-            <div className="w-full h-screen flex flex-col">
-                <HeaderMenu className="w-full flex justify-between items-center bg-sidebar border-b" />
-                <div className="w-full h-full flex overflow-hidden">
-                    <RoomsMenu className={`${isRoomsEmpty ? 'w-full' : 'w-2/8'} h-full flex flex-col items-center bg-sidebar border-r p-4`}></RoomsMenu>
-                    {!isRoomsEmpty ?
-                        (<>
-                            <ChatArea className="w-4/8 h-full flex flex-col flex-grow gap-1 bg-background"/>
-                            <UsersMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar border-l p-4" />)
-                         </>)
-                        : null
-                    }
+            <ScrollToSearchedProvider>
+                <div className="w-full h-screen flex flex-col">
+                    <HeaderMenu className="w-full flex justify-between items-center bg-sidebar border-b" />
+                    <div className="w-full h-full flex overflow-hidden">
+                        <RoomsMenu className={`${isRoomsEmpty ? 'w-full' : 'w-2/8'} h-full flex flex-col items-center bg-sidebar border-r p-4`}></RoomsMenu>
+                        {!isRoomsEmpty ?
+                            (<>
+                                <ChatArea className="w-4/8 h-full flex flex-col flex-grow gap-1 bg-background"/>
+                                <UsersMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar border-l p-4" />
+                             </>)
+                            : null
+                        }
+                    </div>
                 </div>
-            </div>
+            </ScrollToSearchedProvider>
         </RoomProvider>
     );
 }

@@ -3,15 +3,7 @@ import {useEffect, useState} from "react";
 import {collection, onSnapshot, query, orderBy, limit} from "firebase/firestore";
 import {db} from "@/shared/api/firebaseConfig.ts";
 import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
-
-type Message = {
-    id: string;                // Mesajın benzersiz ID'si
-    authorId: string;          // Yazarın kullanıcı ID'si
-    authorUsername: string;    // Yazarın kullanıcı adı
-    content: string;           // Mesaj içeriği
-    createdAt: string;         // Mesajın gönderildiği zaman (ISO 8601 formatında)
-    roomCode: string;          // Sohbet odasının kodu
-};
+import {Message} from "@/features/chat [page]/chat-area [section]/messages-list [feat]/lib/types.ts";
 
 export function useFetchMessages() {
     const {roomCode} = useRoom()

@@ -68,7 +68,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
     ) : <span>{message}</span>;
 
     return (
-        <div className={`w-full flex flex-col gap-2 ${flexDirection}`}>
+        <div id={id} className={`mt-4 w-full flex flex-col gap-2 ${flexDirection}`}>
             <div className={`flex flex-col gap-1 ${flexDirection}`}>
                 <div className="flex gap-2 items-center">
                     <span className="font-semibold">{authorName}</span>

@@ -17,7 +17,7 @@ export default function MessageList({messages}: { messages: any[] }) {
     ));
 
     return (
-        <div className="flex flex-col gap-4 overflow-y-auto flex-grow rounded-xl">
+        <div className="flex flex-col overflow-y-auto flex-grow rounded-xl">
             <Scroller>
                 {messageElements}
             </Scroller>
