@@ -80,7 +80,7 @@ ChatFlow/
 │   │   │   │   │   │   └── components/
 │   │   │   │   │   │       ├── SaveButton.tsx
 │   │   │   │   │   │       ├── SelfProfileCard.tsx
-│   │   │   │   │   │       └── UserSettingsDialog.tsx
+│   │   │   │   │   │       └── UserSettingsDialogContent.tsx
 │   │   │   │   │   └── [section-core]/
 │   │   │   │   │       ├── assets/
 │   │   │   │   │       └── components/

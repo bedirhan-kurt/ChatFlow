@@ -46,6 +46,7 @@ export default function Message({id, message, author, isOwned = false, createdAt
     createdAt: string
 }) {
     const {roomCode} = useRoom()
+
     if (!roomCode) {
         throw new Error("Room code is not defined");
     }
@@ -60,8 +61,8 @@ export default function Message({id, message, author, isOwned = false, createdAt
     const messageStructure = isOwned ? (
         <div className="flex gap-2 items-center">
             <MessageOptionsDropdown key={`messageOptionsDropdown-${id}`}>
-                <MessageDeleteButton roomCode={roomCode} id={id}></MessageDeleteButton>
                 <MessageEditButton roomCode={roomCode} id={id} message={message} createdAt={createdAt}></MessageEditButton>
+                <MessageDeleteButton roomCode={roomCode} id={id}></MessageDeleteButton>
             </MessageOptionsDropdown>
             <span>{message}</span>
         </div>

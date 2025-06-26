@@ -24,8 +24,8 @@ export default function RoleBasedActions() {
 
     return (
         <div className="flex flex-col gap-2">
-            {isCreator ? <DeleteRoomAlertDialog /> : null}
             <LeaveRoomButton />
+            {isCreator ? <DeleteRoomAlertDialog /> : null}
         </div>
     );
 }
