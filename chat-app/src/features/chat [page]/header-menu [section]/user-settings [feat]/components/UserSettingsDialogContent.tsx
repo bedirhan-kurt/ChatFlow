@@ -1,7 +1,5 @@
 "use client";
-import Dialog from "@/shared/components/Dialog.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
-import {User} from "lucide-react";
 import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import {
     Form,
@@ -15,46 +13,33 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/shared/components/ui/input.tsx";
+import {DialogClose} from "@/shared/components/ui/dialog.tsx";
+import updateUsername from "@/features/chat [page]/header-menu [section]/user-settings [feat]/api/updateUsername.ts";
 
 // Responsible for manage states - will be transformed to shadcn/ui form
 // Responsible for rendering UI
 
-export default function UserSettingsDialog() {
-    const {username, setUsername} = useUser();
+export default function UserSettingsDialogContent() {
+    const {user, username, setUsername} = useUser();
 
-    return (
-        <>
-            <Dialog
-                trigger={<Button variant="outline"><User/></Button>}
-                title="Edit profile"
-                description="Make changes to your profile here. Click save when you're done."
-                content={<UserSettingsForm currentUsername={username} setUsername={setUsername}></UserSettingsForm>}
-                closeButton={false}
-            />
-        </>
-    )
-}
-
-function UserSettingsForm({currentUsername, setUsername}: {currentUsername: string, setUsername: (username: string) => void}) {
     const formSchema = z.object({
         username: z
             .string()
             .min(1, { message: "This field is required" })
             .min(4, { message: "Must be at least 4 characters" }),
-        profilePic: z.string().optional(),
         saveBtn: z.string().optional(),
     });
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: currentUsername,
-            profilePic: undefined,
+            username: username,
             saveBtn: undefined,
         },
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+        updateUsername(user.uid, values.username);
+        setUsername(values.username);
     }
 
     function onReset() {
@@ -97,47 +82,25 @@ function UserSettingsForm({currentUsername, setUsername}: {currentUsername: stri
                     />
                     <FormField
                         control={form.control}
-                        name="profilePic"
-                        render={({ field }) => (
-                            <FormItem className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start">
-                                <FormLabel className="flex shrink-0">Profile Pic.</FormLabel>
-
-                                <div className="w-full">
-                                    <FormControl>
-                                        <Input
-                                            key="file-input-0"
-                                            placeholder=""
-                                            type="file"
-                                            id="profilePic"
-                                            className=""
-                                            {...field}
-                                        />
-                                    </FormControl>
-
-                                    <FormMessage />
-                                </div>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
                         name="saveBtn"
                         render={() => (
                             <FormItem className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start">
                                 <FormLabel className="hidden shrink-0">Submit</FormLabel>
 
-                                <div className="w-full">
+                                <div className="w-full flex justify-end">
                                     <FormControl>
-                                        <Button
-                                            key="button-0"
-                                            id="saveBtn"
-                                            name=""
-                                            className="w-full"
-                                            type="submit"
-                                            variant="default"
-                                        >
-                                            Save
-                                        </Button>
+                                        <DialogClose asChild>
+                                            <Button
+                                                key="button-0"
+                                                id="saveBtn"
+                                                name=""
+                                                className=""
+                                                type="submit"
+                                                variant="default"
+                                            >
+                                                Save
+                                            </Button>
+                                        </DialogClose>
                                     </FormControl>
 
                                     <FormMessage />

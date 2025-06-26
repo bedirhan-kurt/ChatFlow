@@ -2,9 +2,9 @@ import {Avatar} from "@radix-ui/react-avatar";
 import {AvatarFallback} from "@/shared/components/ui/avatar.tsx";
 import {generateInitials} from "@/features/chat [page]/[page-core]/lib/utils/generateInitials.ts";
 import {Button} from "@/shared/components/ui/button.tsx";
-import CreateRoomDialogContent
-    from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/CreateRoomDialogContent.tsx";
 import Dialog from "@/shared/components/Dialog.tsx";
+import UserSettingsDialogContent
+    from "@/features/chat [page]/header-menu [section]/user-settings [feat]/components/UserSettingsDialogContent.tsx";
 
 type SelfProfileCardProps = {
     username: string;
@@ -14,7 +14,6 @@ type SelfProfileCardProps = {
 export default function SelfProfileCard({username, email}: SelfProfileCardProps) {
     return (
         <>
-
             <Dialog
                 trigger={
                     <Button variant='ghost' className="flex gap-2 py-6">
@@ -27,9 +26,9 @@ export default function SelfProfileCard({username, email}: SelfProfileCardProps)
                         </Avatar>
                     </Button>
                 }
-                title="Create a room"
-                description="Start a new chat room with your friends."
-                content={<CreateRoomDialogContent />}
+                title="Edit Profile"
+                description="Change your username."
+                content={<UserSettingsDialogContent />}
                 actionButton={false}
                 closeButton={false}
             />
