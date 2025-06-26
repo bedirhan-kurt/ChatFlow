@@ -1,51 +1,12 @@
-import { useEffect, useState } from "react";
-import { subscribeToUserRoomCodes } from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/api/subscribeToUserRoomCodes.ts";
+import {useContext} from "react";
 import {
-    fetchJoinedRoomsData
-} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/api/fetchJoinedRoomsData.ts";
-import {Room} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/lib/types.ts";
+    JoinedRoomsContext
+} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/context/JoinedRoomsContext.tsx";
 
-export function useJoinedRooms(userId: string) {
-    const [rooms, setRooms] = useState<Room[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
-
-    useEffect(() => {
-        if (!userId?.trim()) return;
-
-        setIsLoading(true);
-        setError(null);
-
-        const unsubscribe = subscribeToUserRoomCodes(
-            userId,
-            async (roomCodes) => {
-                if (roomCodes.length === 0) {
-                    setRooms([]);
-                    setIsLoading(false);
-                    return;
-                }
-
-                try {
-                    const rooms = await fetchJoinedRoomsData(roomCodes);
-                    setRooms(rooms);
-                } catch (err) {
-                    setError(err instanceof Error ? err : new Error(String(err)));
-                    setRooms([]);
-                } finally {
-                    setIsLoading(false);
-                }
-            },
-            (err) => {
-                setError(err);
-                setRooms([]);
-                setIsLoading(false);
-            }
-        );
-
-        return () => unsubscribe();
-    }, [userId]);
-
-    const isRoomsEmpty = rooms.length === 0;
-
-    return { rooms, isLoading, error, isRoomsEmpty };
+export default function useJoinedRooms() {
+    const context = useContext(JoinedRoomsContext);
+    if (context === undefined) {
+        throw new Error("useJoinedRoomsContext must be used within a JoinedRoomsProvider");
+    }
+    return context;
 }

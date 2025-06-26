@@ -4,18 +4,13 @@ import ChatArea from "@/features/chat [page]/chat-area [section]/[section-core]/
 import { RoomProvider } from "@/features/chat [page]/[page-core]/context [core]/RoomContext";
 import RoomsMenu from "@/features/chat [page]/rooms-menu [section]/[section-core]/components/RoomsMenu.tsx";
 import {
-    useJoinedRooms
-} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
-import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
-import {
     ScrollToSearchedProvider
 } from "@/features/chat [page]/header-menu [section]/search-message [feat]/context/ScrollToSearchedContext.tsx";
-
+import useJoinedRooms
+    from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
 
 export default function AppPage() {
-    const { user } = useUser()
-    const { isRoomsEmpty } = useJoinedRooms(user.uid)
-    console.log(isRoomsEmpty)
+    const { isRoomsEmpty } = useJoinedRooms()
 
     return (
         <RoomProvider>
@@ -28,7 +23,7 @@ export default function AppPage() {
                             (<>
                                 <ChatArea className="w-4/8 h-full flex flex-col flex-grow gap-1 bg-background"/>
                                 <UsersMenu className="w-2/8 h-full flex flex-col items-center bg-sidebar border-l p-4" />
-                             </>)
+                            </>)
                             : null
                         }
                     </div>

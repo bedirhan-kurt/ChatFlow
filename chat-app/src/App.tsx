@@ -9,6 +9,9 @@ import {UserProvider} from "@/features/chat [page]/[page-core]/context [core]/Us
 import {
     ThemeProvider
 } from "@/features/chat [page]/header-menu [section]/dark-mode [feat]/components/theme-provider.tsx";
+import {
+    JoinedRoomsProvider
+} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/context/JoinedRoomsContext.tsx";
 
 function App() {
     return (
@@ -22,7 +25,12 @@ function App() {
                                 <Route index element={<SignIn />}></Route>
                             </Route>
                             <Route element={<AuthRequired />}>
-                                <Route path="/app/:userId" element={<AppPage />}></Route>
+                                <Route path="/app/:userId" element={
+                                    <JoinedRoomsProvider>
+                                        <AppPage />
+                                    </JoinedRoomsProvider>
+                                }>
+                                </Route>
                             </Route>
                         </Routes>
                     </Router>

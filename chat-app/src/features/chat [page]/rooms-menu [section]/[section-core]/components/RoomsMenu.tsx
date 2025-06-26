@@ -1,20 +1,17 @@
 import {Separator} from "@/shared/components/ui/separator.tsx";
-import {useUser} from "@/features/chat [page]/[page-core]/hooks [core]/useUser.tsx";
 import RoomsMenuStatus
     from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/components/RoomsMenuStatus.tsx";
-import {
-    useJoinedRooms
-} from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
 import CreateRoomDialog
     from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/CreateRoomDialog.tsx";
 import JoinRoomDialog
     from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/components/join-room/JoinRoomDialog.tsx";
 import JoinedRoomsList
     from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/components/JoinedRoomsList.tsx";
+import useJoinedRooms
+    from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
 
 export default function RoomsMenu({className}: { className?: string }) {
-    const {user} = useUser();
-    const {isLoading, error, rooms, isRoomsEmpty} = useJoinedRooms(user.uid || "");
+    const {isLoading, error, rooms, isRoomsEmpty} = useJoinedRooms();
 
     const showActions = !isLoading && !error;
     const showJoinedRoomsList = !isRoomsEmpty && !isLoading && !error;
