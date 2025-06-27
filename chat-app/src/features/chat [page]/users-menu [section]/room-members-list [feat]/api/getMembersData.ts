@@ -1,6 +1,5 @@
 import { db } from "@/shared/api/firebaseConfig.ts";
 import { doc, getDoc } from "firebase/firestore";
-import { auth } from "@/shared/api/firebaseConfig.ts";
 
 type Member = {
     uid: string;
@@ -8,13 +7,13 @@ type Member = {
     isOnline: boolean;
 };
 
-export async function getMembersData(userId: string): Promise<Member | null> {
+export async function getMembersData(userId: string, currentUser?: { uid: string, username: string } | null): Promise<Member> {
     try {
-        // If trying to get current user's data, use auth [feat].currentUser if available
-        if (auth.currentUser && auth.currentUser.uid === userId) {
+        // If trying to get current user's data, use the passed currentUser if available
+        if (currentUser && currentUser.uid === userId) {
             return {
                 uid: userId,
-                username: auth.currentUser.displayName || "Unknown User",
+                username: currentUser.username || "Unknown User",
                 isOnline: true, // Current user is online
             };
         }
@@ -31,7 +30,6 @@ export async function getMembersData(userId: string): Promise<Member | null> {
                 isOnline: data.isOnline || false,
             };
         } else {
-            console.log("No such user!");
             // Return a default member object instead of null
             return {
                 uid: userId,

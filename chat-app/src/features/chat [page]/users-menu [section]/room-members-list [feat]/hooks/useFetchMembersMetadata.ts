@@ -13,14 +13,17 @@ type Member = {
 
 export function useFetchMembersMetadata() {
     const { roomCode } = useRoom();
-    const { username } = useUser();
+    const { user, username } = useUser();
 
     const [members, setMembers] = useState<Member[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!roomCode || roomCode === "No Room Selected") return;
+        if (!roomCode || roomCode === "No Room") {
+            console.log("Returning early because roomCode is invalid:", roomCode);
+            return;
+        }
 
         const roomDocRef = doc(db, "rooms", roomCode);
         const unsubscribe = onSnapshot(roomDocRef, async (snapshot) => {
@@ -29,7 +32,7 @@ export function useFetchMembersMetadata() {
                 const memberIds = data?.members || [];
 
                 const memberData = await Promise.all(
-                    memberIds.map(async (id: string) => await getMembersData(id))
+                    memberIds.map(async (id: string) => await getMembersData(id, user ? { uid: user.uid, username } : null))
                 );
 
                 // Since getMembersData now always returns a Member object, we can safely cast
@@ -37,12 +40,14 @@ export function useFetchMembersMetadata() {
                 setError(null);
                 setLoading(false);
             } catch (err) {
+                console.error("Error in snapshot listener:", err);
                 setError(err as Error);
+                setLoading(false);
             }
         });
 
         return () => unsubscribe();
-    }, [roomCode, username]);
+    }, [roomCode, username, user]);
 
     return { members, loading, error };
 }

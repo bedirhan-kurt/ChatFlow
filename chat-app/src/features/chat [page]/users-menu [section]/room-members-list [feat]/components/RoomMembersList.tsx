@@ -5,9 +5,11 @@ import {
     useFetchLastMessages
 } from "@/features/chat [page]/users-menu [section]/room-members-list [feat]/hooks/useFetchLastMessages.ts";
 import UserProfileCard from "../../[section-core]/components/UserProfileCard";
+import {useRoom} from "@/features/chat [page]/[page-core]/hooks [core]/useRoom.tsx";
 
 export default function RoomMembersList() {
-    const { members } = useFetchMembersMetadata();
+    const { roomCode } = useRoom();
+    const { members, loading, error } = useFetchMembersMetadata();
     const { lastMessages } = useFetchLastMessages();
 
     const userProfileCards = members.map((member) => {
@@ -24,9 +26,29 @@ export default function RoomMembersList() {
         );
     });
 
+    const renderContent = () => {
+        if (roomCode === "No Room") {
+            return <h1>No Room Selected.</h1>;
+        }
+
+        if (loading) {
+            return <h1>Loading members...</h1>;
+        }
+
+        if (error) {
+            return <h1>Error loading members: {error.message}</h1>;
+        }
+
+        if (members.length === 0) {
+            return <h1>No Members in this Room.</h1>;
+        }
+
+        return userProfileCards;
+    };
+
     return (
         <div>
-            {members.length > 0 ? userProfileCards : <h1>No Room Selected.</h1>}
+            {renderContent()}
         </div>
     );
 }
