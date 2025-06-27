@@ -32,13 +32,13 @@ export default function Dialog({
         <BaseDialog>
             <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-            <DialogContent>
+            <DialogContent className="w-fit">
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>{description}</DialogDescription>
                 </DialogHeader>
 
-                <div>{content}</div>
+                <div className="w-fit">{content}</div>
 
                 <DialogFooter>
                     <DialogClose asChild>

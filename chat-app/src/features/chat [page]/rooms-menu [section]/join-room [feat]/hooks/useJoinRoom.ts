@@ -1,6 +1,6 @@
 import {useState, useCallback} from "react";
 import {useParams} from "react-router";
-import sendJoinRoomRequest from "../api/sendJoinRoomRequest.ts";
+import joinRoom from "../api/joinRoom.ts";
 
 export function useJoinRoom() {
     const {userId} = useParams();
@@ -20,7 +20,7 @@ export function useJoinRoom() {
         setIsLoading(true);
         setError(null);
         try {
-            await sendJoinRoomRequest(roomCode, userId as string, setError);
+            await joinRoom(roomCode, userId as string, setError);
         } catch (err: any) {
             setError(err.message || "An error occurred");
         } finally {

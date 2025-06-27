@@ -10,6 +10,7 @@ import {
 import RoomInfo from "@/features/chat [page]/header-menu [section]/room-info [feat]/components/RoomInfo.tsx";
 import useJoinedRooms
     from "@/features/chat [page]/rooms-menu [section]/joined-room-list [feat]/hooks/useJoinedRooms.ts";
+import SignOutButton from "@/features/chat [page]/header-menu [section]/sign-out [feat]/components/SignOutButton.tsx";
 
 export default function HeaderMenu({ className }: { className?: string }) {
     const {user, username} = useUser();
@@ -27,8 +28,9 @@ export default function HeaderMenu({ className }: { className?: string }) {
                 </div>
             ) : null}
             <div className="w-2/8 px-4 py-4 flex items-center justify-between">
-                    <ModeToggle />
-                    <SelfProfileCard username={username} email={user.email} />
+                <ModeToggle />
+                <SignOutButton />
+                <SelfProfileCard username={username} email={user.email} />
             </div>
         </header>
     );

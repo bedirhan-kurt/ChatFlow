@@ -108,7 +108,7 @@ ChatFlow/
 │   │   │   │   │   ├── join-room [feat]/
 │   │   │   │   │   │   ├── api/
 │   │   │   │   │   │   │   ├── checkRoomExistence.ts
-│   │   │   │   │   │   │   └── sendJoinRoomRequest.ts
+│   │   │   │   │   │   │   └── joinRoom.ts
 │   │   │   │   │   │   ├── components/
 │   │   │   │   │   │   │   └── join-room/
 │   │   │   │   │   │   │       ├── InvalidRoomCodeAlert.tsx

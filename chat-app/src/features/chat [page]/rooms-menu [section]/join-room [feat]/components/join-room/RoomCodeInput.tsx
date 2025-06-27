@@ -4,9 +4,9 @@ import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/shared
 export default function RoomCodeInput({handleCodeChange}: { handleCodeChange: (e: string) => void}) {
 
     return (
-        <div className={'flex flex-col gap-4'}>
-            <Label htmlFor={'room-code'} className=''>Room Code</Label>
-            <InputOTP id={'room-code'} maxLength={9} inputMode={"text"} onChange={(newCode: string) => {handleCodeChange(newCode)}} >
+        <div className={'flex flex-col gap-2'}>
+            <Label htmlFor={'room-code'}>Room Code</Label>
+            <InputOTP id={'room-code'} maxLength={9} inputMode={"text"} onChange={(newCode: string) => {handleCodeChange(newCode)}} style={{ width: 'fit-content' }}>
                 <InputOTPGroup>
                     <InputOTPSlot index={0}/>
                     <InputOTPSlot index={1}/>

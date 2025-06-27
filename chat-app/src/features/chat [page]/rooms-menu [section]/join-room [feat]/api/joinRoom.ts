@@ -3,14 +3,14 @@ import { db } from "@/shared/api/firebaseConfig.ts";
 import checkRoomExistence
     from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/api/checkRoomExistence.ts";
 
-export default async function sendJoinRoomRequest(roomCode: string, userId: string, setError: (error: string | null) => void) {
+export default async function joinRoom(roomCode: string, userId: string, setError: (error: string | null) => void) {
     const roomRef = doc(db, "rooms", roomCode);
 
     try {
         const exists = await checkRoomExistence(roomCode);
         if (exists) {
             await updateDoc(roomRef, {
-                joinRequests: arrayUnion(userId),
+                members: arrayUnion(userId),
             });
         } else {
             setError("Room does not exist");
