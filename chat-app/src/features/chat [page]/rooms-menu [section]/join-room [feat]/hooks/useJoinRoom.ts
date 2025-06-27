@@ -21,6 +21,7 @@ export function useJoinRoom() {
         setError(null);
         try {
             await joinRoom(roomCode, userId as string, setError);
+
         } catch (err: any) {
             setError(err.message || "An error occurred");
         } finally {

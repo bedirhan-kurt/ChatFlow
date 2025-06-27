@@ -18,7 +18,7 @@ export async function getMembersData(userId: string, currentUser?: { uid: string
             };
         }
 
-        const userRef = doc(db, "profile", userId);
+        const userRef = doc(db, "users", userId);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {

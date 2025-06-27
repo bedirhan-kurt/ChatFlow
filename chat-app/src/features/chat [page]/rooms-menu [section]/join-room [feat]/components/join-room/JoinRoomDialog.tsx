@@ -6,6 +6,7 @@ import {
     JoinRoomDialogContent
 } from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/components/join-room/JoinRoomDialogContent.tsx";
 import { useJoinRoom } from "../../hooks/useJoinRoom";
+import {DialogClose} from "@/shared/components/ui/dialog.tsx";
 
 export default function JoinRoomDialog({className}: {className?: string}) {
     const {userId} = useParams();
@@ -27,9 +28,12 @@ export default function JoinRoomDialog({className}: {className?: string}) {
             description="Enter the room code to join directly or request access."
             content={<JoinRoomDialogContent handleCodeChange={handleCodeChange} error={error} />}
             actionButton={
-            <Button variant="default" onClick={handleJoinRoom}>
-                Continue
-            </Button>}
+                <DialogClose asChild>
+                    <Button variant="default" onClick={handleJoinRoom}>
+                        Continue
+                    </Button>
+                </DialogClose>
+            }
         />
     );
 };
