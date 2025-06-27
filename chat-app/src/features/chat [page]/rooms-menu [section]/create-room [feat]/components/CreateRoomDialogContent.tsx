@@ -5,7 +5,6 @@ import { z } from "zod";
 import { createRoomSchema } from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/components/form-content/formSchema.ts";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shared/components/ui/form.tsx";
 import { Input } from "@/shared/components/ui/input.tsx";
-import { Switch } from "@/shared/components/ui/switch.tsx";
 import {Button} from "@/shared/components/ui/button.tsx";
 import {useState} from "react";
 import useCreateRoom from "@/features/chat [page]/rooms-menu [section]/create-room [feat]/hooks/useCreateRoom.tsx";
@@ -24,13 +23,8 @@ export default function CreateRoomDialogContent() {
         defaultValues: {
             name: "",
             description: "",
-            canEveryoneJoin: false,
-            limitUsers: false,
-            maxMembers: "0",
         },
     });
-
-    const watchLimitUsers = form.watch("limitUsers");
 
     const onSubmit = async (values: FormValues) => {
         try {
@@ -80,67 +74,6 @@ export default function CreateRoomDialogContent() {
                                         <Input placeholder="Optional description" {...field} />
                                     </FormControl>
                                     <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="canEveryoneJoin"
-                            render={({ field }) => (
-                                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 shadow-sm">
-                                    <div className="space-y-0.5">
-                                        <FormLabel htmlFor="canEveryoneJoin">Everyone can join</FormLabel>
-                                        <FormMessage />
-                                    </div>
-                                    <FormControl>
-                                        <Switch
-                                            id="canEveryoneJoin"
-                                            checked={field.value ?? false}
-                                            onCheckedChange={field.onChange}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="limitUsers"
-                            render={({ field }) => (
-                                <FormItem className="flex flex-col gap-4 items-center justify-between rounded-lg border p-4 shadow-sm">
-                                    <div className="w-full flex items-center justify-between">
-                                        <div className="space-y-0.5">
-                                            <FormLabel htmlFor="limitUsers">Limit number of users</FormLabel>
-                                            <FormMessage />
-                                        </div>
-                                        <FormControl>
-                                            <Switch
-                                                id="limitUsers"
-                                                checked={field.value ?? false}
-                                                onCheckedChange={field.onChange}
-                                            />
-                                        </FormControl>
-                                    </div>
-
-                                    {watchLimitUsers && (
-                                        <FormField
-                                            control={form.control}
-                                            name="maxMembers"
-                                            render={({ field }) => (
-                                                <FormItem className="w-full mb-0">
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Max members, e.g. 20"
-                                                            {...field}
-                                                            value={field.value ?? ""}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    )}
                                 </FormItem>
                             )}
                         />

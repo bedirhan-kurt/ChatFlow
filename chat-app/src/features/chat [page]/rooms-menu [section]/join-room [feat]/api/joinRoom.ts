@@ -2,7 +2,7 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/shared/api/firebaseConfig.ts";
 import checkRoomExistence
     from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/api/checkRoomExistence.ts";
-import {formatRoomCode} from "@/features/rooms [page]/rooms/lib/utils.ts";
+import {formatRoomCode} from "@/features/chat [page]/rooms-menu [section]/join-room [feat]/lib/utils.ts";
 
 export default async function joinRoom(roomCode: string, userId: string, setError: (error: string | null) => void) {
     const formattedRoomCode = formatRoomCode(roomCode);

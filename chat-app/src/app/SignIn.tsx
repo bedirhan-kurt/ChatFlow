@@ -26,19 +26,23 @@ import {
     CardTitle,
 } from "@/shared/components/ui/card.tsx"
 import SignInButton from "@/features/auth [page]/auth [feat]/components/SignInButton.tsx";
+import Disclaimer from "@/features/auth [page]/auth [feat]/components/Disclaimer.tsx";
 
 export default function SignIn() {
     return (
-        <Card className="w-96">
-            <CardHeader className="flex flex-col gap-4">
-                <CardTitle>Chat App</CardTitle>
-                <CardDescription>
-                    This is a chat application. You can sign in with your Google account and chat with other users.
-                </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-                <SignInButton />
-            </CardContent>
-        </Card>
+        <div className='w-96 flex flex-col gap-2'>
+            <Card>
+                <CardHeader className="flex flex-col gap-4">
+                    <CardTitle>Chat App</CardTitle>
+                    <CardDescription>
+                        This is a chat application. You can sign in with your Google account and chat with other users.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                    <SignInButton />
+                </CardContent>
+            </Card>
+            <Disclaimer></Disclaimer>
+        </div>
     )
 }

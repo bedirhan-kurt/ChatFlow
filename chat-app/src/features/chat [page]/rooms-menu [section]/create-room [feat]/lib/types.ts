@@ -3,9 +3,6 @@ type CreateRoomParams = {
     username?: string;
     name: string;
     description: string;
-    canEveryoneJoin: boolean;
-    limitUsers: boolean;
-    maxMembers?: string | null;
 };
 
 export default CreateRoomParams;
